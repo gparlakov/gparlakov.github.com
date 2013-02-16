@@ -1,0 +1,69 @@
+
+#html,html 
+{
+	background:url('http://91.196.126.51:8080/share/images/site/bg.jpg');
+}
+
+#hr.line,hr.line
+{
+	width:95%;
+	background:0099ff;
+	height:3px;
+	border:black;
+}
+//#navigation ul , nav ul
+{
+	display:block;
+}
+
+#navigation ul li, nav ul li
+{
+	float:left;
+	//margin:10px;
+	padding:10px;
+}
+#navigation a, nav a
+{
+	color:009960;
+}
+//#navigation ul:after, nav ul:after
+{
+	clear:both;
+	display:block;
+	content:"";
+}
+#header, header
+{
+	text-align:center;
+	color:009960;
+}
+
+#section, section
+{
+	text-align:left;
+	color:009960;
+	font-size:25;
+}
+
+#section ul, section ul
+{
+	list-style-type:none;
+	float:left;
+	padding:15px;
+
+}
+#section a, section a
+{
+	color:009960;
+}
+#section ul li:before, section ul li:before
+{
+	content:" - ";	
+}
+
+#section p, section p
+{
+	text-indent:15px;
+	margin:5px;
+	
+}

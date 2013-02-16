@@ -1,0 +1,141 @@
+<!DOCTYPE = HTML>
+<html>
+	<head>
+	
+	</head>
+
+	<body>
+		<form method="get" action="">
+				
+			<table border=2  >
+				<colgroup>
+				<col style="width:150px" style="alignment:right"/> <col style="width:200px"/>
+				</colgroup>
+				<tr>
+					<td>
+						<label for="fn" value="firstName">First Name</label>	
+					</td>
+					<td>
+						<input type="text" id="fn" style ="width:200px" placeholder="Georgi"/>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						<label for="sn" value="sirName">Sir Name</label>	
+					</td>
+					<td>
+						<input type="text" id="sn" style ="width:200px" placeholder="Parlakov"/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="adress" value="adress">Adress</label>	
+					</td>
+					<td>
+						<textarea rows = "4" cols="22" id="adress" placeholder="Sofia, Alexander Malinov Blvd" ></textarea>
+					</td>	
+				</tr>
+				<tr>
+					<td>
+							<label for="city" value="city" >Home City</label>	
+					</td>
+					<td>
+						<table border=1>
+							<tr>
+								<td>
+									<input type="text" id="city" Style="width:100" placeholder="Blagoevgrad"/>
+								</td>
+								<td>
+									<label for="state">State</label>
+								</td>
+								<td>
+									<input type="text" id="state" style="width:45" placeholder="BLAG"/>
+								</td>
+							</tr>	
+						</table>
+					</td>	
+				</tr>
+				
+				<tr>
+					<td>
+						<label for="zip" value="zip">ZIP/Postal coda</label>	
+					</td>
+					<td>
+						<input type="text" id="zip" style="width:45" placeholder="2700"/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="country" value="country">Country</label>	
+					</td>
+					<td>
+						<select name="country" id="country"	>
+							<option value = "BDG">BULGARIA</option>
+							<option value = "ESP">SPAIN</option>
+							<option value = "GBP">ENGLAND</option>
+							<option value = "GER">GERMANY</option>
+							<option value = "BAN">BANGLADESH</option>
+							<option value = "JPN">JAPAN</option>
+							<option value = "CHN">CHINA</option>
+							<option value = "USA">USA</option>
+							<option value = "ARG">ARGENTINA</option>
+							<option value = "MEX">MEXICO</option>						
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="phone" value="phone">Phone(country code, area code, number)</label>	
+					</td>
+					<td>
+						(+<input = "text" id="phone" style ="width:35px" placeholder="359"/>)
+						<input = "text" style ="width:35px" placeholder="73"/>
+						<input = "text" style ="width:65px"placeholder="942 9999"/>
+					</td>	
+				</tr>
+				<tr>
+					<td>
+						<label for="email" value="email">E-mail</label>	
+					</td>
+					<td>
+						<input = "email" id="email" style ="width:200px" placeholder="gparlakov@abv.bg" />
+					</td>	
+				</tr>
+				<tr>
+					<td>
+						<label for="bday" value="bday">Birth Date</label>	
+					</td>
+					<td>
+						Month<input = "text" id="bhday " style ="width:30px" placeholder="01"/>
+						Day<input = "text" style ="width:30px" placeholder="31"/>
+						Year<input = "text" style ="width:40px" placeholder="1980"/>
+					</td>	
+				</tr>
+				<tr>
+					<td>
+						<label for="gender" value="gender">Gender</label>	
+					</td>
+					<td>
+						<select name="gender" id="gender">
+							<option value = "m" >Male</option>
+							<option value = "f" >Female</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="starting" value="starting">Starting</label>	
+					</td>
+					<td>
+						<input type="radio" name="starting" value="September 2013">Sep 2013</input>
+						<input type="radio" name="starting" value="October 2013">Oct 2013</input>
+							
+					</td>
+				</tr>
+			</table>
+			
+		</form>
+	</body>
+</html>
+

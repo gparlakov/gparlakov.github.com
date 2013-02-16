@@ -1,0 +1,153 @@
+<!DOCTYPE = HTML>
+<html>
+	<head>
+	<title> Form Starting</title>
+	</head>
+
+	<body>
+		<form method="get" action="">
+				
+			<table border=1  >
+				
+				<tr>
+					<td>
+						<label for="fn" >First Name</label>	
+					</td>
+					<td>
+						<input type="text" id="fn" value ="firstName" placeholder="Georgi"/>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						<label for="sn" ">Sir Name</label>	
+					</td>
+					<td>
+						<input type="text" id="sn" value="sirName" placeholder="Parlakov"/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="adress" >Adress</label>	
+					</td>
+					<td>
+						<textarea rows = "4" cols="22" id="adress" value ="address" placeholder="Sofia, Alexander Malinov Blvd" ></textarea>
+					</td>	
+				</tr>
+				<tr>
+					<td>
+							<label for="city"  >Home City</label>	
+					</td>
+					<td>
+						<table border=1>
+							<tr>
+								<td>
+									<input type="text" id="city"  value = "city" placeholder="Blagoevgrad"/>
+								</td>
+								<td>
+									<label for="state">State</label>
+								</td>
+								<td>
+									<input type="text" id="state"  value = "state" placeholder="BLAG"/>
+								</td>
+							</tr>	
+						</table>
+					</td>	
+				</tr>
+				
+				<tr>
+					<td>
+						<label for="zip" >ZIP/Postal coda</label>	
+					</td>
+					<td>
+						<input type="text" id="zip" value="zip" placeholder="2700"/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="country">Country</label>	
+					</td>
+					<td>
+						<select name="country" id="country" value="country"	>
+							<option value = "BDG">BULGARIA</option>
+							<option value = "ESP">SPAIN</option>
+							<option value = "GBP">ENGLAND</option>
+							<option value = "GER">GERMANY</option>
+							<option value = "BAN">BANGLADESH</option>
+							<option value = "JPN">JAPAN</option>
+							<option value = "CHN">CHINA</option>
+							<option value = "USA">USA</option>
+							<option value = "ARG">ARGENTINA</option>
+							<option value = "MEX">MEXICO</option>						
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="phone" >Phone(country code, area code, number)</label>	
+					</td>
+					<td>
+						(+<input = "text" id="phone" value="phone_country" placeholder="359"/>)
+						<input = "text" value="phone_area" placeholder="73"/>
+						<input = "text" value="phone_digits" placeholder="942 9999"/>
+					</td>	
+				</tr>
+				<tr>
+					<td>
+						<label for="email" >E-mail</label>	
+					</td>
+					<td>
+						<input = "email" id="email" value="email" placeholder="gparlakov@abv.bg" />
+					</td>	
+				</tr>
+				<tr>
+					<td>
+						<label for="bday" >Birth Date</label>	
+					</td>
+					<td>
+						Month<input = "text" id="bhday" value="bday_day" placeholder="01"/>
+						Day<input = "text"  value="bday_month" placeholder="31"/>
+						Year<input = "text" value="bday_year" placeholder="1980"/>
+					</td>	
+				</tr>
+				<tr>
+					<td>
+						<label for="gender" >Gender</label>	
+					</td>
+					<td>
+						<select name="gender" id="gender" >
+							<option value = "m" >Male</option>
+							<option value = "f" >Female</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="starting" >Starting</label>	
+					</td>
+					<td>
+						<input type="radio" name="starting" value="September2013">Sep 2013</input>
+						<input type="radio" name="starting" value="October2013">Oct 2013</input>
+							
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="comment" >Comments</label>
+					</td>
+					<td>
+						<textarea cols = 20 rows = 4 id="comments" value = "comments" placeholder="Leave your comments here"></textarea>
+					</td>
+				</tr>
+			
+				<tr>
+					<td colspan=2>
+						<input type = "Submit" value ="Submit"/>
+						<input type = "reset" value = "Clear this form"/>
+					</td>
+				</tr>	
+ 			</table>
+		</form>
+	</body>
+</html>
+
