@@ -1,0 +1,46 @@
+html,body,for,ul,li{
+margin:0px;
+padding:0px;
+zoom:1;
+}
+body{
+	padding:50px 80px;	
+}
+a{
+	text-decoration:none;
+	font:inherit;
+	color:white;
+}
+h2{
+	font-size:1.6em;
+}
+h4{
+	font-size:1.3em;
+	font-weight:bold;
+}
+a:hover{
+	font:inherit;
+	color:yellow;
+}
+
+
+ul>li{
+		background-color:skyblue;
+		border-radius:15px;
+		width:350px;
+		/*float:left;*/
+		margin: 10px 15px;
+		padding:5px;
+		position:relative;
+	}	
+	
+	li>article>ul{
+		display:none;
+		min-width:250px;
+		position:absolute;
+		left:99%;
+		top:0%;
+	}
+	ul>li>article:hover>ul{
+		display:block;
+	}
