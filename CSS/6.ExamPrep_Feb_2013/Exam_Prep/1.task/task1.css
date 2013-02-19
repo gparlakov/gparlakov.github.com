@@ -1,0 +1,97 @@
+﻿.clear {
+  zoom: 1;
+}
+.clear:after {
+  display: block;
+  height: 0px;
+  content: "";
+  clear: both;
+}
+body {
+  padding: 0px;
+  margin: 0px;
+  font-family: Arial;
+  font-size: 2em;
+  color: black;
+}
+body a {
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
+}
+body header {
+  padding-left: 50px;
+  padding-top: 50px;
+  background: #002e45;
+  background: -moz-linear-gradient(top, #002e45 0%, #77d1ff 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #002e45), color-stop(100%, #77d1ff));
+  background: -webkit-linear-gradient(top, #002e45 0%, #77d1ff 100%);
+  background: -o-linear-gradient(top, #002e45 0%, #77d1ff 100%);
+  background: -ms-linear-gradient(top, #002e45 0%, #77d1ff 100%);
+  background: linear-gradient(to bottom, #002e45 0%, #77d1ff 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@top', endColorstr='@bottom', GradientType=0);
+  float: left;
+  height: 150px;
+}
+body ul {
+  list-style-type: none;
+  -webkit-padding-start: 0px;
+  margin: 0px;
+  padding: 0px;
+  zoom: 1;
+}
+body ul:after {
+  display: block;
+  height: 0px;
+  content: "";
+  clear: both;
+}
+body ul ul {
+  padding: 0px;
+  margin: 0px;
+  display: none;
+}
+body ul li:hover {
+  border: 0px solid black;
+  border-radius: 15px;
+  background: #115C82;
+}
+body ul > li {
+  float: left;
+  margin: 10px;
+  padding: 5px 10px;
+}
+body ul .selected > ul {
+  display: block;
+  position: absolute;
+  left: 50px;
+}
+body ul .selected > ul > li {
+  position: relative;
+}
+body ul .selected > ul > li:hover ul {
+  display: block;
+  position: absolute;
+  padding: 15px;
+  width: 350px;
+  left: 0px;
+  border: 0px solid black;
+  border-radius: 15px;
+  background: #ffffff;
+  background: -moz-linear-gradient(top, #ffffff 0%, #87ceeb 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #87ceeb));
+  background: -webkit-linear-gradient(top, #ffffff 0%, #87ceeb 100%);
+  background: -o-linear-gradient(top, #ffffff 0%, #87ceeb 100%);
+  background: -ms-linear-gradient(top, #ffffff 0%, #87ceeb 100%);
+  background: linear-gradient(to bottom, #ffffff 0%, #87ceeb 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@top', endColorstr='@bottom', GradientType=0);
+}
+body ul .selected > ul > li:hover ul > li {
+  display: block;
+  padding: 5px 15px;
+  margin: 0px;
+  border-bottom: 1px solid black;
+}
+body ul .selected > ul > li:hover ul > li:last-child {
+  border-bottom: none;
+}

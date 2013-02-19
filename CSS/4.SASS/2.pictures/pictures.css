@@ -1,0 +1,12 @@
+body > .father > a > img {
+  width: 75px; }
+body > .father > a:hover > img {
+  width: 70px;
+  margin-rigth: 10px; }
+body .child > a > img {
+  width: 100px;
+  display: none; }
+body .child :target > img {
+  display: block;
+  width: 500px; }
+

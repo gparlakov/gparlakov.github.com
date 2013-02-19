@@ -1,0 +1,77 @@
+﻿.clear {
+  zoom: 1;
+}
+.clear:after {
+  display: block;
+  height: 0px;
+  content: "";
+  clear: both;
+}
+body {
+  padding: 0px;
+  margin: 0px;
+  font-size: 16px;
+  color: black;
+}
+body a {
+  text-decoration: none;
+  color: black;
+}
+body a img {
+  width: 1.5em;
+}
+body #wrapper #popup-box {
+  list-style-type: none;
+  float: left;
+  padding: 15px;
+  margin: 0px;
+}
+body #wrapper #popup-box .current {
+  font-weight: bold;
+}
+body #wrapper #popup-box .popup-item {
+  padding: 5px 15px 8px 5px;
+  position: relative;
+  border-top: 1px solid black;
+}
+body #wrapper #popup-box .popup-item:last-child {
+  border-bottom: 1px solid black;
+}
+body #wrapper #popup-box .popup-item .popup-content {
+  position: absolute;
+  left: 100%;
+  top: 0px;
+  margin-left: 5px;
+}
+body #wrapper #popup-box .popup-item .popup-content a {
+  position: absolute;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  left: 85%;
+  top: 9%;
+  padding: 0px 5px;
+}
+body #wrapper #popup-box .popup-item .popup-content div fieldset {
+  border: 1px solid black;
+  padding: 10px;
+}
+body #wrapper #popup-box .popup-item .popup-content div fieldset legend {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+body #wrapper #popup-box .popup-item .popup-content div fieldset button {
+  background: #c7c7c7;
+  background: -moz-linear-gradient(top, #c7c7c7 0%, #666666 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #c7c7c7), color-stop(100%, #666666));
+  background: -webkit-linear-gradient(top, #c7c7c7 0%, #666666 100%);
+  background: -o-linear-gradient(top, #c7c7c7 0%, #666666 100%);
+  background: -ms-linear-gradient(top, #c7c7c7 0%, #666666 100%);
+  background: linear-gradient(to bottom, #c7c7c7 0%, #666666 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@top', endColorstr='@bottom', GradientType=0);
+  border: 0px solid #000000;
+  border-radius: 15px;
+  padding: 5px 10px;
+}
+body .invisible {
+  display: none;
+}

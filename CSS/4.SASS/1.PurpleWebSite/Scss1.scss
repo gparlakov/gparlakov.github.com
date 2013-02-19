@@ -1,0 +1,280 @@
+@mixin
+gradient($top,$middle, $bottom,$start-pos:0%,$mid-pos:20%,$end-pos:25%) {
+    background: $top;
+    background: -moz-linear-gradient(top, $top $start-pos,$middle $mid-pos $bottom $end-pos);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop($start-pos,$top),color-stop($mid-pos $middle) color-stop($end-pos,$bottom));
+    background: -webkit-linear-gradient(top, $top $start-pos,$middle $mid-pos, $bottom $end-pos);
+    background: -o-linear-gradient(top, $top $start-pos,$middle $mid-pos, $bottom $end-pos);
+    background: -ms-linear-gradient(top, $top $start-pos,$middle $mid-pos, $bottom $end-pos);
+    background: linear-gradient(to bottom, $top $start-pos,$middle $mid-pos, $bottom $end-pos);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$top', endColorstr='$bottom',GradientType=0 );
+}
+@mixin
+clear {
+    &:after {
+        content: "";		
+		height: 0px;
+        display: block;
+        clear: both;
+    }
+}
+
+@mixin
+border($bor-col){
+	border:1px solid $bor-col;
+	border-radius:10px;
+}
+@mixin
+border-bigger($bor-col){
+	border:1px solid $bor-col;
+	border-radius:15px;
+}
+
+$font :Arial serif;
+$time-font:Consolas; 
+$background: #8949B9; 
+$background-lighter:#B35EF3;
+$darkLink:gray;
+$font-size:16px; 
+
+body {
+    @include
+    gradient(#D392FE,#7626B7,#9515F7);
+    margin: 0px;
+    padding: 0px;
+    font-family: $font;
+    font-size: $font-size;
+    color: white;
+    @include
+    clear;
+
+	a{
+		font-size:1.1em;
+	}
+
+    >header,
+    >section {
+        padding: 20px;
+    }
+
+    ul {
+        -webkit-padding-start: 0px;
+		list-style-type:none;
+    }
+
+
+    header {
+        @include
+        clear;
+
+        #header-container {
+            @include
+            clear;
+
+            #logo-container {
+                float: left;
+
+                img {
+                    width: 400px;
+                }
+            }
+
+            #reg-form-container {
+                float: right;
+
+                form {
+
+                    label {
+                        display: inline-block;
+                        width: 80px;
+                        font-size: 0.8;
+                    }
+
+                    button:hover {
+                        background-color: $background;
+                    }
+
+                    input {
+                        width: 175px;
+                        height: 25px;
+                        @include
+                        border(#603382);
+                        background-color: $background-lighter;
+                        margin: 5px;
+                    }
+
+                    button {
+                        padding: 5px 10px;
+                        border-width: 1px;
+                        border-radius: 10px;
+                        border-color: #C0AFCE #3C2051 #3C2051 #C0AFCE;
+                        font-size: 16px;
+                        font-weight: bolder;
+                        color: inherit;
+                        background: $background-lighter;
+                    }
+                }
+            }
+        }
+
+        nav {
+            @include
+            border-bigger(black);
+            width: 80%;
+            padding: 0px;
+			margin-bottom:40px;
+            font-size: 21px;
+            line-height: 30px;
+
+            ul {
+                padding: 5px;
+                -webkit-padding-start: 0px;
+            }
+
+            li {
+                padding: 5px;
+            }
+
+            a {
+                text-decoration: none;
+                color: inherit;
+                padding: 5px;
+
+                &:hover {
+                    color: $darkLink;
+                    text-decoration: underline;
+                }
+            }
+
+            #main-nav-list > li {
+                float: left;
+                margin: 0 10px;
+                @include
+                clear;
+
+
+                &:hover > .sub-nav-list {
+                    display: block;
+                    list-style-type: none;
+                    font-size: 18px;
+                    line-height: 30px;
+                    @include
+                    border-bigger(rgba(175,86,242,0.8));
+                    background-color: $background;
+
+
+                    li {
+                        margin: 0px 10px;
+                        border-bottom: 1px solid black;
+                    }
+
+                        li:last-child {
+                            border-bottom: none;
+                        }
+                }
+            }
+
+            #main-nav-list {
+                margin: 5px;
+                padding: 0px 0px;
+                position: relative;
+                list-style-type: none;
+                @include
+                clear;
+            }
+
+            .sub-nav-list {
+                position: absolute;
+                display: none;
+            }
+        }
+    }
+
+    section {
+        float: left;
+        width: 70%;
+        @include
+        clear;
+
+        article {
+            margin-bottom: 20px;
+            padding: 0px 20px;
+            font-size: 1em;
+            @include
+            border-bigger(black);
+
+            >footer {
+                font-size: 16px;
+                float: right;
+
+                >p {
+                    margin-top: 0px;
+                    padding: 0px;
+                }
+
+                time {
+                    font-family: Consolas;
+                }
+            }
+
+            @include
+            clear;
+        }
+
+        a {
+            font-size: 18px;
+            text-decoration: none;
+            color: $darkLink;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    aside {
+		padding-top:20px;
+        float: left;
+        width: 25%;
+        @include
+        clear;
+
+        a {
+            text-decoration: none;
+            color: $darkLink;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        >ul {
+			
+            >li {
+                padding: 5px 15px;
+                margin: 10px;
+                @include
+                border(black);
+            }
+
+			li > ul > li:before {
+                    content: url('images/li-dot.png');
+                }
+        }               
+    }
+
+    >footer:before {
+        display: block;
+        content: "";
+        height: 0px;
+        clear: both;
+    }
+
+    > footer {
+        font-size: 1.5em;
+
+        >p {
+            text-align: center;
+        }
+    }
+}

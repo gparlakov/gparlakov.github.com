@@ -1,0 +1,22 @@
+﻿body {
+	>.father>a{		
+		>img{
+			width:75px;
+		}	
+		&:hover>img{
+			width:70px;
+			margin-rigth:10px;
+		}	
+	}
+	
+
+	.child > a > img{
+		width:100px;
+		display: none;
+		
+	}
+	.child :target>img{
+			display:block;	
+			width:500px;
+		}	
+}

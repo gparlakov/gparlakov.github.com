@@ -1,0 +1,59 @@
+﻿body
+{
+    padding:0;
+    margin:0;    
+}
+section{
+    display:block;
+    background-color:#EEEEEE;
+    width:400px;
+    margin:30px 100px;
+    padding:30px; 
+    float:both;  
+}
+    article{              
+        background-color:#FFFFFF;
+        width:90%;
+        height:80px;
+        margin:20px auto;
+        padding:20px;
+        border:1px solid black;
+    }
+    article img{ 
+        position:relative;
+        float:left; 
+        margin-right:10px;         
+        width:30%;
+    }
+    article div{
+        position:relative;
+        margin:5px;  
+        display:inline-block; 
+        width:63%;
+    }
+    .button{        
+        float:right;
+        width:70px;
+        height:20px;
+        background-image:url('img/button.png');  
+        background-size:cover;        
+        margin-right:15px;      
+        bottom:5px;
+    }
+    .button a{
+        display:block;
+        color:white;
+        font-size:0.8em;
+        text-decoration:none;
+        text-align:right;
+        vertical-align:central;
+    }
+    .clearfix{
+        zoom:1;
+    }
+    .clearfix:after{
+        content:"";
+        display:block;
+        clear:both;
+        height:0px;
+    }

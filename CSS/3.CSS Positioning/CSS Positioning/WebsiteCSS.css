@@ -1,0 +1,50 @@
+﻿body
+{
+    margin:0px;
+    padding:0px;
+    float:left;
+    height:700px;
+    width:1000px;
+    overflow:auto;
+}
+nav{
+    float:left;
+    display:block;    
+    width:18%;    
+    border:1px solid black;
+}
+
+nav ul{
+    list-style-type:none;    
+    }
+ul li a{
+    text-decoration:none;
+    color:black;    
+}
+ul li:first-of-type a{
+    color:#a70404;
+}
+
+.mainContent{
+    width:60%;
+    height:700px;
+    overflow:hidden;
+    float:left;
+    border:1px solid gray;
+}
+article{
+    margin:10px;
+    padding:5px;
+}
+article header{
+    color:#F2F2F2;
+    background:#808080;
+}
+
+.right{
+    padding:5px;    
+    float:left;
+    width:20%;
+    min-height:45px;   
+    border:1px solid black; 
+}

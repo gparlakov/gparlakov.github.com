@@ -1,0 +1,218 @@
+﻿.vs2012-fix{
+
+    
+}
+ @bg-light: (#D593FF);
+ @bg-dark: (#9215F2);
+ @middlle:(#8F1AEF);
+ @font-color:white;
+ @a-color:gray;
+ @font-heigth:20px;
+ @font-family:serif;
+ @font-family-alternative:Consolas;
+
+.border(@w:1px,@col:black,@radius:10px){
+	border:@w solid @col;
+	border-radius:@radius;
+}
+.gradient(@start: @bg-light,@midpoint: @middlle	,@end: @bg-dark) {
+        background: @start;
+        background: -moz-linear-gradient(top, @start 0%, @midpoint 20%, @end 25%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@start), color-stop(15%,@midpoint), color-stop(25%,@end));
+        background: -webkit-linear-gradient(top, @start 0%,@midpoint 20%,@end 25%);
+        background: -o-linear-gradient(top, @start 0%,@midpoint 20%,@end 25%);
+        background: -ms-linear-gradient(top, @start 0%,@midpoint 20%,@end 25%);
+        background: linear-gradient(to bottom, @start 0%,@midpoint 20%,@end 25%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@start', endColorstr='@end',GradientType=0 );
+    }
+
+.clear{
+	zoom:1;
+	&:after{
+		content: "";
+		display: block;
+		clear: both;
+		height: 0px;		
+	}
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+    color: @font-color;
+    font-family: @font-family;
+    font-size: @font-heigth;
+    .gradient();
+    .clear;
+
+    a {
+        color: @a-color;
+        text-decoration: none;
+        font-size: 1.2em;
+    }
+
+    ul {
+        -webkit-padding-start: 0px;
+
+        li {
+            margin: 0px;
+            list-style: none;
+        }
+    }
+
+    #header-container {
+        margin: 20px;
+
+        #logo-container {
+            float: left;
+
+            img {
+                width: 400px;
+            }
+        }
+
+        #reg-form-container {
+            float: right;
+			padding-top:20px;			
+            label {
+                font-size: 0.8em;
+            }
+
+            input {
+                background-color: @bg-light;
+                .border;
+                line-height: 20px;
+            }
+
+            button {
+                color: inherit;
+				font-size:0.8em;
+                font-weight:bold;
+                .border;
+                background-color: @bg-light;
+                border: 1px solid;
+                border-color: #C0AFCE #3C2051 #3C2051 #C0AFCE;
+                line-height: 25px;
+
+                &:hover {
+                    background-color: @bg-dark;
+                }
+            }
+        }
+
+        .clear;
+    }
+
+    nav {
+        margin-left: 20px;
+		margin-bottom: 40px;
+        width: 80%;
+        .border;
+        .clear;
+
+
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            /*line-height:30px;*/
+            &:hover {
+                text-decoration: underline;
+                color: @a-color;
+            }
+        }
+
+        #main-nav-list {
+            margin: 0px;
+            padding: 0px;
+
+            > li {
+                float: left;
+                margin: 10px 20px;
+
+                &:hover > ul {
+                    display: block;
+                }
+
+                >ul {
+                    display: none;
+                    .border;
+                    position: absolute;
+                    background-color: @bg-light;
+                    padding: 10px 20px;
+
+                    >li {
+                        border-bottom: 1px solid black;
+                        padding: 10px 0px;
+
+                        &:last-child {
+                            border-bottom: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    section {
+        margin: 10px;
+        padding: 10px;
+        float: left;
+        width: 75%;
+        .clear;
+
+        article {
+            .border;
+            padding: 5px 15px;
+            margin-bottom: 15px;
+
+            > footer {
+                text-align: right;
+
+                time {
+                    font-family: @font-family-alternative;
+                }
+            }
+        }
+    }
+
+    aside {
+        float: left;
+        width: 20%;
+        .clear;
+
+        >ul {
+            margin-top: 40px;
+            padding: 0px;
+
+            > li {
+                .border;
+                padding: 10px;
+                margin: 20px 0;
+
+                >ul {
+                    /*-webkit-padding-start: 30px;*/
+                    padding: 0 30px;
+
+                    >li {
+                        list-style-image: url(images/li-dot.png);
+                    }
+                }
+            }
+        }
+    }
+
+    >footer {
+        &:before {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        >p {
+            text-align: center;
+            font-size: 1.5em;
+        }
+    }
+}
+

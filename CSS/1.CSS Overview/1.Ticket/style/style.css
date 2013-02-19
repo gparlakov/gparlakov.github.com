@@ -1,0 +1,66 @@
+body
+{
+	margin:0;
+	padding:0;
+}
+
+table
+{
+	background-color:#777;
+	<!--border: 1px solid #999;-->
+	border-width:3px;
+}
+#title
+{
+	width:150px;
+	font-size:35px;
+}
+
+td
+{
+	border:1px solid #000
+	font-size:25;
+	vertical-align:top;
+}
+
+
+.silver
+{
+	width:150px;
+	color:silver;
+	font-style:italic;
+}
+.grey
+{
+	color:#dd9;
+}
+
+.beige
+{
+	color:beige;
+}
+.orange
+{
+	color:orange;
+}
+.grey, .beige, .grey
+{
+	width:180px;
+}
+
+#noSupport:before
+{
+	content:url(icon_green_Dot.png);
+	vertical-align:-50%;	
+}
+#noSupport:after
+{
+	display:block;
+	color:red;
+	content: "No support";
+}
+a:hover
+{
+	color:white;
+}
+

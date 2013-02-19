@@ -1,0 +1,107 @@
+﻿.VS_fix{}
+
+.gradient(@top:#002e45,@bottom:#77d1ff){
+	background: @top;
+	background: -moz-linear-gradient(top, @top 0%, @bottom 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@top), color-stop(100%,@bottom));
+	background: -webkit-linear-gradient(top, @top 0%,@bottom 100%);
+	background: -o-linear-gradient(top, @top 0%,@bottom 100%);
+	background: -ms-linear-gradient(top, @top 0%,@bottom 100%);
+	background: linear-gradient(to bottom, @top 0%,@bottom 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@top', endColorstr='@bottom',GradientType=0 );
+}
+.clear{
+	zoom:1;
+	&:after{
+		display: block;
+		height: 0px;
+		content: "";
+		clear: both;
+	}
+}
+.border(@w:0px, @rad:15px){
+	border:0px solid black;
+	border-radius: @rad;
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+    font-family: Arial;
+    font-size: 2em;
+    color: black;
+
+    a {
+        text-decoration: none;
+        font: inherit;
+        color: inherit;
+    }
+
+    header {
+        padding-left: 50px;
+		padding-top:50px;
+        .gradient;
+        float: left;
+        height: 150px;
+    }
+
+    ul {
+        list-style-type: none;
+        -webkit-padding-start: 0px;
+        margin: 0px;
+        padding: 0px;
+        .clear;
+
+        ul {
+            padding: 0px;
+            margin: 0px;
+            display: none;
+        }
+
+        li {
+            &:hover {
+                .border;
+                background: #115C82;
+            }
+        }
+
+
+        >li {
+            float: left;
+            margin: 10px;
+            padding: 5px 10px;
+        }
+
+        .selected > ul {
+            display: block;
+            position: absolute;
+            left: 50px;
+
+            >li {
+				position:relative;
+                &:hover ul {
+                    display: block;
+                    position: absolute;  
+					padding: 15px;  
+					width:350px;
+	
+					left:0px;
+					.border;
+					.gradient(white,skyblue);
+
+					>li{
+						display: block;
+						padding:5px 15px;
+						margin: 0px;
+						border-bottom:1px solid black;
+
+						&:last-child{
+							border-bottom:none;
+						}
+					}
+
+                }
+            }
+        }
+    }
+}
