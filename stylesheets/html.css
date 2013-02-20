@@ -50,7 +50,7 @@ ul>li{
 		left:99%;
 		top:0%;
 	}
-	ul>li>article:hover>ul{
+	ul>li:hover>article>ul{
 		display:block;
 	}
 
