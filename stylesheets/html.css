@@ -39,7 +39,7 @@ ul>li{
 		width:350px;
 		/*float:left;*/
 		margin: 10px 15px;
-		padding:5px;
+		padding:5px 10px;
 		position:relative;
 	}	
 	
@@ -53,3 +53,9 @@ ul>li{
 	ul>li>article:hover>ul{
 		display:block;
 	}
+
+	
+/* styles for the css part*/
+img{
+	width:75%;
+}
