@@ -4,7 +4,8 @@ padding:0px;
 zoom:1;
 }
 body{
-	padding:50px 80px;
+	/*width:1024px;*/
+	padding:50px 150px;
 	background: rgb(181,189,200); /* Old browsers */
 background: -moz-radial-gradient(center, ellipse cover,  rgba(181,189,200,1) 0%, rgba(130,140,149,1) 36%, rgba(40,52,59,1) 100%); /* FF3.6+ */
 background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(181,189,200,1)), color-stop(36%,rgba(130,140,149,1)), color-stop(100%,rgba(40,52,59,1))); /* Chrome,Safari4+ */
@@ -33,11 +34,10 @@ a:hover{
 	color:yellow;
 }
 
-
 ul>li{
 		background-color:skyblue;
 		border-radius:15px;
-		width:350px;
+		width:400px;
 		/*float:left;*/
 		margin: 10px 15px;
 		padding:5px 10px;
@@ -53,12 +53,16 @@ ul>li{
 		top:0%;
 	}
 	ul>li:hover>article>ul{
-		display:block;
+		display:block;	
+		/*width:250%;*/
 	}
+	/*ul>li:hover>article>ul>li{
+		display:inline-block;		
+	}*/
 
 	
 	
-/* styles for the css part*/
+/* styles for the css images part*/
 img{
 	width:75%;
 }
