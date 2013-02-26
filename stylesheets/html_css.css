@@ -69,26 +69,25 @@ ul>li{
 /* styles for the css images part*/
 img{
 	width:75%;
+	-webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    -ms-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
 }
-/*li>a:nth-of-type(2n-1){
-	float:right;
+img:hover{
+	-webkit-transform: translate(-200px,-50px) scale(2);
+    -moz-transform: translate(-200px,0px) scale(2);
+    -o-transform: translate(-200px,0px) scale(2);
+    -ms-transform: translate(-200px,0px) scale(2);
+    transform: translate(-200px,0px) scale(2);
 }
 
-li:after{
-	display:block;
-	content:"";
-	clear:both;
-	height:0px;
-}*/
 
 article>ul>li>a:nth-of-type(2n){
-	display:none;
-	
+	display:none;	
 }
 
-/*article>ul>li{
-position:relative;
-}*/
 article>ul>li:hover>a:nth-of-type(2n){
 	display:block;
 	position:absolute;
@@ -96,6 +95,5 @@ article>ul>li:hover>a:nth-of-type(2n){
 	width:100%;
 	top:0px;	
 	z-index:5;
-	padding-left:10px;
-	
+	padding-left:10px;	
 }
