@@ -7,24 +7,32 @@
 		<h2>Write a boolean expression that checks for given integer if it can be divided (without remainder) by 7 and 5 in the same time.</h2>
 		<label for = "input1">Input number to check here</label>
 		<input id = "input1" />
-		<a href = "#" onclick = "OddOrEven()"> Check</a>
+		<a href = "#" onclick = "onClickCheckDevisible()"> Check</a>
 	</form>
 	<div id="console"></div>
 	<script src = "scripts/js-console.js"></script>
 	<script>
 	
-	function OddOrEven(){	
-		var number = jsConsole.readInteger("#input1");		
+	function onClickCheckDevisible(){	
+		var number = Math.abs(jsConsole.readInteger("#input1"));		
 		var type = "NaN";
 		if(number % 5 == 0 && number % 7 == 0)
 		{
-			type = "It is indeed";
+			type = " IS indeed";
 		}		
 		else 
 		{
-			type = "It's not";
+			type = " is NOT";
 		}
-		jsConsole.writeLine(type);
+		if(!isNaN(number))
+		{
+			jsConsole.writeLine("The number " + number +  type + " devisible by 5 and 7 simultaniously");
+		}
+		else 
+		{
+			jsConsole.writeLine("Not a number");
+		}	
+			
 	}
 	</script>
 	</body>
