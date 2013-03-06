@@ -1,0 +1,32 @@
+<html>
+	<head>
+	<title>Check3DigitIf7</title>		
+	</head>
+	<body>
+	<h2> Write an expression that checks for given integer if its third digit (right-to-left) is 7. E. g. 1732 ? true.
+</h2>
+	
+	<form>
+		<label for = "input1">Input number to check here</label>
+		<input id = "input1" />
+		<a href = "#" onclick = "OddOrEven()"> Check</a>
+	</form>
+	<div id="console"></div>
+	<script src = "scripts/js-console.js"></script>
+	<script>
+	
+	function OddOrEven(){	
+		var number = jsConsole.readInteger("#input1");		
+		var type = "not 7";
+		var digit3 = parseInt((number / 100) % 10);		
+		if(digit3 == 7)
+		{
+			type = "7";
+		}		
+				
+		jsConsole.writeLine("The number is " + type);
+	}
+	</script>
+	</body>
+
+ </html>

@@ -1,0 +1,33 @@
+<html>
+	<head>
+	<title>1.OddOrEven</title>		
+	</head>
+	<body>
+	<h2>1. Write an expression that checks if given integer is odd or even.</h2>
+	<form>
+		
+		<label for = "input1">Input number to check here for odd or even here</label>
+		<input id = "input1" />
+		<a href = "#" onclick = "OddOrEven()"> Check</a>
+	</form>
+	<div id="console"></div>
+	<script src = "scripts/js-console.js"></script>
+	<script>
+	
+	function OddOrEven(){	
+		var number = jsConsole.readInteger("#input1");		
+		var type = "NaN";
+		if(number % 2 == 0)
+		{
+			type = "Even";
+		}		
+		else if (number % 2 == 1)
+		{
+			type = "Odd";
+		}
+		jsConsole.writeLine("The number " + number + " is " + type);
+	}
+	</script>
+	</body>
+
+ </html>

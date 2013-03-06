@@ -1,0 +1,27 @@
+<html>
+	<head>
+	<title>3.RectangleArea</title>		
+	</head>
+	<body>
+	<h2>Write an expression that calculates rectangle’s area by given width and height.</h2>
+	<form>
+		<label for = "input1">Input width</label>
+		<input id = "input1" />
+		<label for = "input1">Input height</label>
+		<input id = "input2" />
+		<a href = "#" onclick = "OddOrEven()">Calculate surface</a>
+	</form>
+	<div id="console"></div>
+	<script src = "scripts/js-console.js"></script>
+	<script>
+	
+	function OddOrEven(){	
+		var width = jsConsole.readInteger("#input1");	
+		var height = jsConsole.readInteger("#input2");			
+		
+		jsConsole.writeLine("The surface is  " + (width * height));
+	}
+	</script>
+	</body>
+
+ </html>
