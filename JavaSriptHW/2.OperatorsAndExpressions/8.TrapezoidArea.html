@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>3.RectangleArea</title>
+		<title>8.Trapezoid Area</title>
 		<style>
 			input {
 				width:50px;
@@ -27,11 +27,13 @@
 		</style>
 	</head>
 	<body>
-	<h2>Write an expression that calculates rectangle’s area by given width and height.</h2>
+	<h2>Write an expression that calculates trapezoid's area by given sides a and b and height h.</h2>
 	<form>
-		<label for = "input1">Input width</label>
-		<input id = "input1" />
-		<label for = "input1">Input height</label>
+		<label for = "a">Input a</label>
+		<input id = "a" />
+		<label for = "b">Input b</label>
+		<input id = "b" />
+		<label for = "input2">Input height</label>
 		<input id = "input2" />
 		<a href = "#" onclick = "onClickClculateSurface()">Calculate surface</a>
 	</form>
@@ -40,10 +42,18 @@
 	<script>
 	
 	function onClickClculateSurface(){	
-		var width = jsConsole.readInteger("#input1");	
-		var height = jsConsole.readInteger("#input2");			
+		var a = jsConsole.readInteger("#a");
+		var b = jsConsole.readInteger("#b");			
+		var height = jsConsole.readInteger("#input2");		
 		
-		jsConsole.writeLine("The surface is  " + (width * height));
+		if(isNaN(a) || isNaN(b) || isNaN(height))
+		{
+			jsConsole.writeLine("One of the parameters is not a number");
+		}
+		else
+		{
+			jsConsole.writeLine("This trapeziod's area is  " + (a + b * height) / 2);
+		}
 	}
 	</script>
 	</body>
