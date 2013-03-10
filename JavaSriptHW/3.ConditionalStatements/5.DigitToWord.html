@@ -1,0 +1,75 @@
+<html>
+	<head>
+	<title>5. Digit to word</title>	
+	<style>
+			input {
+				width:50px;
+			}
+			a{
+				color:black;
+				display:block;
+				background:skyblue;
+				max-width:150px;
+				text-decoration:none;
+				border-radius:5px;
+				text-align:center;
+			}
+			a:hover{
+				-moz-box-shadow: 	0px 2px 5px #888;
+				-webkit-box-shadow: 0px 2px 5px #888;
+				box-shadow: 		0px 2px 5px #888;
+			}
+			a:active
+			{
+				-moz-box-shadow: 	none;
+				-webkit-box-shadow: none;
+				box-shadow: 		none;
+				color:#555;	
+			}
+	</style>
+	</head>
+	<body>
+	<h2>Write script that asks for a digit and depending on the input shows the name of that digit (in English) using a switch statement.</h2>
+	<form>
+		<label for = "a">a =</label>
+		<input id = "a" />		
+		<a href = "#" onclick = "DigitToWord()">Digit To Word</a>
+	</form>
+	<div id="console"></div>
+	<script src = "scripts/js-console.js"></script>
+	<script>
+	
+	function DigitToWord(){	
+		var a = jsConsole.readInteger("#a");	
+		var word = "zero";		
+		if(isNaN(a))
+		{
+			jsConsole.writeLine("One or more of the coefficients is not a number");
+		}
+		else if(a < 0 || a > 9)
+		{
+			jsConsole.writeLine("should be 0,1,2...9 - digit");
+		}
+		else
+		{
+			switch(a)
+			{
+				case 1: word = "one";break;
+				case 2: word = "two";break;
+				case 3: word = "three";break;
+				case 4: word = "four";break;
+				case 5: word = "five";break;
+				case 6: word = "six";break;
+				case 7: word = "seven";break;
+				case 8: word = "eight";break;
+				case 9: word = "nine";break;
+				default: break;					
+			}	
+			jsConsole.writeLine(word);
+		}
+		
+	}
+	</script>
+	</body>
+
+ </html>

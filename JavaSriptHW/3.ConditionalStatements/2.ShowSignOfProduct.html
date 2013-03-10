@@ -1,0 +1,116 @@
+<html>
+	<head>
+	<title>2.ShowSignOfProduct</title>	
+	<style>
+			input {
+				width:50px;
+			}
+			a{
+				color:black;
+				display:block;
+				background:skyblue;
+				max-width:150px;
+				text-decoration:none;
+				border-radius:5px;
+				text-align:center;
+			}
+			a:hover{
+				-moz-box-shadow: 	0px 2px 5px #888;
+				-webkit-box-shadow: 0px 2px 5px #888;
+				box-shadow: 		0px 2px 5px #888;
+			}
+			a:active
+			{
+				-moz-box-shadow: 	none;
+				-webkit-box-shadow: none;
+				box-shadow: 		none;
+				color:#555;	
+			}
+	</style>
+	</head>
+	<body>
+	<h2>Write a script that shows the sign (+ or -) of the product of three real numbers without calculating it. Use a sequence of if statements.
+</h2>
+	<form>
+		<label for = "a">a =</label>
+		<input id = "a" />		
+		<label for = "b">b =</label>
+		<input id = "b" />
+		<label for = "c">c =</label>
+		<input id = "c" />		
+		<a href = "#" onclick = "SignCheck()">Shows the sign: </a>
+	</form>
+	<div id="console"></div>
+	<script src = "scripts/js-console.js"></script>
+	<script>
+	
+	function SignCheck(){	
+		var a = jsConsole.readFloat("#a");	
+		var b = jsConsole.readFloat("#b");
+		var c = jsConsole.readFloat("#c");
+		var sign;
+		
+		if(isNaN(a) || isNaN(b) || isNaN(c))
+		{
+			jsConsole.writeLine("One or more of the coefficients is not a number");
+		}
+		else if(a == 0 || b == 0 || c == 0)
+		{
+			jsConsole.writeLine("product is 0 sign is irrelevant");
+		}
+		else
+		{
+			if(a < 0)
+			{
+				if(b < 0)
+				{
+					if(c < 0)
+					{
+						sign = "-";
+					}
+					else{
+						sign = "+";
+					}
+				}
+				else // a < 0, b > 0
+				{
+					if(c < 0)
+					{
+						sign = "+";
+					}
+					else{
+						sign = "-";
+					}
+				}
+			}
+			else // a > 0
+			{
+				if(b < 0)
+				{
+					if(c < 0)
+					{
+						sign = "+";
+					}
+					else{
+						sign = "-";
+					}
+				}
+				else // a > 0, b > 0
+				{
+					if(c < 0)
+					{
+						sign = "-";
+					}
+					else{
+						sign = "+";
+					}
+				}
+			}
+			jsConsole.writeLine("Sign is " + sign);
+		}
+		
+	}
+	</script>
+	</body>
+
+ </html>

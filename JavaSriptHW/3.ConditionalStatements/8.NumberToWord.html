@@ -1,0 +1,94 @@
+<html>
+	<head>
+	<title>5. Digit to word</title>	
+	<style>
+			input {
+				width:50px;
+			}
+			a{
+				color:black;
+				display:block;
+				background:skyblue;
+				max-width:150px;
+				text-decoration:none;
+				border-radius:5px;
+				text-align:center;
+			}
+			a:hover{
+				-moz-box-shadow: 	0px 2px 5px #888;
+				-webkit-box-shadow: 0px 2px 5px #888;
+				box-shadow: 		0px 2px 5px #888;
+			}
+			a:active
+			{
+				-moz-box-shadow: 	none;
+				-webkit-box-shadow: none;
+				box-shadow: 		none;
+				color:#555;	
+			}
+	</style>
+	</head>
+	<body>
+	<h2>Write a script that converts a number in the range [0...999] to a text corresponding to its English pronunciation. Examples:
+	<br/>0 > "Zero"
+	<br/>273 > "Two hundred seventy three"
+	<br/>400 > "Four hundred"
+	<br/>501 > "Five hundred and one"
+	<br/>711 > "Seven hundred and eleven"</h2>
+	<form>
+		<label for = "a">a =</label>
+		<input id = "a" />		
+		<a href = "#" onclick = "DigitToWord()">Digit To Word</a>
+	</form>
+	<div id="console"></div>
+	<script src = "scripts/js-console.js"></script>
+	<script>
+	
+	function DigitToWord(){	
+		var a = jsConsole.readInteger("#a");	
+		var word = "zero";	
+		if(isNaN(a))
+		{
+			jsConsole.writeLine("One or more of the coefficients is not a number");
+		}
+		else if(a < 0 || a > 999)
+		{
+			jsConsole.writeLine("should be 0,1,2...999 - integer number");
+		}
+		else
+		{
+			switch(a)
+			{
+				case 1: word = "one";break;
+				case 2: word = "two";break;
+				case 3: word = "three";break;
+				case 4: word = "four";break;
+				case 5: word = "five";break;
+				case 6: word = "six";break;
+				case 7: word = "seven";break;
+				case 8: word = "eight";break;
+				case 9: word = "nine";break;
+				case 10: word = "ten";break;
+				case 11: word = "eleven";break;
+				case 12: word = "twelve";break;
+				case 13: word = "thirteen";break;
+				case 14: word = "fourteen";break;
+				case 15: word = "fifteen";break;
+				case 16: word = "sixteen";break;
+				case 17: word = "seventeen";break;
+				case 18: word = "eightteen";break;
+				case 19: word = "nineteen";break;
+				default: BiggerThan20(a);break;					
+			}	
+			jsConsole.writeLine(word);
+		}
+		
+	}
+	function BiggerThan20(a){
+		jsConsole.writeLine(a);
+	
+	}
+	</script>
+	</body>
+
+ </html>
