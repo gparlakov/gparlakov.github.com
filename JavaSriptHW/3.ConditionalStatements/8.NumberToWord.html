@@ -1,6 +1,6 @@
 <html>
 	<head>
-	<title>5. Digit to word</title>	
+	<title>8. Number to word</title>	
 	<style>
 			input {
 				width:50px;
@@ -29,65 +29,131 @@
 	</style>
 	</head>
 	<body>
-	<h2>Write a script that converts a number in the range [0...999] to a text corresponding to its English pronunciation. Examples:
-	<br/>0 > "Zero"
-	<br/>273 > "Two hundred seventy three"
-	<br/>400 > "Four hundred"
-	<br/>501 > "Five hundred and one"
-	<br/>711 > "Seven hundred and eleven"</h2>
+	<h2>Write a script that converts a number in the range [0...999] to a text corresponding to its English pronunciation.</h2>
+	<p>
+		Examples:
+		<br/>0 > "Zero"
+		<br/>273 > "Two hundred seventy three"
+		<br/>400 > "Four hundred"
+		<br/>501 > "Five hundred and one"
+		<br/>711 > "Seven hundred and eleven"
+	</p>
 	<form>
 		<label for = "a">a =</label>
 		<input id = "a" />		
-		<a href = "#" onclick = "DigitToWord()">Digit To Word</a>
+		<a href = "#" onclick = "StartFunction()">Digit To Word</a>
 	</form>
 	<div id="console"></div>
 	<script src = "scripts/js-console.js"></script>
 	<script>
+	var word = "";
 	
-	function DigitToWord(){	
-		var a = jsConsole.readInteger("#a");	
-		var word = "zero";	
-		if(isNaN(a))
+	function StartFunction()
+	{
+		var num = jsConsole.readInteger("#a");		
+		if(isNaN(num))
 		{
 			jsConsole.writeLine("One or more of the coefficients is not a number");
-		}
-		else if(a < 0 || a > 999)
+		}		
+		else if(num < 0 || num > 999)
 		{
-			jsConsole.writeLine("should be 0,1,2...999 - integer number");
+			jsConsole.writeLine("Number should be <strong>0,1,2...999</strong> - integer number");
+		}	
+		
+		if (num <=20)
+		{
+			jsConsole.writeLine(DigitToWord(num));
 		}
 		else
+		{			
+			jsConsole.writeLine(BiggerThan20(num));
+		}
+	}	
+	function DigitToWord(num)
+	{		
+		var a = num;		
+		switch(a)
+		{				
+			case 0: word = "zero";break;
+			case 1: word = "one";break;
+			case 2: word = "two";break;
+			case 3: word = "three";break;
+			case 4: word = "four";break;
+			case 5: word = "five";break;
+			case 6: word = "six";break;
+			case 7: word = "seven";break;
+			case 8: word = "eight";break;
+			case 9: word = "nine";break;
+			case 10: word = "ten";break;
+			case 11: word = "eleven";break;
+			case 12: word = "twelve";break;
+			case 13: word = "thirteen";break;
+			case 14: word = "fourteen";break;
+			case 15: word = "fifteen";break;
+			case 16: word = "sixteen";break;
+			case 17: word = "seventeen";break;
+			case 18: word = "eightteen";break;
+			case 19: word = "nineteen";break;
+			case 20: word = "twenty";break;
+			default: BiggerThan20(a);break;					
+		}	
+		
+		return word;		
+	}
+	
+	function BiggerThan20(a)
+	{			
+		var hundred = parseInt(a / 100);		
+		var tens = a % 100;				
+		var ones = a % 10;		
+		word  = "";
+		if (hundred > 0)
 		{
-			switch(a)
-			{
-				case 1: word = "one";break;
-				case 2: word = "two";break;
-				case 3: word = "three";break;
-				case 4: word = "four";break;
-				case 5: word = "five";break;
-				case 6: word = "six";break;
-				case 7: word = "seven";break;
-				case 8: word = "eight";break;
-				case 9: word = "nine";break;
-				case 10: word = "ten";break;
-				case 11: word = "eleven";break;
-				case 12: word = "twelve";break;
-				case 13: word = "thirteen";break;
-				case 14: word = "fourteen";break;
-				case 15: word = "fifteen";break;
-				case 16: word = "sixteen";break;
-				case 17: word = "seventeen";break;
-				case 18: word = "eightteen";break;
-				case 19: word = "nineteen";break;
-				default: BiggerThan20(a);break;					
-			}	
-			jsConsole.writeLine(word);
+			word = DigitToWord(hundred) + " hundred and ";			
 		}
 		
+		if (tens <= 20 && tens > 0) // tens 0 - 20
+		{
+			word +=  DigitToWord(tens);
+		}
+		else if(tens == 0) 
+		{
+			if(ones > 0)
+			{
+				word +=  DigitToWord(ones);
+			}
+			else
+			{
+				word = DigitToWord(hundred) + " hundred";
+			}
+		}		
+		else // tens  [21 .. 99]
+		{			
+			tens = parseInt(tens / 10);		
+			switch(tens)
+			{
+				case 2:tens = "twenty";break;
+				case 3:tens = "thirty";break;
+				case 4:tens = "fourty";break;
+				case 5:tens = "fifty";break;
+				case 6:tens = "sixty";break;
+				case 7:tens = "seventy";break;
+				case 8:tens = "eighty";break;
+				case 9:tens = "ninety";break;
+			}		
+			if(ones > 0) 
+			{				
+				word +=  tens + " " + DigitToWord(ones);
+			}
+			else //ones == 0
+			{
+				word +=  tens;
+			}				
+		}
+		
+		return(word);
 	}
-	function BiggerThan20(a){
-		jsConsole.writeLine(a);
 	
-	}
 	</script>
 	</body>
 
