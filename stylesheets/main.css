@@ -19,7 +19,7 @@ body{
 a{
 	text-decoration:none;
 	font:inherit;
-	color:#2D5655;
+	color:white;
 	display:inline-block;
 	target:_blank;
 }
@@ -43,13 +43,13 @@ a:hover{
 
 ul>li{
 		background-color:skyblue;        
-        background: -moz-linear-gradient(-45deg, #f4fbfc 0%, #7db9e8 100%);
-        background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#f4fbfc), color-stop(100%,#7db9e8));
-        background: -webkit-linear-gradient(-45deg, #f4fbfc 0%,#7db9e8 100%);
-        background: -o-linear-gradient(-45deg, #f4fbfc 0%,#7db9e8 100%);
-        background: -ms-linear-gradient(-45deg, #f4fbfc 0%,#7db9e8 100%);
-        background: linear-gradient(135deg, #f4fbfc 0%,#7db9e8 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4fbfc', endColorstr='#7db9e8',GradientType=1 );
+        background: -moz-linear-gradient(-45deg, #ACB4BF 0%, #2F3A42 100%);
+        background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#ACB4BF), color-stop(100%,#2F3A42));
+        background: -webkit-linear-gradient(-45deg, #ACB4BF 0%,#2F3A42 100%);
+        background: -o-linear-gradient(-45deg, #ACB4BF 0%,#2F3A42 100%);
+        background: -ms-linear-gradient(-45deg, #ACB4BF 0%,#2F3A42 100%);
+        background: linear-gradient(135deg, #ACB4BF 0%,#2F3A42 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ACB4BF', endColorstr='#2F3A42',GradientType=1 );
 		border-radius:15px;
 		width:350px;
 		/*min-height:50px;*/
@@ -59,6 +59,25 @@ ul>li{
 		padding:5px 10px;		
 		list-style-type:none;
 	}	
+
+#menu>ul>li{
+	width:250px;
+	float:left;
+	color:white;
+}
+	
+	#menu>ul>li>ul{
+		position: absolute;
+		top : 100%;
+		left : -15px;
+		display : none;			
+	}
+		#menu>ul>li>ul>li{
+			width:250px;
+		}	
+	#menu>ul>li:hover>ul{
+	display : block;
+	}
 /*	
 	li>article>ul,li>ul{
 		display:none;
@@ -99,7 +118,7 @@ img:hover{
     transform: translate(-200px,0px) scale(2);
 }
 
-
+/*
 article>ul>li>a:nth-of-type(2n){
 	display:none;	
 }
@@ -113,18 +132,7 @@ article>ul>li:hover>a:nth-of-type(2n){
 	z-index:5;
 	padding-left:10px;	
 }
-
-#menu>ul>li{
-	width:250px;
-	float:left;
-}
-
-#menu>ul>li>ul{
-	position: absolute;
-	top : 100%;
-	left : -15px;
-	display : none;
-}
+*/
 
 #menu>ul>li:hover>ul{
 display : block;
