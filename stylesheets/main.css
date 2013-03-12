@@ -6,7 +6,7 @@ zoom:1;
 body{
 	width:1280px;
     height:1500px;
-	padding:50px 150px;
+	padding:50px 150px;	
 	background: rgb(181,189,200); /* Old browsers */
 	background: -moz-radial-gradient(center, ellipse cover,  rgba(181,189,200,1) 0%, rgba(130,140,149,1) 36%, rgba(40,52,59,1) 100%); /* FF3.6+ */
 	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(181,189,200,1)), color-stop(36%,rgba(130,140,149,1)), color-stop(100%,rgba(40,52,59,1))); /* Chrome,Safari4+ */
@@ -16,6 +16,14 @@ body{
 	background: radial-gradient(ellipse at center,  rgba(181,189,200,1) 0%,rgba(130,140,149,1) 36%,rgba(40,52,59,1) 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b5bdc8', endColorstr='#28343b',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
+.markdown-body h2{
+	color:black;
+}
+
+.markdown-body a{
+	color:rgb(0,71,133);
+}
+
 a{
 	text-decoration:none;
 	font:inherit;
@@ -78,28 +86,6 @@ ul>li{
 	#menu>ul>li:hover>ul{
 	display : block;
 	}
-/*	
-	li>article>ul,li>ul{
-		display:none;
-		min-width:250px;		
-		position:absolute;
-		left:100%;
-		top:-10px;
-	}
-	
-	 #last{		
-		position:absolute;		
-		top:360px;		
-	} 
-	ul>li:hover>article>ul,ul>li:hover>ul{
-		display:block;	
-		/*width:250%;
-	}
-	ul>li:hover>article>ul>li{
-		display:inline-block;		
-	}*/
-
-	
 	
 /* styles for the css images part*/
 img{
@@ -117,22 +103,6 @@ img:hover{
     -ms-transform: translate(-200px,0px) scale(2);
     transform: translate(-200px,0px) scale(2);
 }
-
-/*
-article>ul>li>a:nth-of-type(2n){
-	display:none;	
-}
-
-article>ul>li:hover>a:nth-of-type(2n){
-	display:block;
-	position:absolute;
-	left:100%;
-	width:100%;
-	top:0px;	
-	z-index:5;
-	padding-left:10px;	
-}
-*/
 
 #menu>ul>li:hover>ul{
 display : block;
