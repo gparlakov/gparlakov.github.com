@@ -1,0 +1,64 @@
+<html>
+	<head>
+	<title>1.Print Numbers 1 to N</title>	
+	<style>
+			input {
+				width:50px;
+			}
+			a{
+				color:black;
+				display:block;
+				background:skyblue;
+				max-width:150px;
+				text-decoration:none;
+				border-radius:5px;
+				text-align:center;
+			}
+			a:hover{
+				-moz-box-shadow: 	0px 2px 5px #888;
+				-webkit-box-shadow: 0px 2px 5px #888;
+				box-shadow: 		0px 2px 5px #888;
+			}
+			a:active
+			{
+				-moz-box-shadow: 	none;
+				-webkit-box-shadow: none;
+				box-shadow: 		none;
+				color:#555;	
+			}
+	</style>
+	</head>
+	<body>
+	<h2>Write a script that prints all the numbers from 1 to N</h2>
+	<form>
+		<label for = "N">N =</label>
+		<input id = "N" />		
+				
+		<a href = "#" onclick = "PrintNumbers()">Print Numbers</a>
+	</form>
+	<div id="console"></div>
+	<script src = "scripts/js-console.js"></script>
+	<script>
+	
+	function PrintNumbers(){	
+		var n = jsConsole.readInteger("#N"),i;		
+		
+		jsConsole.writeLine("Sequence");
+		if(isNaN(n))
+		{
+			jsConsole.writeLine("One is not a number");
+		}
+		else
+		{
+			for(i = 1;i<=n;i++)
+			{
+				jsConsole.write(i);
+				if(i != n) jsConsole.write(", ");
+			}
+		}
+		jsConsole.writeLine("");
+	}
+	</script>
+	</body>
+
+ </html>
