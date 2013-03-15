@@ -44,20 +44,35 @@
 	function StringSplit(stringToSplit,separators)
 	{
 		var splitString;
-		console.log(separators);
+		//console.log(separators);
 		
 		for(var i in separators)
 		{
-			console.log(separators[i]);
+			
 			splitString = stringToSplit.split(separators[i]);
-			for(var ind in splitString)
-			{
-				//todo remove empty strings
-			}
-			console.log(splitString.join("!!"));
+			//console.log(separators[i]);
+			//console.log(stringToSplit);
+			//console.log(splitString);
+			
 			stringToSplit = splitString.join();
+			
 		}		
 		splitString = stringToSplit.split(',');
+		//console.log(splitString);
+		
+			for(var index in splitString)
+			{
+				
+				//console.log(splitString[index] == "");
+				if(splitString[index] == "")
+				{
+					console.log(splitString[index] + "should be removed");
+					splitString.splice(index,1);
+				}
+			}
+			console.log(splitString);
+			
+		
 		return splitString;
 	}
 	
@@ -71,12 +86,12 @@
 		var min,max;
 		
 		//numbersBeforeCheck = sequence.split(",")	
-		numbersBeforeCheck = StringSplit(sequence,[' ','.','/','\\',':','']);	
-		console.log(numbersBeforeCheck.join(":::"));
-		
+		numbersBeforeCheck = StringSplit(sequence,[',',' ','.','/','\\',':','']);	
+		console.log(numbersBeforeCheck);
+		/*
 		//remove entries that are NaN
 		//numbers will be only numerical
-		for(i = 0;i <= numbersBeforeCheck.length; i++)
+		for(i = 0;i < numbersBeforeCheck.length; i++)
 		{
 			if(!isNaN(numbersBeforeCheck[i]))
 			{
@@ -87,7 +102,7 @@
 			}
 		}
 		
-		console.log(numbers.join('--')); //- after check
+		console.log(numbers); //- after check
 		
 		//check if new array has any elements (is not empty)
 		if(numbers.length == 0)
@@ -99,7 +114,7 @@
 			max = numbers[0];		
 			min = max;	
 			//find max and min
-			for(i = 1;i <= numbers.length; i++)
+			for(i = 1;i < numbers.length; i++)
 			{
 				if(numbers[i] < min)
 				{
@@ -113,7 +128,7 @@
 			
 			jsConsole.writeLine(max + " = max; min = " + min);
 		}
-		/**/
+		*/
 	}
 	</script>
 	</body>
