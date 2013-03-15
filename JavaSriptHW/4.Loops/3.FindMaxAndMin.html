@@ -29,9 +29,9 @@
 	</style>
 	</head>
 	<body>
-	<h2>Write a script that finds the max and min number from a sequence of numbers</h2>
+	<h2>Write a script that finds the max and min number from a sequence of numbersBeforeCheck</h2>
 	<form>
-		<p>Write the number sequence separated by comma (or /,:;.)</p>
+		<p>Write the number sequence separated by comma</p>
 		<label for = "sequence">Sequence:</label>
 		<input id = "sequence" />		
 				
@@ -40,37 +40,80 @@
 	<div id="console"></div>
 	<script src = "scripts/js-console.js"></script>
 	<script>
+	// remove different separators at once (split()) only takse 1 argument
+	function StringSplit(stringToSplit,separators)
+	{
+		var splitString;
+		console.log(separators);
+		
+		for(var i in separators)
+		{
+			console.log(separators[i]);
+			splitString = stringToSplit.split(separators[i]);
+			for(var ind in splitString)
+			{
+				//todo remove empty strings
+			}
+			console.log(splitString.join("!!"));
+			stringToSplit = splitString.join();
+		}		
+		splitString = stringToSplit.split(',');
+		return splitString;
+	}
+	
 	
 	function findMaxMin()
 	{	
 		var sequence = jsConsole.read("#sequence");
-		var numbers = new Array();			
+		var numbersBeforeCheck = new Array();	
+		var numbers = new Array();
+		
 		var min,max;
 		
-		numbers = sequence.split(",");//, "/", ":", ";", ".", "\");
-		console.log(sequence);
-		console.log(numbers.join("-"));
-		for(i = 1;i <= numbers.length; i++)
-		{
-			//TODO remove NaN elements
-		}
-		max = numbers[0];		
-		min = max;		
+		//numbersBeforeCheck = sequence.split(",")	
+		numbersBeforeCheck = StringSplit(sequence,[' ','.','/','\\',':','']);	
+		console.log(numbersBeforeCheck.join(":::"));
 		
-		for(i = 1;i <= numbers.length; i++)
+		//remove entries that are NaN
+		//numbers will be only numerical
+		for(i = 0;i <= numbersBeforeCheck.length; i++)
 		{
-			if(numbers[i] < min)
+			if(!isNaN(numbersBeforeCheck[i]))
 			{
-				min = numbers[i];
+				numbers.push(numbersBeforeCheck[i]);
 			}
-			if(numbers[i] > max)
-			{
-				max = numbers[i];
+			else{
+				console.log(numbersBeforeCheck[i] + " has been left out");
 			}
 		}
 		
-		jsConsole.writeLine(max + " = max; min = " + min);
+		console.log(numbers.join('--')); //- after check
 		
+		//check if new array has any elements (is not empty)
+		if(numbers.length == 0)
+		{
+			jsConsole.writeLine("No numbers in this sequence");
+		}
+		else
+		{		
+			max = numbers[0];		
+			min = max;	
+			//find max and min
+			for(i = 1;i <= numbers.length; i++)
+			{
+				if(numbers[i] < min)
+				{
+					min = numbers[i];
+				}
+				if(numbers[i] > max)
+				{
+					max = numbers[i];
+				}
+			}
+			
+			jsConsole.writeLine(max + " = max; min = " + min);
+		}
+		/**/
 	}
 	</script>
 	</body>
