@@ -1,0 +1,77 @@
+<html>
+	<head>
+	<title>2.Compare Char Arrays</title>	
+	<style>
+			input {
+				min-width:50px;
+			}
+			a{
+				color:black;
+				display:block;
+				background:skyblue;
+				max-width:150px;
+				text-decoration:none;
+				border-radius:5px;
+				text-align:center;
+			}
+			a:hover{
+				-moz-box-shadow: 	0px 2px 5px #888;
+				-webkit-box-shadow: 0px 2px 5px #888;
+				box-shadow: 		0px 2px 5px #888;
+			}
+			a:active
+			{
+				-moz-box-shadow: 	none;
+				-webkit-box-shadow: none;
+				box-shadow: 		none;
+				color:#555;	
+			}
+	</style>
+	</head>
+	<body>
+	<h2>Write a script that allocates array of 20 integers and initializes each element by its index multiplied by 5. Print the obtained array on the console.</h2>
+	<form>	
+		<p>Write the char arrays as strings : "word", "w0rd" </p>
+		<label for = "sequence1">Char array 1:</label>
+		<input id = "sequence1" />	
+		<label for = "sequence2">Char array 2:</label>
+		<input id = "sequence2" />			
+		<a href = "#" onclick = "compareArrays()">Compare Arrays</a>
+	</form>
+	<div id="console"></div>
+	<script src = "scripts/js-console.js"></script>
+	<script>
+	
+	function compareArrays(){
+		var sequence1 = jsConsole.read("#sequence1"),
+			sequence2 = jsConsole.read("#sequence2");
+		var i;
+		var areEqual = " indeed ";		
+		var array1 = new Array();
+		var array2 = new Array();
+		
+		array1 = sequence1.split("");
+		array2 = sequence2.split("");
+		console.log(array1, array2);
+		
+		if(array1.length !== array2.length)
+		{
+			areEqual = " not "
+		}
+		else
+		{
+			for(i = 0 ;i < array1.length;i++)
+			{
+				if(array1[i] !== array2[i])
+				{
+					areEqual = " not ";
+				}
+			}		
+		}
+		
+		jsConsole.writeLine("Two arrays are" + areEqual + "equal.");
+	}
+	</script>
+	</body>
+
+ </html>

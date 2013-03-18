@@ -1,0 +1,103 @@
+<html>
+	<head>
+	<title>3.FindSequence Of Equal Elements</title>	
+	<style>
+			input {
+				min-width:50px;
+			}
+			a{
+				color:black;
+				display:block;
+				background:skyblue;
+				max-width:250px;
+				text-decoration:none;
+				border-radius:5px;
+				text-align:center;
+			}
+			a:hover{
+				-moz-box-shadow: 	0px 2px 5px #888;
+				-webkit-box-shadow: 0px 2px 5px #888;
+				box-shadow: 		0px 2px 5px #888;
+			}
+			a:active
+			{
+				-moz-box-shadow: 	none;
+				-webkit-box-shadow: none;
+				box-shadow: 		none;
+				color:#555;	
+			}
+	</style>
+	</head>
+	<body>
+	<h2>
+		Write a script that finds the maximal sequence of equal elements in an array.
+		<br/>
+		Example: {2, 1, 1, 2, 3, 3, 2, 2, 2, 1} > {2, 2, 2}.
+	</h2>
+	<form>	
+		<p>Write the array elements separated by comma : a,b,c,3,4,5,5,6,6,7,7,7</p>
+		<label for = "sequence">Array:</label>
+		<input id = "sequence" />					
+		<a href = "#" onclick = "findSequence()">3.FindSequenceOfEqualElements</a>
+	</form>
+	<div id="console"></div>
+	<script src = "scripts/js-console.js"></script>
+	<script>
+	
+	function findSequence(){
+		var sequence = jsConsole.read("#sequence");
+		var array = new Array(0);	
+		var i,startPoint,maxStart,maxEnd;
+		var counter = new Number(),maxSequence = new Number();
+		counter = 1;
+		maxSequence = 0;
+		
+		array = (sequence + ",").split(",");
+		
+		if(sequence.length === 0)
+		{
+			jsConsole.writeLine("Empty array");
+		}
+		else
+		{
+			for(i = 1,startPoint = 0;i < array.length;i++)			
+			{				
+				if(array[i] === array[startPoint])
+				{
+					counter++;
+				}
+				else
+				{
+					if(counter > maxSequence)
+					{
+						maxStart = startPoint;
+						maxEnd = i;
+						maxSequence = counter;						
+					}
+					counter = 1;
+					startPoint = i;
+				}
+			}	
+			
+			jsConsole.writeLine("Maximal sequence is " + maxSequence + " elements long.");	
+			for(i = maxStart; i < maxEnd;i++)
+			{
+				jsConsole.write(array[i]);
+				if(i !== maxEnd - 1)
+				{
+					jsConsole.write(", ");
+				}
+				else
+				{
+					jsConsole.write("<br/>");
+				}
+			}
+			
+		}
+		
+		
+	}
+	</script>
+	</body>
+
+ </html>

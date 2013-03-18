@@ -1,0 +1,54 @@
+<html>
+	<head>
+	<title>1.Initialize Array</title>	
+	<style>
+			input {
+				width:50px;
+			}
+			a{
+				color:black;
+				display:block;
+				background:skyblue;
+				max-width:150px;
+				text-decoration:none;
+				border-radius:5px;
+				text-align:center;
+			}
+			a:hover{
+				-moz-box-shadow: 	0px 2px 5px #888;
+				-webkit-box-shadow: 0px 2px 5px #888;
+				box-shadow: 		0px 2px 5px #888;
+			}
+			a:active
+			{
+				-moz-box-shadow: 	none;
+				-webkit-box-shadow: none;
+				box-shadow: 		none;
+				color:#555;	
+			}
+	</style>
+	</head>
+	<body>
+	<h2>Write a script that allocates array of 20 integers and initializes each element by its index multiplied by 5. Print the obtained array on the console.</h2>
+	<form>		
+		<a href = "#" onclick = "initializeArray()">Initialize Array</a>
+	</form>
+	<div id="console"></div>
+	<script src = "scripts/js-console.js"></script>
+	<script>
+	
+	function initializeArray(){	
+		var newArray = new Array(20);
+		var i;
+		
+		for(i = 0 ;i < newArray.length;i++)
+		{
+			newArray[i] = i * 5;
+		}
+		
+		jsConsole.writeLine("Newly created array: " + newArray);
+	}
+	</script>
+	</body>
+
+ </html>
