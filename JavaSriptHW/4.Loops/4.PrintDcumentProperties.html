@@ -1,0 +1,94 @@
+<html>
+	<head>
+	<title>4.Print Max and Min property of document,window and navigator</title>	
+	<style>
+			input {
+				width:250px;
+			}
+			a{
+				color:black;
+				display:block;
+				background:skyblue;
+				max-width:150px;
+				text-decoration:none;
+				border-radius:5px;
+				text-align:center;
+			}
+			a:hover{
+				-moz-box-shadow: 	0px 2px 5px #888;
+				-webkit-box-shadow: 0px 2px 5px #888;
+				box-shadow: 		0px 2px 5px #888;
+			}
+			a:active
+			{
+				-moz-box-shadow: 	none;
+				-webkit-box-shadow: none;
+				box-shadow: 		none;
+				color:#555;	
+			}
+	</style>
+	</head>
+	<body>
+	<h2>Write a script that finds the lexicographically smallest and largest property in document, window and navigator objects</h2>
+	<form>	
+		<a href = "#" onclick = "findMaxMin()">Find Max and Min</a>
+	</form>
+	<div id="console"></div>
+	<script src = "scripts/js-console.js"></script>
+	<script>
+		
+	function findMaxMin()
+	{	
+		//var sequence = jsConsole.read("#sequence");
+		var properties = new Array();						
+		var min, max;
+		
+		pushIn(properties,document);
+		pushIn(properties,window);
+		pushIn(properties,navigator);
+		for(var i in properties)
+		{		
+			jsConsole.writeLine(properties[i]);		
+		}
+		max = properties[0];		
+		min = max;	
+		//find max and min
+		for(i = 0;i < properties.length; i++)
+		{
+			if(properties[i] !== "" && properties[i] !== " ")
+			{
+				if(properties[i] < min)
+				{
+					min = properties[i];
+				}
+				if(properties[i] > max)
+				{
+					max = properties[i];
+				}
+			}
+		}
+		
+		jsConsole.writeLine(max + " = max; min = " + min);
+		
+		console.log("");
+		/**/
+	}
+	
+	// remove different separators at once (split()) only takes 1 argument
+	// still doesen't work	
+	function pushIn(array,propertyCollection)
+	{
+		var prop;
+		for(prop in propertyCollection)
+		{
+			if(propertyCollection[prop] !== "" && propertyCollection[prop] !== " " )
+			{
+				array.push(propertyCollection[prop]);
+			}
+		}
+		
+	}
+	</script>
+	</body>
+
+ </html>
