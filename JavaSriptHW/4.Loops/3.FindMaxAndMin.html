@@ -40,17 +40,16 @@
 	<div id="console"></div>
 	<script src = "scripts/js-console.js"></script>
 	<script>
-	// remove different separators at once (split()) only takse 1 argument
+	// remove different separators at once (split()) only takes 1 argument
 	function StringSplit(stringToSplit,separators)
 	{
 		var splitString;
 		//console.log(separators);
 		
 		for(var i in separators)
-		{
-			
+		{			
 			splitString = stringToSplit.split(separators[i]);
-			//console.log(separators[i]);
+			console.log(separators[i]);
 			//console.log(stringToSplit);
 			//console.log(splitString);
 			
