@@ -1,0 +1,105 @@
+<html>
+	<head>
+	<title>5.Sort Array</title>	
+	<style>
+			body{
+				max-width:90%;
+			}
+			h2{
+				display:block;
+				
+			}
+			input {
+				min-width:50px;
+			}
+			a{
+				color:black;
+				display:block;
+				background:skyblue;
+				max-width:150px;
+				text-decoration:none;
+				border-radius:5px;
+				text-align:center;
+				
+			}
+			a:hover{
+				-moz-box-shadow: 	0px 2px 5px #888;
+				-webkit-box-shadow: 0px 2px 5px #888;
+				box-shadow: 		0px 2px 5px #888;
+			}
+			a:active
+			{
+				-moz-box-shadow: 	none;
+				-webkit-box-shadow: none;
+				box-shadow: 		none;
+				color:#555;	
+			}			
+	</style>
+	</head>
+	<body>
+	<h2>
+		Sorting an numbers means to arrange its elements in increasing order. Write a script to sort an numbers. Use the "selection sort" algorithm: Findex the smallest element, move it at the first position, findex the smallest from the rest, move it at the second position, etc.Hint: Use a second numbers
+
+	</h2>
+	<form>	
+		<p>Write the numbers elements separated by comma(or .;:) -5,100,4,3,2,1,-56,5,5,65,5 6 7 8,-9 </p>
+		<label for = "sequence">Array:</label>
+		<input id = "sequence" />					
+		<a href = "#" onclick = "sortArray()">5.Sort Array</a>
+	</form>
+	<div id="console"></div>
+	<script src = "scripts/js-console.js"></script>
+	<script>
+	
+	//gives the index of the smallest
+	function findSmallestIndex(array){
+		var smallest = array[0],smallestIndex = Number();
+		var index;
+		smallestIndex=0;
+		
+		for(index = 0;index < array.length; index++){
+			if(parseInt(smallest) > parseInt(array[index]))
+			{
+				smallest = array[index];
+				smallestIndex = index;
+			}
+		}		
+		return smallestIndex;
+	}
+	
+	
+	function sortArray(){
+		var sequence = jsConsole.read("#sequence");
+		var numbers = new Array();
+		var numberArranged = new Array();
+		var i,y;		
+		
+		//replaca all nonword characters with
+		sequence = sequence.replace(/[,\.\s;:]/g,",");			
+		
+		//split String "sequence" and filter it by Number
+		numbers = sequence.split(",").filter(Number);
+		
+		if(sequence.length === 0)
+		{
+			jsConsole.writeLine("Empty numbers");
+		}
+		else
+		{			
+			while(numbers.length > 0)
+			{
+				numberArranged.push(numbers.splice(findSmallestIndex(numbers), 1)[0]);
+				console.log(numbers);
+				console.log(numberArranged);				
+			}
+			
+			jsConsole.writeLine(numberArranged.join(' '));
+			
+		}
+		
+		
+	}
+	</script>
+	</body>
+
+ </html>
