@@ -31,7 +31,7 @@
 	<body>
 	<h2>Write a script that finds the max and min number from a sequence of numbersBeforeCheck</h2>
 	<form>
-		<p>Write the number sequence separated by comma</p>
+		<p>Write the number sequence separated by comma (or .; (empty space))</p>
 		<label for = "sequence">Sequence:</label>
 		<input id = "sequence" />		
 				
@@ -48,7 +48,7 @@
 		var numbers = new Array();		
 		var min = new Number(),max = new Number(),temp = new Number();
 		
-		numbersBeforeCheck = sequence.split(",")	
+		numbersBeforeCheck = sequence.split(/[\.,:; ]/);
 		//numbersBeforeCheck = StringSplit(sequence,[',',' ','.','/','\\',':','']);	
 		console.log(numbersBeforeCheck);
 		
@@ -99,39 +99,7 @@
 	
 	// remove different separators at once (split()) only takes 1 argument
 	// still doesen't work	
-	function StringSplit(stringToSplit,separators)
-	{
-		var splitString;
-		//console.log(separators);
-		
-		for(var i in separators)
-		{			
-			splitString = stringToSplit.split(separators[i]);
-			console.log(separators[i]);
-			//console.log(stringToSplit);
-			//console.log(splitString);
-			
-			stringToSplit = splitString.join();
-			
-		}		
-		splitString = stringToSplit.split(',');
-		//console.log(splitString);
-		
-			for(var index in splitString)
-			{
-				
-				//console.log(splitString[index] == "");
-				if(splitString[index] == "")
-				{
-					console.log(splitString[index] + "should be removed");
-					splitString.splice(index,1);
-				}
-			}
-			console.log(splitString);
-			
-		
-		return splitString;
-	}
+	
 	</script>
 	</body>
 
