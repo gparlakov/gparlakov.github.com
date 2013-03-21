@@ -1,9 +1,9 @@
 <html>
 	<head>
-	<title>4. Find Sequence Of Increasing Elements</title>	
+	<title>4.Find Sequence Of Increasing Elements</title>	
 	<style>
 			input {
-				min-width:50px;
+				min-width:500px;
 			}
 			a{
 				color:black;
@@ -30,15 +30,15 @@
 	</head>
 	<body>
 	<h2>
-		Write a script that finds the maximal increasing sequence in an array. 
+		Write a script that finds the maximal increasing sequence in an array. Example:
 		<br/>
-		Example: {3, 2, 3, 4, 2, 2, 4} > {2, 3, 4}.
+		Example: {3, 2, 3, 4, 2, 2, 4} > {2, 3, 4}..
 	</h2>
 	<form>	
-		<p>Write the array elements separated by comma(or .;: ) : a,b,c,3,4,5,6,7,6,7,7,7 or (1,2,3,4,5;6, 7; 5;, 5;, 4;,3 ,.2  0;1 :h,. 4 ;)</p>
+		<p>Write the array elements separated by comma : a,b,c,3,4,5,5,6,6,7,8,9</p>
 		<label for = "sequence">Array:</label>
 		<input id = "sequence" />					
-		<a href = "#" onclick = "findSequence()">FindSequenceOfIncreasingElements</a>
+		<a href = "#" onclick = "findSequence()">3.FindSequenceOfEqualElements</a>
 	</form>
 	<div id="console"></div>
 	<script src = "scripts/js-console.js"></script>
@@ -48,48 +48,41 @@
 		var sequence = jsConsole.read("#sequence");
 		var array = new Array(0);	
 		var i,startPoint,maxStart,maxEnd;
-		var counter = new Number(),maxSequence = new Number();
-		counter = 1;
-		maxSequence = 0;
+		var counter = new Number(1),maxSequence = new Number(0);
+		<!-- counter = 1;
+		maxSequence = 0; -->
 		
-		//replaca all nonword charackters with , and log it on console
-		sequence = sequence.replace(/[,\.\s;:]/g,",");
-		console.log(sequence);		
-		
-		//split String "sequence" and filter it by Number and log new array on console
-		array = sequence.split(",").filter(Number);
-		console.log(array);
 		if(sequence.length === 0)
 		{
 			jsConsole.writeLine("Empty array");
 		}
 		else
 		{
+			array = sequence.split(/\s\.,;:/);
 			for(i = 1,startPoint = 0;i < array.length;i++)			
 			{				
-				if(parseInt(array[i]) === parseInt(array[i - 1]) + 1)
+				if(array[i] === array[i-1] + 1)
 				{
 					counter++;
 				}
-				else{
-					counter = 1;
-					startPoint = i;	
-				}
-				
-				if(counter > maxSequence)
+				else
 				{
-					maxStart = startPoint;
-					maxEnd = i;
-					maxSequence = counter;										
-				}					
-				
+					if(counter > maxSequence)
+					{
+						maxStart = startPoint;
+						maxEnd = i;
+						maxSequence = counter;						
+					}
+					counter = 1;
+					startPoint = i;
+				}
 			}	
 			
 			jsConsole.writeLine("Maximal sequence is " + maxSequence + " elements long.");	
-			for(i = maxStart; i <= maxEnd;i++)
+			for(i = maxStart; i < maxEnd;i++)
 			{
 				jsConsole.write(array[i]);
-				if(i !== maxEnd)
+				if(i !== maxEnd - 1)
 				{
 					jsConsole.write(", ");
 				}
