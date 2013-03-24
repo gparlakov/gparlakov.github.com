@@ -88,7 +88,7 @@ ul>li{
 	}
 	
 /* styles for the css images part*/
-img{
+.movable{
 	width:75%;
 	-webkit-transition: all 1s ease-in-out;
     -moz-transition: all 1s ease-in-out;
@@ -96,7 +96,7 @@ img{
     -ms-transition: all 1s ease-in-out;
     transition: all 1s ease-in-out;
 }
-img:hover{
+.movable:hover{
 	-webkit-transform: translate(-200px,-50px) scale(2);
     -moz-transform: translate(-200px,0px) scale(2);
     -o-transform: translate(-200px,0px) scale(2);
@@ -107,3 +107,9 @@ img:hover{
 #menu>ul>li:hover>ul{
 display : block;
 }
+
+	#logo3d{		
+		position:absolute;
+		left:0px;
+		bottom:0px;
+	}
