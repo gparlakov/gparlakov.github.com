@@ -1,0 +1,65 @@
+<html>
+	<head>
+	<title>2.Reverse Digits</title>	
+	<style>
+	input {
+		width:100px;
+	}
+	a{
+		display:block;
+		background:skyblue;
+		max-width:150px;
+		text-decoration:none;
+		border-radius:5px;
+	}
+	a:hover{
+		background: blue;
+	}
+	a:active
+	{
+		background-color:skyblue;
+	}
+	</style>
+	</head>
+	<body>
+	<h2>Write a function that reverses the digits of given decimal number. Example: 256 > 652</h2>
+	<form>
+		<label for = "num">Number =</label>
+		<input id = "num" />	
+		<a href = "#" onclick = "reverseDigits()">Reverse Digits</a>
+	</form>
+	<div id="console"></div>
+	<script src = "scripts/js-console.js"></script>
+	<script>
+	
+	function reverseDigits(){	
+		var num = jsConsole.readInteger("#num");	
+		var reversed = "";	
+		var isNegative = false;
+		if(isNaN(num))
+		{
+			jsConsole.writeLine("NaN");
+		}
+		else
+		{
+			if(num < 0){
+				num = -num;
+				isNegative = true;
+			}
+			while(num / 10 > 0)
+			{
+				reversed += num % 10;
+				num = Math.floor(num / 10);
+			}
+			if(isNegative){
+				reversed = "-" + reversed;
+			}
+			jsConsole.writeLine("Ther reversed number is " + reversed);
+		}
+		
+	}
+	
+	</script>
+	</body>
+
+ </html>

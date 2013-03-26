@@ -1,0 +1,78 @@
+<html>
+	<head>
+	<title>1. Spell Last Digit</title>	
+	<style>
+	input {
+		width:50px;
+	}
+	a{			
+		display:block;
+		background:skyblue;		
+		max-width:150px;
+		text-decoration:none;
+		border-radius:5px;
+		text-align:center;
+	}
+	a:hover{
+		background: blue;
+	}
+	a:active
+	{
+		background-color:skyblue;
+	}
+	</style>
+	</head>
+	<body>
+	<h2>Write a function that returns the last digit of given integer as an English word. Examples: 512 > "two", 1024 > "four", 12309 > "nine"	</h2>
+	<form>
+		<label for = "num">Number =</label>
+		<input id = "num" />	
+		<a href = "#" onclick = "spellDigitStart()">Spell Last Digit</a>
+	</form>
+	<div id="console"></div>
+	<script src = "scripts/js-console.js"></script>
+	<script>
+	
+	function spellDigitStart(){	
+		var num = jsConsole.readInteger("#num");	
+				
+		if(isNaN(num))
+		{
+			jsConsole.writeLine("NaN");
+		}
+		else
+		{
+			if(num < 0){
+			num = -num;
+			}
+			
+			jsConsole.writeLine("Last digit is " + spellLastDigit(num));
+		}
+		
+	}
+	
+	function spellLastDigit(num){
+		var result = "zero";
+		var lastDigit = new Number();
+		lastDigit = num % 10;
+		
+		
+		switch(lastDigit){
+			case 1: result = "one";break;
+			case 2: result = "two";break;
+			case 3: result = "three";break;
+			case 4: result = "four";break;
+			case 5: result = "five";break;
+			case 6: result = "six";break;
+			case 7: result = "seven";break;
+			case 8: result = "eight";break;
+			case 9: result = "nine";break;
+			default: break;
+		}
+		
+		return result;
+	}
+	</script>
+	</body>
+
+ </html>

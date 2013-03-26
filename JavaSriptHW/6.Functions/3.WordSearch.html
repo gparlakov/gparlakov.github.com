@@ -1,0 +1,108 @@
+<html>
+	<head>
+	<title>3. Word Count</title>	
+	<style>
+	html,body,a,label,form,input,fieldset,h2,p,div{
+		padding:0px;
+		margin:0;
+	}
+	body{
+		width:960;
+		margin:0 auto;
+	}
+	input {
+		width:100px;
+	}
+	a{
+		display:block;
+		background:skyblue;		
+		padding: 0px 15px;
+		margin : 0 auto;
+		text-decoration:none;
+		border-radius:5px;
+		width:15%;
+		text-align:center;
+	}
+	a:hover{
+		background: blue;
+	}
+	a:active
+	{
+		background-color:skyblue;
+	}
+	label, input, form{
+		vertical-align:top;
+	}
+	form{
+		display:block;
+		border: 1px solid black;
+	}
+	input[type = 'checkbox']{
+		display:inline-block;
+		margin:0px;
+		padding:0px;		
+		vertical-align:top;
+	}
+	
+	
+	</style>
+	</head>
+	<body>
+	<h2>Write a function that finds all the occurrences of word in a text
+		<br/>The search can be<sup>1</sup> case sensitive or case insensitive
+		<br/>Use function overloading	
+	</h2>
+	<form"action="#" method="POST">			
+		<label for = "text">Text </label>
+		<textarea id = "text" rows = "10" cols = "30"  >A simple text for the sake of test and demo of the functionality of finding a word in a text texta TExt teXt. It will only find words not substrings! i.e. will find text but will omit atext or texta</textarea>	
+		<label for = "word">Word </label>
+		<input id = "word" value = "text"/>
+		
+		<input type="checkbox" id = "caseSensitive">Case Sensitive</input>	
+	</form>
+	<a href = "#" onclick = "wordCountStart()">Word Count</a>
+	<div id="console"></div>
+	<script src = "scripts/js-console.js"></script>
+	<script>
+	
+	function wordCountStart(){			
+		var textVar = document.getElementById("text").value;		
+		var wordVar = document.getElementById("word").value;
+		var caseSens = document.getElementById("caseSensitive").checked;
+		var regExp;
+		if(caseSens){
+			regExp = counterRegEx(wordVar,caseSens);
+		}
+		else{
+			regExp = counterRegEx(wordVar);
+		}
+		var wordArray = textVar.match(regExp);
+		
+		jsConsole.writeLine(wordArray + " = " + wordArray.length + " repetitions");		
+	}
+	
+	//I know this is not necessary but the excersise is function overloading so...
+	function counterRegEx(word,secondArgumentBoolean){
+		var regExp;
+		switch(arguments.length){
+			case 1:{
+				regExp = new RegExp("\\b" + word + "\\b","gi"); // the \\b escapes \b 
+				break;
+			}
+			case 2:{				
+				regExp = new RegExp("\\b" + word + "\\b","g");
+				break;
+			}
+			default:{
+				console.log("ArgumentCountException ;)")
+				break;
+			}
+		}
+		return regExp;
+	}	
+	
+	</script>
+	<footer><br><sup>1</sup> Developer's edit</footer>
+	</body>
+
+ </html>
