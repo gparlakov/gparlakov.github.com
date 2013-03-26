@@ -14,36 +14,47 @@
 		width:100px;
 	}
 	a{
-		display:block;
+		display:inline-block;
 		background:skyblue;		
-		padding: 0px 15px;
-		margin : 0 auto;
+		padding: 10px 15px;
+		margin : 0 20px;
 		text-decoration:none;
 		border-radius:5px;
 		width:15%;
 		text-align:center;
 	}
 	a:hover{
-		background: blue;
+		-moz-box-shadow: 2px -2px 15px #888888; /* Old Firefox */
+		box-shadow: 2px -2px 15px #888888;
+		margin-left:18px;
 	}
 	a:active
 	{
-		background-color:skyblue;
+		background-color:skyblue
+		-moz-box-shadow: none; /* Old Firefox */
+		box-shadow: none;
+		margin-left:20px;
+		color:inherit;
 	}
 	label, input, form{
 		vertical-align:top;
 	}
-	form{
-		display:block;
-		border: 1px solid black;
-	}
+	
 	input[type = 'checkbox']{
 		display:inline-block;
 		margin:0px;
-		padding:0px;		
-		vertical-align:top;
+		padding:0px;	
+		width:20px;
+		vertical-align:middle;
 	}
 	
+	#console{
+		margin-top:2%;
+		background-color:black;
+		color:white;
+		height:150px;
+		
+	}
 	
 	</style>
 	</head>
@@ -57,7 +68,7 @@
 		<textarea id = "text" rows = "10" cols = "30"  >A simple text for the sake of test and demo of the functionality of finding a word in a text texta TExt teXt. It will only find words not substrings! i.e. will find text but will omit atext or texta</textarea>	
 		<label for = "word">Word </label>
 		<input id = "word" value = "text"/>
-		
+		<br/>
 		<input type="checkbox" id = "caseSensitive">Case Sensitive</input>	
 	</form>
 	<a href = "#" onclick = "wordCountStart()">Word Count</a>
@@ -78,7 +89,9 @@
 		}
 		var wordArray = textVar.match(regExp);
 		
-		jsConsole.writeLine(wordArray + " = " + wordArray.length + " repetitions");		
+		jsConsole.writeLine(wordArray + " = " + wordArray.length + " repetitions");	
+		document.getElementById("console").style.overflowY = "scroll";
+		<!-- console.log(document.getElementById("console").style); -->
 	}
 	
 	//I know this is not necessary but the excersise is function overloading so...
