@@ -62,7 +62,7 @@
 	<h2>Write a Function that returns the index of the first element in array that is bigger than its neighbors, or -1, if there’s no such element.
 Use the function from the previous exercise.</h2>
 	<form"action="#" method="POST">			
-		<label for = "array">Text </label>
+		<label for = "array">Array of integers: </label>
 		<textarea id = "array" rows = "5" cols = "30"  >1,2,3,5,2,1,2,3,-4,-5,-3,-5,4,3,6,7,8,9,0</textarea>	
 		<!-- <label for = "pos">Position </label>
 		<input id = "pos" value = "10"/> -->			
@@ -75,6 +75,21 @@ Use the function from the previous exercise.</h2>
 	
 	function indexOfFirstBiggerThanNeighbours(){			
 		var array = document.getElementById("array").value.split(',');
+		var index = checkAll(array);
+		
+		if (index > -1){
+			jsConsole.writeLine("The index of the first element bigger than its neighbours is " + index);	
+			jsConsole.writeLine("Element is " + array[index]);
+		}
+		else if (index === -1){			
+			jsConsole.writeLine("No such element exists");			
+		}
+		document.getElementById("console").style.overflowY = "scroll";
+	}	
+	
+	//to be just as condition requires
+	function checkAll(array){
+		
 		var i = 0,index = -1;
 		for(i = 0; i < array.length; i++){
 			if(checkIfBigger(array,i)){
@@ -82,14 +97,9 @@ Use the function from the previous exercise.</h2>
 				break;
 			}		
 		}
-		if ( index > -1){
-		jsConsole.writeLine("The index of the first element bigger than its neighbours is " + index);	
-		jsConsole.writeLine("Element is " + array[index]);
-		}
-		else{
-			return index;
-		}
-	}	
+		
+		return index;	
+	}
 	</script>	
 	</body>
 

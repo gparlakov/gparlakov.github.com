@@ -66,7 +66,8 @@
 			jsConsole.writeLine("This page has " + array.length + " divs in it");
 			for(i=0;i < array.length;i++){
 				jsConsole.writeLine(array[i].tagName +" : "+ array[i].id);
-			}	
+			}
+			document.getElementById("console").style.overflowY = "scroll";
 		}
 	</script>	
 	</body>
