@@ -1,0 +1,114 @@
+<html>
+	<head>
+	<title>1.1 Cartesian</title>	
+	<style>
+	html,body,a,label,form,input,fieldset,h2,p,div{
+		padding:0px;
+		margin:0;
+	}
+	body{
+		width:960;
+		margin:0 auto;
+	}
+	input {
+		width:100px;
+	}
+	a{
+		display:inline-block;
+		background:skyblue;		
+		padding: 10px 15px;
+		margin : 0 20px;
+		text-decoration:none;
+		border-radius:5px;
+		width:15%;
+		text-align:center;
+	}
+	a:hover{
+		-moz-box-shadow: 2px -2px 15px #888888; /* Old Firefox */
+		box-shadow: 2px -2px 15px #888888;
+		margin-left:18px;
+	}
+	a:active
+	{
+		background-color:skyblue
+		-moz-box-shadow: none; /* Old Firefox */
+		box-shadow: none;
+		margin-left:20px;
+		color:inherit;
+	}
+	label, input, form{
+		vertical-align:top;
+	}
+	
+	input[type = 'checkbox']{
+		display:inline-block;
+		margin:0px;
+		padding:0px;	
+		width:20px;
+		vertical-align:middle;
+	}
+	
+	#console{
+		margin-top:2%;
+		background-color:black;
+		color:white;
+		height:150px;
+		
+	}
+	
+	</style>
+	</head>
+	<body>
+	<h2>You are given a two-dimensional Cartesian coordinate system and the two coordinates (X and Y) of a point in the coordinate system. If you don't know what Cartesian coordinate system is Google it with Bing. As you will find, the coordinate system is divided by 2 lines (see the picture bellow) which divide the plain in four parts. Each of these parts has a lot of points that are numbered between 1 and 4. There is one point where our lines are crossing. This point has the following coordinates: X=0 and Y=0. As a result this point is numbered 0. The points on the lines are also numbered with the numbers 5 and 6 (again see the picture below).
+Your task is to write a program that finds the number of the location of the given point in the coordinate system.
+
+	</h2>
+	<form"action="#" method="POST">			
+		<label for = "args">Arguments (separated by comma) =  </label>
+		<!-- <textarea id = "text" rows = "10" cols = "30"  >A simple text for the sake of test and demo of the functionality of finding a word in a text texta TExt teXt. It will only find words not substrings! i.e. will find text but will omit atext or texta</textarea>	 -->
+		<input id="args"/>
+	</form>
+	<a href = "#" onclick = "cartesian()">Cartesian</a>
+	<div id="console"></div>
+	<!-- <script src = "scripts/js-console.js"></script> -->
+	<script>
+	function cartesian(){
+		var arguments = document.getElementById("args").value;
+		arguments = arguments.split(',');
+		console.log(Solve(arguments));		
+	}
+	
+	
+	function Solve(args){
+		var x = parseInt(args[0]);
+		var y = parseInt(args[1]);
+		if(x === 0 && y === 0){
+			return 0;
+		}
+		else if(x === 0){
+			return 5;
+		}
+		else if(y === 0){
+			return 6;
+		}
+		else if(x > 0 && y > 0){
+			return 1;
+		}
+		else if(x < 0 && y > 0){
+			return 2;
+		}
+		else if(x < 0 && y < 0){
+			return 3;
+		}
+		else if(x > 0 && y < 0){
+			return 4;
+		}		
+	}
+	
+	
+	
+	</script>
+	<footer><br><sup>1</sup> Developer's edit</footer>
+	</body>
+
+ </html>

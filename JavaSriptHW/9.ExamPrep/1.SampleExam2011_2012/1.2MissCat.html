@@ -1,0 +1,116 @@
+<html>
+	<head>
+	<title>1.2 Miss Cat</title>	
+	<style>
+	html,body,a,label,form,input,fieldset,h2,p,div{
+		padding:0px;
+		margin:0;
+	}
+	body{
+		width:960;
+		margin:0 auto;
+	}
+	input {
+		width:100px;
+	}
+	a{
+		display:inline-block;
+		background:skyblue;		
+		padding: 10px 15px;
+		margin : 0 20px;
+		text-decoration:none;
+		border-radius:5px;
+		width:15%;
+		text-align:center;
+	}
+	a:hover{
+		-moz-box-shadow: 2px -2px 15px #888888; /* Old Firefox */
+		box-shadow: 2px -2px 15px #888888;
+		margin-left:18px;
+	}
+	a:active
+	{
+		background-color:skyblue
+		-moz-box-shadow: none; /* Old Firefox */
+		box-shadow: none;
+		margin-left:20px;
+		color:inherit;
+	}
+	label, input, form{
+		vertical-align:top;
+	}
+	
+	input[type = 'checkbox']{
+		display:inline-block;
+		margin:0px;
+		padding:0px;	
+		width:20px;
+		vertical-align:middle;
+	}
+	
+	#console{
+		margin-top:2%;
+		background-color:black;
+		color:white;
+		height:150px;
+		
+	}
+	
+	</style>
+	</head>
+	<body>
+	<h2>Telerik Software Academy – C# Fundamentals Part 1 – Sample Exam
+		Problem 2 – Miss Cat 2011
+		There are two things that cats love most: 1) sleeping and 2) attending beauty contests. The most important thing for each female cat is the contest “Miss Cat”. There are always ten cats that participate in the final round of the contest, numbered 1 to 10. 
+		The jury of the contest consists of N people who subjectively decide which cat to vote for. In other words each person votes for just 1 cat that he has most liked, or from whose owner he has received the biggest bribe. The winner of the contest is the cat that has gathered most votes. If two cats have equal votes, the winner of the contest is the one whose number is smaller.
+		Your task is to write a computer program that finds the number of the cat that is going to win the contest “Miss cat”
+		Input
+		The input data is being read from the console.
+		The number N is on the first input line.
+		An integer between 1 and 10 is written on each of the next N lines (this is the number of the cat)
+		The input data will always be valid and in the format described. There is no need to check it explicitly.
+	</h2>
+	
+	<form"action="#" method="POST">			
+		<label for = "args">Arguments (separated by comma) =  </label>
+		<!-- <textarea id = "text" rows = "10" cols = "30"  >A simple text for the sake of test and demo of the functionality of finding a word in a text texta TExt teXt. It will only find words not substrings! i.e. will find text but will omit atext or texta</textarea>	 -->
+		<input id="args"/>
+	</form>
+	
+	<a href = "#" onclick = "missCat()">MissCat</a>
+	<!-- <div id="console"></div> -->
+	<!-- <script src = "scripts/js-console.js"></script> -->
+	<script>
+	function missCat(){
+		var arguments = document.getElementById("args").value;
+		arguments = arguments.split(',');
+		console.log(Solve(arguments));		
+	}
+	
+	
+	function Solve(args){
+		var votesForCat = [0,0,0,0,0,0,0,0,0,0,0];		
+		var n = parseInt(args[0]);
+		var i = parseInt("0");
+		var missCatNumber = parseInt("0"); 
+		
+		for(i = 1;i <= n;i++){
+			votesForCat[args[i]]++;
+		}
+		
+		for(i = 1;i <= 10;i++){			
+			if(votesForCat[i] > votesForCat[missCatNumber]){ 
+				missCatNumber = i;
+			}
+		}
+		
+		return missCatNumber;
+	}
+	
+	
+	
+	</script>
+	<footer><br><sup>1</sup> Developer's edit</footer>
+	</body>
+
+ </html>
