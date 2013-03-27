@@ -1,0 +1,93 @@
+<html>
+	<head>
+	<title>5. Count number Apperences</title>	
+	<style>
+	html,body,a,label,form,input,fieldset,h2,p,div{
+		padding:0px;
+		margin:0;
+	}
+	body{
+		width:960;
+		margin:0 auto;
+	}
+	input {
+		width:100px;
+	}
+	a{
+		display:inline-block;
+		background:skyblue;		
+		padding: 10px 15px;
+		margin : 0 20px;
+		text-decoration:none;
+		border-radius:5px;
+		width:15%;
+		text-align:center;
+	}
+	a:hover{
+		-moz-box-shadow: 2px -2px 15px #888888; /* Old Firefox */
+		box-shadow: 2px -2px 15px #888888;
+		margin-left:18px;
+	}
+	a:active
+	{
+		background-color:skyblue
+		-moz-box-shadow: none; /* Old Firefox */
+		box-shadow: none;
+		margin-left:20px;
+		color:inherit;
+	}
+	label, input, form{
+		vertical-align:top;
+	}
+	
+	input[type = 'checkbox']{
+		display:inline-block;
+		margin:0px;
+		padding:0px;	
+		width:20px;
+		vertical-align:middle;
+	}
+	
+	#console{
+		margin-top:2%;
+		background-color:black;
+		color:white;
+		height:250px;
+		
+	}
+	
+	</style>
+	</head>
+	<body>
+	<h2>Write a function that counts how many times given number appears in given array. Write a test function to check if the function is working correctly.
+	</h2>
+	<form"action="#" method="POST">			
+		<label for = "array">Text </label>
+		<textarea id = "array" rows = "5" cols = "30"  >1,2,3,3,2,1,2,3,4,5,6,9,6,6,6,7,8,9,0</textarea>	
+		<label for = "num">Number </label>
+		<input id = "num" value = "1"/>		
+	</form>
+	<a href = "#" onclick = "numCountStart()">Count number Apperences</a>
+	<div id="console"></div>
+	<script src = "scripts/js-console.js"></script>
+	<script>
+	
+	function numCountStart(){			
+		var array = document.getElementById("array").value.split(',');		
+		var num = parseInt(document.getElementById("num").value);
+		var i = 0, counter = 0;
+		
+		for(i = 0;i < array.length; i++){
+			if(parseInt(array[i]) === num){
+				counter++;
+			}
+		}
+		
+		jsConsole.writeLine("In this array the number " + num + " appears " + counter + " times");
+		
+	}	
+	</script>
+	
+	</body>
+
+ </html>

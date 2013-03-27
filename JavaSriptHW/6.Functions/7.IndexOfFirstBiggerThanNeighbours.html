@@ -1,0 +1,96 @@
+<html>
+	<head>
+	<title>7.Index Of First Bigger Than Neighbours</title>	
+	<style>
+	html,body,a,label,form,input,fieldset,h2,p,div{
+		padding:0px;
+		margin:0;
+	}
+	body{
+		width:960;
+		margin:0 auto;		
+	}
+	input {
+		width:100px;
+	}
+	a{
+		display:inline-block;
+		background:skyblue;		
+		padding: 10px 15px;
+		margin : 0 20px;
+		text-decoration:none;
+		border-radius:5px;
+		width:15%;
+		text-align:center;
+	}
+	a:hover{
+		-moz-box-shadow: 2px -2px 15px #888888; /* Old Firefox */
+		box-shadow: 2px -2px 15px #888888;
+		margin-left:18px;
+	}
+	a:active
+	{
+		background-color:skyblue
+		-moz-box-shadow: none; /* Old Firefox */
+		box-shadow: none;
+		margin-left:20px;
+		color:inherit;
+	}
+	label, input, form{
+		vertical-align:top;
+	}
+	
+	input[type = 'checkbox']{
+		display:inline-block;
+		margin:0px;
+		padding:0px;	
+		width:20px;
+		vertical-align:middle;
+	}
+	
+	#console{
+		margin-top:2%;
+		background-color:black;
+		color:white;
+		height:250px;
+		
+	}
+	
+	</style>
+	</head>
+	<body>
+	<h2>Write a Function that returns the index of the first element in array that is bigger than its neighbors, or -1, if there’s no such element.
+Use the function from the previous exercise.</h2>
+	<form"action="#" method="POST">			
+		<label for = "array">Text </label>
+		<textarea id = "array" rows = "5" cols = "30"  >1,2,3,5,2,1,2,3,-4,-5,-3,-5,4,3,6,7,8,9,0</textarea>	
+		<!-- <label for = "pos">Position </label>
+		<input id = "pos" value = "10"/> -->			
+	</form>
+	<a href = "#" onclick = "indexOfFirstBiggerThanNeighbours()">Index Of First Bigger Than Neighbours</a>
+	<div id="console"></div>
+	<script src = "scripts/js-console.js"></script>
+	<script src = "scripts/checkIfBigger.js"></script>
+	<script>
+	
+	function indexOfFirstBiggerThanNeighbours(){			
+		var array = document.getElementById("array").value.split(',');
+		var i = 0,index = -1;
+		for(i = 0; i < array.length; i++){
+			if(checkIfBigger(array,i)){
+				index = i;
+				break;
+			}		
+		}
+		if ( index > -1){
+		jsConsole.writeLine("The index of the first element bigger than its neighbours is " + index);	
+		jsConsole.writeLine("Element is " + array[index]);
+		}
+		else{
+			return index;
+		}
+	}	
+	</script>	
+	</body>
+
+ </html>
