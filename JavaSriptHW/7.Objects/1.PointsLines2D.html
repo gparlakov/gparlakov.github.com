@@ -49,12 +49,23 @@
 		var lineBC = Line(c,b);
 		var lineCA = Line(b,a);
 		
+		var lengthAB = calculateDistance2D(a,b);
+		var lengthBC = calculateDistance2D(b,c);
+		var lengthCA = calculateDistance2D(c,a);
+		var isPossible = false;
+		if((lengthAB - lengthBC - lengthCA) < 0 && (lengthBC - lengthAB - lengthCA) < 0 && (lengthCA - lengthAB - lengthBC) < 0) {
+			isPossible = true;
+		}
+		
 		jsConsole.writeLine("Point a: " + a.toString());
 		jsConsole.writeLine("Point b: " + b.toString());
 		jsConsole.writeLine("Point c: " + c.toString());
 		jsConsole.writeLine("Distance point a -> point b: " + calculateDistance2D(a,b));
 		jsConsole.writeLine(lineAB.toString());
-		jsConsole.writeLine(isTriangle(lineAB,lineBC,lineCA));
+		jsConsole.writeLine("is a< b+c && b < a+c && c< a+b: " + isPossible);
+		jsConsole.writeLine("Is this really a triangle : " + isTriangle(lineAB,lineBC,lineCA));
+		jsConsole.writeLine("______________");
+		
 	}	
 	
 	</script>

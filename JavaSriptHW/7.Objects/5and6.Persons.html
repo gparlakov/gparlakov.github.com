@@ -1,0 +1,223 @@
+<html>
+	<head>
+		<title>5 and 6.Person Objects</title>	
+		
+		<style>
+			html,body,a,label,form,input,fieldset,h2,p,div{
+				padding:0px;
+				margin:0;
+			}
+			body{
+				width:960px;
+				margin:0 auto;
+			}
+				<!-- h2{
+					text-align:left;
+				}
+				 -->
+				form{
+					display:block;
+					vertical-align:top;
+				}			
+				
+					input {
+						width:50px;
+					}
+					
+					fieldset{
+						padding: 10px 20px; 
+						margin : 20px auto;
+					}
+				
+				a{
+					display:inline-block;
+					background:skyblue;		
+					padding: 10px 15px;
+					margin : 10px 20px;
+					text-decoration:none;
+					border-radius:5px;
+					width:15%;
+					text-align:center;
+				}
+				a:hover{
+					-moz-box-shadow: 2px -2px 15px #888888; /* Old Firefox */
+					box-shadow: 2px -2px 15px #888888;
+					margin-left:18px;
+				}
+				a:active
+				{
+					background-color:skyblue
+					-moz-box-shadow: none; /* Old Firefox */
+					box-shadow: none;
+					margin-left:20px;
+					color:inherit;
+				}
+				
+				#console{
+					margin-top:2%;
+					background-color:black;
+					color:white;
+					height:500px;
+					overflow:scroll;
+				}	
+				h2{
+					text-align:center;
+				}
+				article{
+					margin:15px 0px;
+					width:49.5%;
+					display:inline-block;
+					vertical-align:top;
+					font-size:1.2em;
+				}
+		</style>
+	</head>
+	<body>
+	<h2>
+		Task 5 and 6 in one!
+	</h2>
+	<article>
+		Task 5<br/>
+		Write a function that checks if a given object contains a given property<br/>
+		var obj  = …;<br/>
+		var hasProp = hasProperty(obj,"length");<br/>
+	</article>
+	<article>
+		Task 6<br/>
+		Write a function that groups an array of persons by age, first or last name. The function must return an associative array, with keys - the groups, and values -arrays with persons in this groups
+		Use function overloading (i.e. just one function)<br/>
+		var persons = {…};<br/>
+		var groupedByFname = group(persons,"firstname");<br/>
+		var groupedByAge= group(persons,"age");<br/>
+	</article>
+	
+	<form>
+		<fieldset>
+			<legend >Create Person</legend>
+			<label for = "fName">First Name: </label>
+			<input id = "fName" value = "Gosho" />
+			<label for = "lName" >Last Name: </label>
+			<input id = "lName" value = "Petrov" />
+			<label for = "age" >Age: </label>
+			<input id = "age" value = "29" />
+			<a href = "#" onclick = "addPerson()">Create A Person</a>
+			<a href = "#" onclick = "initAllPersons()">Initialize Persons with a few instnces</a>
+		</fieldset>
+		
+		<fieldset>
+			<legend >Task 5: Find Youngest Person</legend>
+			<a href = "#" onclick = "findYoungest()">Find Youngest Person</a>
+			<a href = "#" onclick = "listAllPersons()">List All Persons</a>
+		</fieldset>
+		
+		<fieldset>
+			<legend >Task 6 : Group Persons By Given Property</legend>
+			<a href = "#" onclick = "groupByName()">Group Person by First Name</a>
+			<a href = "#" onclick = "groupByAge()">Group Person by Age</a>
+			<a href = "#" onclick = "groupByLName()">Group Person by Last Name</a>
+		</fieldset>
+	</form>
+	<div id="console"></div>
+	<script src = "scripts/js-console.js"></script>
+	 <script src = "scripts/personCreator.js"></script>
+	<script>
+		var allPersons = new Array();
+		
+		function initAllPersons(){
+			allPersons.push(createPerson("Gosho","Petrov",30));
+			allPersons.push(createPerson("Gosho","Kirov",31));
+			allPersons.push(createPerson("Petar","Ivanov",29));
+			allPersons.push(createPerson("Ivelina","Stamatova",13));
+			allPersons.push(createPerson("Kiril","Petrov",30));
+			allPersons.push(createPerson("Ivan","Kirov",31));
+			allPersons.push(createPerson("Petar","Ivanov",29));
+			allPersons.push(createPerson("Gosho","Stamatov",13)); 				
+		}
+		////task5 start
+		function findYoungest () {
+			var i;			
+			
+			var youngest = allPersons[0];
+			for(i in allPersons){
+				if(youngest.age > allPersons[i].age){
+					youngest = allPersons[i];
+				}
+			}
+			
+			jsConsole.writeLine(youngest);
+			
+		}
+		
+		function addPerson() {
+			var fName = document.getElementById("fName").value;
+			var lName = document.getElementById("lName").value;
+			var age = document.getElementById("age").value;
+			allPersons.push(createPerson(fName,lName,age));	
+		}
+			
+		function listAllPersons() {
+			var i;
+			jsConsole.writeLine("");
+			for (i in self.allPersons){
+				jsConsole.writeLine(self.allPersons[i]);
+			}
+			jsConsole.writeLine("");
+		}
+		////task5 end
+		
+		////Task 6 start
+		function group(collection,property){
+			var prop = property.toString();
+			var resultArray = {};
+			var i,first,last,age;
+			resultArray.Name = property;
+			for(i in collection){
+				first = collection[i].fName;
+				last = collection[i].lName;
+				age = collection[i].age;
+				
+				//if no such property exists in this dictionary (or map or whatever) I create one that is an array of objects (person)
+				if(!resultArray[collection[i][prop]]){  
+					resultArray[collection[i][prop]] = new Array(createPerson(first, last, age));
+				}
+				// else just push another element in the existing array
+				else{
+					resultArray[collection[i][prop]].push(createPerson(first, last, age)); 
+				}				
+			}
+			return resultArray;
+		}
+		
+		function groupByName(){
+			var grouppedPersons = group(allPersons,"fName");
+			printGroup(grouppedPersons);
+			
+		}
+		
+		function groupByAge(){
+			var grouppedPersons = group(allPersons,"age");
+			printGroup(grouppedPersons);
+		}
+		
+		function groupByLName(){
+			var grouppedPersons = group(allPersons,"lName");
+			printGroup(grouppedPersons);
+		}
+		
+		function printGroup(groupName){
+			var i;
+			jsConsole.writeLine("Name of group: " + groupName.Name); 
+			for(i in groupName){
+				if(i !== "Name"){
+					jsConsole.writeLine(groupName[i]); 
+				}
+			}
+			jsConsole.writeLine("-----------------------------");
+		
+		}
+		
+		////Task 6 end
+	</script>
+	</body>
+
+ </html>

@@ -1,0 +1,133 @@
+<html>
+	<head>
+		<title>3. Deep Copy </title>	
+		
+		<style>
+			html,body,a,label,form,input,fieldset,h2,p,div{
+				padding:0px;
+				margin:0;
+			}
+			body{
+				width:960px;
+				margin:0 auto;
+			}
+				h2{
+					text-align:center;
+				}
+				
+				form{
+					display:block;
+					vertical-align:top;
+				}			
+				
+					input {
+						width:50px;
+					}			
+				
+				a{
+					display:inline-block;
+					background:skyblue;		
+					padding: 10px 15px;
+					margin : 0 20px;
+					text-decoration:none;
+					border-radius:5px;
+					width:15%;
+					text-align:center;
+				}
+				a:hover{
+					-moz-box-shadow: 2px -2px 15px #888888; /* Old Firefox */
+					box-shadow: 2px -2px 15px #888888;
+					margin-left:18px;
+				}
+				a:active
+				{
+					background-color:skyblue
+					-moz-box-shadow: none; /* Old Firefox */
+					box-shadow: none;
+					margin-left:20px;
+					color:inherit;
+				}
+				
+				#console{
+					margin-top:2%;
+					background-color:black;
+					color:white;
+					height:350px;
+					overflow:scroll;
+				}	
+		</style>
+	</head>
+	<body>
+	<h2>
+		Write a function that makes a deep copy of an object<br/>
+		The function should work for both primitive and reference types
+	</h2>
+	<form>
+		<!-- <label for = "arrayInput">Input array here</label>
+		<textarea cols = "40" rows = "10" id = "arrayInput"  >1,2,1,4,1,3,4,1,111,3,2,1,"1"</textarea> 
+		<label for = "element" >Element =</label>
+		<input id = "element" value = "1" /> -->	
+		<a href = "#" onclick = "deepCopyStart()">Show Deep Copy</a>
+	</form>
+	<div id="console"></div>
+	<script src = "scripts/js-console.js"></script>
+	<!-- <script src = "scripts/arrPrototype.js"></script> -->
+	<script>
+	
+		function deepCopyStart(){	
+			var x = 5;
+			var y = "5";
+			var z = {
+				prop1: 1,
+				prop2: 2,
+				prop3: {
+					prop4:"4"
+				},
+				toString: function (){
+					var result = "";
+					for(var i in this){
+						result += i.toString() + " = " + this[i] + ", ";
+					}
+					return result;
+				} 
+				
+			};	
+			var x1 = deepCopy(x);
+			jsConsole.writeLine("deep copy of a primitive type x1 = deepCopy(x) and then x1 = 1000");
+			x1 = 1000;
+			jsConsole.writeLine("x1 = " + x1 + "  x = " + x);
+			
+			jsConsole.writeLine("var z1 = deepCopy(z);");
+			var z1 = deepCopy(z);
+			
+			jsConsole.writeLine("z object: " + z.prop1 + ", " + z.prop2 + ", "+ z.prop3.prop4);
+			jsConsole.writeLine("z1 object: " + z1.prop1 + ", " + z1.prop2 + ", "+ z1.prop3.prop4);
+			jsConsole.writeLine("change property prop1 of z1 to 2000");
+			z1.prop1 = 2000;
+			jsConsole.writeLine("z object: " + z.prop1 + ", "+ z.prop2 + ", "+ z.prop3.prop4);
+			jsConsole.writeLine("z1 object: " + z1.prop1 + ", "+ z1.prop2 + ", "+ z1.prop3.prop4);
+			jsConsole.writeLine("");
+		}
+		
+		function deepCopy(original){
+			var copy = original;
+			var i;
+			if (typeof original === typeof new Object()){			
+				copy = {};
+				for(i in original){
+					if(typeof original[i] !== typeof new Object()){
+						copy[i.toString()] = original[i];
+					}				
+					else{
+						copy[i.toString()] = deepCopy(original[i])
+					}
+				}
+			}
+			
+			return copy;
+		}
+	
+	</script>
+	</body>
+
+ </html>

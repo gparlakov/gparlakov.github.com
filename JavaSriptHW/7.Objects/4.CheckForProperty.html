@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>2. Remove from Array</title>	
+		<title>4.Check For Property </title>	
 		
 		<style>
 			html,body,a,label,form,input,fieldset,h2,p,div{
@@ -11,10 +11,10 @@
 				width:960px;
 				margin:0 auto;
 			}
-				h2{
-					text-align:center;
+				<!-- h2{
+					text-align:left;
 				}
-				
+				 -->
 				form{
 					display:block;
 					vertical-align:top;
@@ -53,41 +53,49 @@
 					background-color:black;
 					color:white;
 					height:350px;
-					overflow:scroll;				
+					overflow:scroll;
 				}	
 		</style>
 	</head>
 	<body>
 	<h2>
-		Write a function that removes all elements with a given value<br/>
-		var arr = [1,2,1,4,1,3,4,1,111,3,2,1,"1"];<br/>
-		arr.remove(1); //arr = [2,4,3,4,111,3,2,"1"];<br/>
-		Attach it to the array class<br/>
-		Read about prototype and how to attach methods
+		Write a function that checks if a given object contains a given property<br/>
+		var obj  = …;<br/>
+		var hasProp = hasProperty(obj,"length");
+		
 	</h2>
 	<form>
-		<label for = "arrayInput">Input array here</label>
+		<!-- <label for = "arrayInput">Input array here</label>
 		<textarea cols = "40" rows = "10" id = "arrayInput"  >1,2,1,4,1,3,4,1,111,3,2,1,"1"</textarea> 
 		<label for = "element" >Element =</label>
-		<input id = "element" value = "1" />	
-		<a href = "#" onclick = "removeFromArrayStart()">Remove from Array</a>
+		<input id = "element" value = "1" /> -->	
+		<a href = "#" onclick = "checkForPropertyStart()">CheckForProperty</a>
 	</form>
 	<div id="console"></div>
 	<script src = "scripts/js-console.js"></script>
-	<script src = "scripts/arrPrototype.js"></script>
+	<!-- <script src = "scripts/arrPrototype.js"></script> -->
 	<script>
 	
-		function removeFromArrayStart(){	
+		function checkForPropertyStart(){	
+			for(var i in window){
+				console.log(window[i]);
+			}
 			
-			var array = document.getElementById("arrayInput").value.split(',');
-			var element = document.getElementById("element").value;
+			jsConsole.writeLine('hasProperty(new Array(1,2),"length") : ' + 	hasProperty(new Array(1,2),"length"));
+			jsConsole.writeLine('hasProperty(window,"length") : ' + 	hasProperty(window,"length"));
+			jsConsole.writeLine('hasProperty(window,"SVGFEFuncBElement") : ' + hasProperty(window,"SVGFEFuncBElement"));	
 			
-			jsConsole.writeLine("Before removal: " + array.join('|'));
-			array.remove(element);
-			jsConsole.writeLine("After removal:  " + array.join('|'));
-			document.getElementById("console").style.overflowY = scroll;		
-		}	
+			
+		}
 	
+		function hasProperty(obj, prop){
+			if(obj[prop]){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
 	</script>
 	</body>
 
