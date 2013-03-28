@@ -45,15 +45,16 @@
 		var a = Point(2,3); 
 		var b = Point(3,4);
 		var c = Point(2,6);
-		var lineAB = Line(a,b);
-		var lineBC = Line(b,c);
-		var lineCA = Line(c,a);
+		var lineAB = Line(a,c);
+		var lineBC = Line(c,b);
+		var lineCA = Line(b,a);
 		
 		jsConsole.writeLine("Point a: " + a.toString());
 		jsConsole.writeLine("Point b: " + b.toString());
-		jsConsole.writeLine("Point b: " + b.toString());
+		jsConsole.writeLine("Point c: " + c.toString());
 		jsConsole.writeLine("Distance point a -> point b: " + calculateDistance2D(a,b));
 		jsConsole.writeLine(lineAB.toString());
+		jsConsole.writeLine(isTriangle(lineAB,lineBC,lineCA));
 	}	
 	
 	</script>
