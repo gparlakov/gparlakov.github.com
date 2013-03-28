@@ -1,0 +1,62 @@
+<html>
+	<head>
+	<title>1.PointsLines2D</title>	
+	<style>
+	input {
+		width:50px;
+	}
+	a{			
+		display:block;
+		background:skyblue;		
+		max-width:150px;
+		text-decoration:none;
+		border-radius:5px;
+		text-align:center;
+	}
+	a:hover{
+		background: blue;
+	}
+	a:active
+	{
+		background-color:skyblue;
+	}
+	</style>
+	</head>
+	<body>
+	<h2>
+		Write functions for working with shapes in  standard Planar coordinate system<br/>
+		Points are represented by coordinates P(X, Y)<br/>
+		Lines are represented by two points, marking their beginning and ending<br/>
+		L(P1(X1,Y1),P2(X2,Y2))<br/>
+		Calculate the distance between two points<br/>
+		Check if three segment lines can form a triangle
+	</h2>
+	<form>
+		<!-- <label for = "num">Number =</label>
+		<input id = "num" /> -->	
+		<a href = "#" onclick = "pointsLines2DStart()">1.PointsLines2D</a>
+	</form>
+	<div id="console"></div>
+	<script src = "scripts/js-console.js"></script>
+	<script src = "scripts/points.js"></script>
+	<script>
+	
+	function pointsLines2DStart(){	
+		var a = Point(2,3); 
+		var b = Point(3,4);
+		var c = Point(2,6);
+		var lineAB = Line(a,b);
+		var lineBC = Line(b,c);
+		var lineCA = Line(c,a);
+		
+		jsConsole.writeLine("Point a: " + a.toString());
+		jsConsole.writeLine("Point b: " + b.toString());
+		jsConsole.writeLine("Point b: " + b.toString());
+		jsConsole.writeLine("Distance point a -> point b: " + calculateDistance2D(a,b));
+		jsConsole.writeLine(lineAB.toString());
+	}	
+	
+	</script>
+	</body>
+
+ </html>
