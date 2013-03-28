@@ -1,0 +1,92 @@
+<html>
+	<head>
+		<title>2. Remove from Array</title>	
+		
+		<style>
+			body{
+				width:1024px;
+				margin:0 auto;
+			}
+				h2{
+					display:block;
+					margin:10px auto;
+				}
+			input {
+				width:50px;
+			}
+			html,body,a,label,form,input,fieldset,h2,p,div{
+				padding:0px;
+				margin:0;
+			}
+			body{
+				width:960;
+				margin:0 auto;		
+			}
+			input {
+				width:100px;
+			}
+			a{
+				display:inline-block;
+				background:skyblue;		
+				padding: 10px 15px;
+				margin : 0 20px;
+				text-decoration:none;
+				border-radius:5px;
+				width:15%;
+				text-align:center;
+			}
+			a:hover{
+				-moz-box-shadow: 2px -2px 15px #888888; /* Old Firefox */
+				box-shadow: 2px -2px 15px #888888;
+				margin-left:18px;
+			}
+			a:active
+			{
+				background-color:skyblue
+				-moz-box-shadow: none; /* Old Firefox */
+				box-shadow: none;
+				margin-left:20px;
+				color:inherit;
+			}
+			#console{
+				margin-top:2%;
+				background-color:black;
+				color:white;
+				height:250px;				
+			}	
+		</style>
+	</head>
+	<body>
+	<h2>
+		Write a function that removes all elements with a given value<br/>
+		var arr = [1,2,1,4,1,3,4,1,111,3,2,1,"1"];<br/>
+		arr.remove(1); //arr = [2,4,3,4,111,3,2,"1"];<br/>
+		Attach it to the array class<br/>
+		Read about prototype and how to attach methods
+	</h2>
+	<form>
+		<label for = "arrayInput">Input array here</label>
+		<textarea cols = "40" rows = "10" id = "arrayInput"  >1,2,1,4,1,3,4,1,111,3,2,1,"1"</textarea> 
+		<label for = "element" >Element =</label>
+		<input id = "element" value = "1" />	
+		<a href = "#" onclick = "removeFromArrayStart()">2. Remove from Array</a>
+	</form>
+	<div id="console"></div>
+	<script src = "scripts/js-console.js"></script>
+	<script src = "scripts/arrPrototype.js"></script>
+	<script>
+	
+		function removeFromArrayStart(){	
+			document.getElementById("console").style.overflowY = scroll;
+			var array = document.getElementById("arrayInput").value.split(',');
+			var element = document.getElementById("element").value;
+			
+			jsConsole.writeLine("Before removal: " + array.join('|'));
+			array.remove(element);
+			jsConsole.writeLine("After removal:  " + array.join('|'));
+		}	
+	
+	</script>
+	</body>
+
+ </html>
