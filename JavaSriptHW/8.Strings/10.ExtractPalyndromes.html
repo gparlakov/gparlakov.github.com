@@ -1,0 +1,65 @@
+<html>
+	<head>
+		<title>10.Extract Palyndromes</title>	
+		<link type="text/css" rel="stylesheet" href = "styles/commonStyleStrings.css" />
+		<!-- <style>
+			img{
+				width:350px;
+			}
+		</style> -->
+	</head>
+	<body>
+		<h2>
+			Write a program that extracts from a given text all palindromes, e.g. "ABBA", "lamal", "exe".
+		</h2>
+		<form action="#" method = "get">
+			<fieldset>
+				<legend >Source</legend>
+				<label for = "source">This is the source: </label>				
+				<textarea rows = "10" cols = "40" id = "source" >Some text including abba imggmi lammal exe notexe another bilolib</textarea>
+				<a href = "#" onclick = "extractPalyndromes()">Extract Palyndromes</a>			
+			</fieldset>	
+		</form>
+		
+		<div id="console"></div>
+		
+		<script src = "scripts/js-console.js"></script>
+		<script src = "scripts/libraryStrings.js"></script>
+		<script>	
+			
+			function extractPalyndromes(){
+				var source = document.getElementById("source").value;					
+				var words = source.split(/\b/);
+				var palindromes = {};
+				var i = 0;
+				
+				for(i = 0;i < words.length; i++){
+					word = words[i].toLowerCase();
+					if(word != "" && isPalindrome(word)){
+						if(!palindromes[word]){
+							palindromes[words[i]] = 1;
+						}
+					}
+				}				
+				
+				for(i in palindromes){
+					jsConsole.writeLine(i);
+				}
+			}	
+		
+			function isPalindrome(string){
+				var isPal = true;
+				var i,len = string.length;
+				for (i = 0;i < (len / 2);i++){
+					if(string[i] != string[len - 1 - i]){
+						isPal = false;
+						break;
+					}
+				}
+				
+				return isPal;
+			}
+		</script>
+	</body>
+
+ </html>

@@ -1,0 +1,50 @@
+<html>
+	<head>
+		<title>3. Count Substring Appearences</title>	
+		<link type="text/css" rel="stylesheet" href = "styles/commonStyleStrings.css" />
+	</head>
+	<body>
+	<h2>
+		Write a JavaScript function that finds how many times a substring is contained in a given text (perform case insensitive search).		
+	</h2>	
+	<div id="example">		
+		Example: The target substring is "in". The text is as follows:
+		We are living in an yellow submarine. We don't have anything else. 
+		Inside the submarine is very tight. So we are drinking all the day.
+		We will move out of it in 5 days.
+		The result is: 9.		
+	</div>
+	<form action="#" method = "get">
+		<fieldset>
+			<legend >Search</legend>
+			<label for = "text">Text: </label>
+			
+			<textarea id = "text" rows = "5" cols = "50"  >We are living in an yellow submarine. We don't have anything else. Inside the submarine is very tight. So we are drinking all the day. We will move out of it in 5 days.				
+			</textarea>
+						
+			<label for = "subStr" >Substring to search for </label>
+			<input id = "subStr" value = "in" />
+			<a href = "#" onclick = "substrSearch()">Substring Search</a>			
+		</fieldset>	
+		
+		
+	</form>
+	<div id="console"></div>
+	<script src = "scripts/js-console.js"></script>
+	 <script src = "scripts/libraryStrings.js"></script>
+	<script>	
+		
+		function substrSearch(){
+			var originalText = document.getElementById("text").value;			
+			var substring = document.getElementById("subStr").value;	
+			var lowerString = originalText.toLowerCase();
+			var count = countSubStr(lowerString,substring);
+			
+			jsConsole.writeLine(count + " times " + substring);
+			
+		}
+			
+	</script>
+	</body>
+
+ </html>

@@ -1,0 +1,65 @@
+<html>
+	<head>
+		<title>7.Parse Url</title>	
+		<link type="text/css" rel="stylesheet" href = "styles/commonStyleStrings.css" />
+		
+	</head>
+	<body>
+		<h2>
+			Write a script that parses an URL address given in the format:
+		</h2>	
+		<div id="example">	
+			[protocol]://[server]/[resource]
+			<hr/>
+			and extracts from it the [protocol], [server] and [resource] elements. Return the elements in a JSON object.
+			For example from the URL http://www.devbg.org/forum/index.php the following information should be extracted:
+			<p>
+				{protocol: "http", server: "www.devbg.org", resource: "/forum/index.php"}	
+			</p>
+
+		</div>
+		<form action="#" method = "get">
+			<fieldset>
+				<legend >URL</legend>
+				<label for = "url">This is the url: </label>				
+				<input id = "url" value= "http://www.abv.bg/hyra/byra/index.php" />
+				<a href = "#" onclick = "parseUrl()">Parse Url</a>			
+			</fieldset>	
+		</form>
+		
+		<div id="console"></div>
+		
+		<script src = "scripts/js-console.js"></script>
+		<script src = "scripts/libraryStrings.js"></script>
+		<script>	
+			
+			function parseUrl(){
+				var url = document.getElementById("url").value;	
+				var protocolSplitter = url.indexOf("//");
+				var resourseSplitter = url.indexOf("/",protocolSplitter + 2);
+				var protocol = url.substr(0,protocolSplitter - 1);
+				var server = url.substr(protocolSplitter + 2,resourseSplitter - protocolSplitter - 2);
+				var resourse = url.substr(resourseSplitter);
+				
+				
+				
+				var urlJSON = urlBuilder(protocol,server,resourse);
+				
+				jsConsole.writeLine(urlJSON);
+				jsConsole.writeLine('protocol: ' + urlJSON.protocol);
+				jsConsole.writeLine('server: ' + urlJSON.server);
+				jsConsole.writeLine('resourse: ' + urlJSON.resourse);
+								
+			}	
+		
+			function urlBuilder (protocol,server,resourse){
+				return{
+					protocol:protocol,
+					server:server,
+					resourse:resourse						
+				}			
+			}
+		</script>
+	</body>
+
+ </html>

@@ -1,0 +1,116 @@
+<html>
+	<head>
+		<title>4. Upper Lower Mixed Case</title>	
+		<link type="text/css" rel="stylesheet" href = "styles/commonStyleStrings.css" />
+	
+	</head>
+	<body>
+		<h2>
+			You are given a text. Write a function that changes the text in all regions:		
+		</h2>	
+		<div id="example">		
+			<upcase>text</upcase> to uppercase.
+			<lowcase>text</lowcase> to lowercase
+			<mixcase>text</mixcase> to mix casing(random)
+
+		</div>
+		<form action="#" method = "get">
+			<fieldset>
+				<legend >MixCase</legend>
+				<label for = "text">Text: </label>				
+				<textarea id = "text" rows = "10" cols = "100"  ><mixcase>We are <lowcase>living <upper> uppercase here<lower> lower case here </lower> upper again</upper> low case here</lowcase> in a <upcase>yellow submarine</upcase>. We <mixcase>don't</mixcase> have <lowcase>anything</lowcase> else. The whole should be mixed</mixcase></textarea>
+				<a href = "#" onclick = "caseMix()">Case Mix</a>			
+			</fieldset>	
+		</form>
+		
+		<div id="console"></div>
+		
+		<script src = "scripts/js-console.js"></script>
+		<script src = "scripts/libraryStrings.js"></script>
+		<script>	
+			
+			function caseMix(){
+				var originalText = document.getElementById("text").value;			
+				var mixedText = "";
+				var nextSymbol = 0;
+				var condition = new Array("normal");
+				
+				do{
+					if(originalText[nextSymbol] === "<"){
+						//next is a tag so I check what type it is 
+						//I assume only <upcase> <mixcase> <lowcase> and </....> will be used
+						switch(originalText[nextSymbol + 1]){
+							
+							//<upper> llllll<lower>....fdfgdfg.fdg</lower> fdfsd </upper[>] ---> [>] is the nextSymbol
+							// next is closing tag so last "open" condition is removed like this:
+							// condition: "upper", "lower" - > get to point </lower> ->> condition: "upper";
+							case '/':{
+								condition.pop(); 
+								break;
+							}
+							case 'u':
+							case 'U':{
+								condition.push("upper");
+								break;
+							}
+							case 'l':
+							case 'L':{
+								condition.push("lower");
+								break;
+							}
+							case 'm':
+							case 'M':{
+								condition.push("mix");
+								break;
+							}
+							default:{
+								break;
+							}						
+						}	
+						
+						//next I move nextSymbol to the first symbol after ">"
+						
+						nextSymbol = originalText.indexOf(">",nextSymbol) + 1;
+					}
+					//originalText[nextSymbol] is symbol not inside tag and not undefined
+					if(originalText[nextSymbol]){
+						mixedText+= conditionalSymbol(originalText[nextSymbol],condition[condition.length - 1]);
+					}
+					nextSymbol++;
+				}while(nextSymbol < originalText.length);	
+
+				jsConsole.writeLine(mixedText);
+			}
+				
+		
+		function conditionalSymbol(symbol,condition){
+			var resultSymbol;
+			switch(condition){
+				case "upper":{
+					resultSymbol = symbol.toUpperCase();
+					break;
+				}
+				case "lower":{
+					resultSymbol = symbol.toLowerCase();
+					break;
+				}
+				case "mix":{
+					if(Math.random() < 0.5){
+					resultSymbol = symbol.toUpperCase();
+					}
+					else{
+						resultSymbol = symbol.toLowerCase();
+					}
+					break;
+				}
+				default: {
+					resultSymbol = symbol;
+					break;
+				}
+			}
+			return resultSymbol;
+		}
+		</script>
+	</body>
+
+ </html>

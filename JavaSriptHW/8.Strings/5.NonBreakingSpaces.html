@@ -1,0 +1,61 @@
+<html>
+	<head>
+		<title>5.Non Breaking Spaces</title>	
+		<link type="text/css" rel="stylesheet" href = "styles/commonStyleStrings.css" />
+		<style>
+			body{
+				max-width:90%;
+			}
+			#console{			
+				resize:both;
+				width:10%;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>
+			Write a function that replaces non breaking white-spaces in a text with &nbsp;		
+		</h2>			
+		<form action="#" method = "get">
+			<fieldset>
+				<legend >MixCase</legend>
+				<label for = "text">Text: </label>				
+				<textarea id = "text" rows = "10" cols = "100"  >We are livinguppercase non&nbsp;break&nbsp;here&nbsp; again low case here in a yellow submarine. We don't have anythingelse. The text from the previous ex.</textarea>
+				<a href = "#" onclick = "nonBreakingSpaces()">Non Breaking Spaces</a>			
+			</fieldset>	
+		</form>
+		
+		<div id="console"></div>
+		
+		<script src = "scripts/js-console.js"></script>
+		<script src = "scripts/libraryStrings.js"></script>
+		<script>	
+			
+			function nonBreakingSpaces(){
+				var originalText = document.getElementById("text").value;			
+				var mixedText = "";
+				var nextSymbol = 0;
+				var symb;
+				var condition = new Array("normal");
+				
+				do{
+					symb = originalText[nextSymbol];
+					
+					//originalText[nextSymbol] is symbol <not undefined>
+					if(symb){
+						if (symb == '\n\r' || symb == '&nbsp;'){
+							mixedText += '&nbsp;'
+						}
+						else{
+							mixedText += symb;
+						}
+					}
+					nextSymbol++;
+				}while(nextSymbol < originalText.length);	
+
+				jsConsole.writeLine(mixedText);
+			}			
+		</script>
+	</body>
+
+ </html>

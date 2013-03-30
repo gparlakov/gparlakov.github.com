@@ -1,0 +1,76 @@
+html,body,a,label,form,input,fieldset,h2,p,div{
+				padding:0px;
+				margin:0;
+			}
+			html>body{
+				width:960px;
+				margin:0 auto;
+				
+			}
+				body:after{
+					display:block;
+					content:"";
+					height:0px;
+					clear:both;
+				}
+				h2{
+					text-align:center;
+				}
+				
+				form{
+					display:block;
+					vertical-align:top;
+				}		
+					
+					
+					input {						
+						width:250px;
+					}
+					
+					fieldset{
+						padding: 10px 20px; 
+						margin : 20px auto;
+					}
+					
+						label,input,button{
+							vertical-align:top;
+						}
+				
+					a{
+						display:inline-block;
+						background:skyblue;		
+						padding: 10px 15px;
+						margin : 10px 20px;
+						text-decoration:none;
+						border-radius:5px;
+						width:15%;
+						text-align:center;
+					}
+					a:hover{
+						-moz-box-shadow: 2px -2px 15px #888888; /* Old Firefox */
+						box-shadow: 2px -2px 15px #888888;
+						margin-left:18px;
+					}
+					a:active
+					{
+						background-color:skyblue
+						-moz-box-shadow: none; /* Old Firefox */
+						box-shadow: none;
+						margin-left:20px;
+						color:inherit;
+					}
+					
+			#console{
+				margin-top:2%;
+				background-color:black;
+				color:white;
+				height:500px;
+				overflow:scroll;
+			}	
+			
+			#example{
+				width:75%;
+				margin:0px auto;
+				margin-top:20px;
+				font-size:1.1em;
+			}	

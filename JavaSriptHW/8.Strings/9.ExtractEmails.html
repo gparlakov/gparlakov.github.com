@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<title>9.Extract Emails</title>	
+		<link type="text/css" rel="stylesheet" href = "styles/commonStyleStrings.css" />
+		<!-- <style>
+			img{
+				width:350px;
+			}
+		</style> -->
+	</head>
+	<body>
+		<h2>
+			Write a function for extracting all email addresses from given text. All substrings that match the format <identifier>@<host>…<domain> should be recognized as emails. Return the emails as array of strings.</h2>	
+		<!-- <div id="example">	
+		<img src = 'images/task8.png' /> 
+
+		</div> -->
+		<form action="#" method = "get">
+			<fieldset>
+				<legend >Source</legend>
+				<label for = "source">This is the source: </label>				
+				<textarea rows = "10" cols = "40" id = "source" >Some text including email : gosho_t@abv.bg and another pesho@gmail.com . Then a few more with longer server like miro@kivi.score.seventh.bg, divna1__@abv.bg</textarea>
+				<a href = "#" onclick = "extractEmails()">Extract Emails</a>			
+			</fieldset>	
+		</form>
+		
+		<div id="console"></div>
+		
+		<script src = "scripts/js-console.js"></script>
+		<script src = "scripts/libraryStrings.js"></script>
+		<script>	
+			
+			function extractEmails(){
+				var source = document.getElementById("source").value;					
+				var emails = new Array();
+				var i = 0;
+				var condition = new Array("normal");
+				emails = source.match(/[\w\.]+@[\w\.]+/gi);
+				
+				for(i = 0;i < emails.length;i++){
+					jsConsole.writeLine(emails[i]);
+				}
+			}	
+		
+		</script>
+	</body>
+
+ </html>

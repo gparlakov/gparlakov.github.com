@@ -1,0 +1,31 @@
+<html>
+	<head>
+		<title>1.ReverseString</title>	
+		<link type="text/css" rel="stylesheet" href = "styles/commonStyleStrings.css" />
+		<style>
+			input{
+				width:300px;
+			}
+		</style>
+	</head>
+	<body>
+	<h2>
+		Write a JavaScript function reverses string and returns it<br/>Example: "sample" > "elpmas".
+	</h2>
+	
+	<form>	
+		<label for = "text">String to reverse: </label>
+		<input id = "text" value = "String to reverse: " />			
+		<a href = "#" onclick = "stringReverse()">Reverse string</a>				
+	</form>
+	<div id="console"></div>
+	<script src = "scripts/js-console.js"></script>	
+	<script>	
+		function stringReverse(){
+			var stringToReverse = new String(document.getElementById("text").value);
+			jsConsole.writeLine(stringToReverse.split("").reverse().join(""));
+		}
+	</script>
+	</body>
+
+ </html>

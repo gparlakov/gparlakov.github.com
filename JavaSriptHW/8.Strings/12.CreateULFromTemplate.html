@@ -1,0 +1,79 @@
+<html>
+	<head>
+		<title>12.CreateULFromTemplate</title>	
+		<link type="text/css" rel="stylesheet" href = "styles/commonStyleStrings.css" />
+		<style>
+			textarea{
+				width:500px;
+				height:100px;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>
+			Write a function that creates a HTML UL using a template for every HTML LI. The source of the list should an array of elements. Replace all placeholders marked with –{…}–   with the value of the corresponding property of the object.
+		</h2>					
+		
+		<form action="#" method = "get">
+			<fieldset>
+				<legend >Persons</legend>				
+				<label for = "name">Name: </label>
+				<input id ="name" value = "Dimityr" />
+				<label for = "age">Age: </label>
+				<input id ="age" value = "49" />
+				<a href = "#" onclick = "addPerson()">Add Person</a>	
+							
+			</fieldset>	
+		
+			<fieldset>
+				<legend >Template</legend>				
+				<label for = "text">Template</label>
+				<textarea rows = "10" cols = "40" id = "text" ><strong>-{name}-</strong> <span>-{age}-</span> </textarea>
+				<a href = "#" onclick = "generateListStart()">Generate List</a>			
+			</fieldset>	
+			
+			
+		</form>
+		
+		<div id="console"></div>
+		
+		<script src = "scripts/js-console.js"></script>
+		<script src = "scripts/libraryStrings.js"></script>
+		<script>	
+			var personList = new Array({name:"Gosho",age:21},
+										{name:"Pesho",age:22},
+										{name:"Grozdan",age:24},
+										{name:"A4o",age:29}
+										);
+										
+			function generateListStart(){
+				var tmpl = document.getElementById('text').value;				
+				var list = generateList(tmpl,personList);
+				
+				jsConsole.writeLine(list);
+				
+			}		
+			
+			function generateList(template,arrayOfPersons){
+				var arrayUl = new Array();
+				var i = 0;
+				
+				arrayUl.push('<ul>');				
+				for(i = 0;i < arrayOfPersons.length; i++){
+					arrayUl.push('<li>' + formatString(template,arrayOfPersons[i]) + '</li>');
+				}
+				arrayUl.push('</ul>');
+				
+				return arrayUl.join('');
+			}
+			
+			function addPerson(){
+				var name = document.getElementById("name").value;
+				var age = document.getElementById("age").value;
+				personList.push(generatePerson(name,age));
+				
+			}
+		</script>
+	</body>
+
+ </html>

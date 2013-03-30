@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<title>8.Parse A to Url</title>	
+		<link type="text/css" rel="stylesheet" href = "styles/commonStyleStrings.css" />
+		<style>
+			img{
+				width:350px;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>
+			Write a JavaScript function that replaces in a HTML document given as string all the tags < a href="…" >…< / a > with corresponding tags [URL=…]…/URL]. Sample HTML fragment:
+		</h2>	
+		<div id="example">	
+		<img src = 'images/task8.png' />
+
+		</div>
+		<form action="#" method = "get">
+			<fieldset>
+				<legend >Source</legend>
+				<label for = "source">This is the source: </label>				
+				<textarea rows = "10" cols = "40" id = "source" > <p>Please visit <a href="http://academy.telerik. com">our site</a> to choose a training course. Also visit <a href="www.devbg.org">our forum</a> to discuss the courses.</textarea>
+				<a href = "#" onclick = "parseAtoUrl()">Parse</a>			
+			</fieldset>	
+		</form>
+		
+		<div id="console"></div>
+		
+		<script src = "scripts/js-console.js"></script>
+		<script src = "scripts/libraryStrings.js"></script>
+		<script>	
+			
+			function parseAtoUrl(){
+				var source = document.getElementById("source").value;	
+				var href= "";
+				var parsedText = "";
+				var nextSymbol = 0;
+				var condition = new Array("normal");
+				parsedText = source.replace(/<a href="/gi,"[URL = ").replace(/">/gi,"]").replace(/<\/a\>/gi,"[/URL]");
+				
+				jsConsole.writeLine(parsedText);
+			}	
+		
+		</script>
+	</body>
+
+ </html>

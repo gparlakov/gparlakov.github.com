@@ -1,0 +1,52 @@
+<html>
+	<head>
+		<title>2.CheckBrackets</title>	
+		<link type="text/css" rel="stylesheet" href = "styles/commonStyleStrings.css" />
+		<style>
+			input{
+				width:300px;
+			}
+		</style>
+	</head>
+	<body>
+	<h2>
+		Write a JavaScript function to check if in a given expression the brackets are put correctly.
+		<br/>Example of correct expression: ((a+b)/5-d).
+		<br/>Example of incorrect expression: )(a+b)).
+	</h2>
+	
+	<form>	
+		<label for = "exp">Expression: </label>
+		<input id = "exp" value = "((a+b)/5-d) " />			
+		<a href = "#" onclick = "checkBrackets()">Check Brackets</a>				
+	</form>
+	<div id="console"></div>
+	<script src = "scripts/js-console.js"></script>	
+	<script src = "scripts/libraryStrings.js"></script> 
+	<script>	
+		function checkBrackets(){
+			var exp = new String(document.getElementById("exp").value);
+			var counter = 0;
+			for(i = 0; i < exp.length; i++){
+				if(exp[i] === "("){
+					counter++;
+				}
+				else if(exp[i] === ")"){
+					counter--;
+				}
+				if(counter < 0){
+					break;
+				}
+			}
+			if(counter === 0){
+				jsConsole.writeLine("this is a valid brackets expression");
+			}
+			else{
+				jsConsole.writeLine("this is not a valid brackets expression");
+			}	
+		}	
+		
+	</script>
+	</body>
+
+ </html>

@@ -1,0 +1,56 @@
+<html>
+	<head>
+		<title>6. HTML extract text</title>	
+		<link type="text/css" rel="stylesheet" href = "styles/commonStyleStrings.css" />
+		
+	</head>
+	<body>
+		<h2>
+			Write a function that extracts the content of a html page given as text. The function should return anything that is in a tag, without the tags:		
+		</h2>	
+		<div id="example">	
+		</div>
+		<form action="#" method = "get">
+			<fieldset>
+				<legend >Source</legend>
+				<label for = "source">This is the source: </label>				
+				<textarea id = "source" cols = "50" rows ="10" > <html><head><title>Sample site</title></head><body><div>text<div>more text</div>and more...</div>in body</body></html></textarea>
+				<a href = "#" onclick = "getText()">Get Text</a>			
+			</fieldset>	
+		</form>
+		
+		<div id="console"></div>
+		
+		<script src = "scripts/js-console.js"></script>
+		<script src = "scripts/libraryStrings.js"></script>
+		<script>	
+			
+			function getText(){
+				var source = document.getElementById("source").value;	
+				
+				var cleanText = "";
+				var nextSymbol = 0;
+				var condition = new Array("normal");
+				
+				do{
+					if(source[nextSymbol] === "<"){
+						//next is a tag so I check what type it is 
+						//I move nextSymbol to the first symbol after ">"					
+						nextSymbol = source.indexOf(">",nextSymbol);
+					}
+					else{
+						if(source[nextSymbol]){
+							cleanText+= source[nextSymbol];
+						}
+					}					
+					
+					nextSymbol++;
+				}while(nextSymbol < source.length);	
+
+				jsConsole.writeLine(cleanText);
+			}	
+		
+		</script>
+	</body>
+
+ </html>
