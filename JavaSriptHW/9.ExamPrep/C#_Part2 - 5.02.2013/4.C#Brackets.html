@@ -1,0 +1,130 @@
+<html>
+	<head>
+	<title>4.C#Brackets</title>	
+	<link type = "text/css" rel = "stylesheet" href = "styles/style.css"/>
+	<!-- <style>
+	
+	</style> -->
+	</head>
+	<body>
+	<h2>Given some Code and indent string format the code correctly
+	</h2>	
+	
+	<!-- <form"action="#" method="POST">			
+		<label for = "args">Arguments (separated by comma) =  </label>		
+		<input id="args"/>
+	<!-- </form> -->
+	
+	<a href = "#" onclick = "start()">Format Code</a>
+	<div id="console"></div>
+	<script src = "scripts/js-console.js"></script>
+	<script>
+	var args= new Array(
+					'5',
+					'....',
+					'using System;    namespace Stars{',
+					'    {class     Program{',
+					'static    string[] separators ',
+					'= new string[] { " " };}',
+					'    }}'				
+					);
+	<!-- var formatedCode = new Array(); -->
+	
+	function Solve(args){
+		var formatedCode = new String(""); 
+		var lines = parseInt(args[0]);
+		var indentStr = String(args[1]);
+		var i = 2,j = 0;
+		var line = "";
+		var indents = new String("");
+		var space = 0;
+		var nextSymbol;
+		var newLine = "";
+		
+		for(i = 2; i < lines + 2; i++){
+			line = new String(args[i]);
+			
+			for(j = 0; j < line.length;j++){
+				nextSymbol = line[j];
+				switch(nextSymbol){
+					case ' ':{
+						if(space === 0 && newLine.length > indents.length){
+							space = 1;
+						}
+						break;
+					}
+					//case '\r\n':{
+					//	space = 0;
+					//	newLine += '\n\r';
+					//	addLine();
+					//	break;
+					//}
+					
+					case '{':{						
+						if(newLine.length > indents.length){
+							addLine();
+						}
+						newLine += '{';							
+						indents += indentStr;
+						addLine();						
+						break;
+					}
+					case '}':{											
+						if(newLine.length > indents.length){
+							addLine();
+						}
+						indents = indents.substr(0,indents.length - indentStr.length);							
+						newLine = indents + '}';	
+						
+						addLine();
+						break;
+					}
+										
+					default :{
+						if(newLine.length === 0){
+							newLine += indents;
+							space = 0;
+						}
+						
+						if(space === 1){
+							newLine += ' ';
+							space = 0;
+						}
+						
+						newLine += nextSymbol;
+						
+						break;
+					}
+					
+				}
+				if(j === line.length - 1 && newLine.length > indents.length){
+					addLine();
+				}
+			}			
+		}
+		function addLine(){
+			formatedCode += newLine + '\r';//+ '<br/>'
+			newLine= "" + indents;
+			space = 0;
+		}
+		
+		return formatedCode;
+	}
+	
+	
+	
+	function start(){
+		var result = Solve(args);
+		//for (var i in result){
+			jsConsole.write(result);
+		//}
+		
+		//jsConsole.writeLine("");
+	}
+	
+	
+	</script>
+	
+	</body>
+
+ </html>

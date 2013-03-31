@@ -1,0 +1,86 @@
+<html>
+	<head>
+	<title>1.Durankolak Numbers</title>	
+	<link type = "text/css" rel = "stylesheet" href = "styles/style.css"/>
+	<!-- <style>
+	
+	</style> -->
+	</head>
+	<body>
+	<h2>We write the numbers as sequences of digits. The last digit of the number (the most right one) has a value as shown in the above table. The next digit on the left has a value 168 times bigger than the shown in the above table, the next digit on the left has 168*168 times bigger value than the shown in the table and so on. Your task is to write a program to convert a Durankulak-style number into its corresponding decimal representation..
+	</h2>
+	<p>U ->20 bM->64 BaG->200 CfI->500</p>
+
+	<form"action="#" method="POST">			
+		<label for = "args">Arguments (separated by comma) =  </label>
+		<!-- <textarea id = "text" rows = "10" cols = "30"  >A simple text for the sake of test and demo of the functionality of finding a word in a text texta TExt teXt. It will only find words not substrings! i.e. will find text but will omit atext or texta</textarea>	 -->
+		<input id="args"/>
+	</form>
+	
+	<a href = "#" onclick = "parseDurankolak()">Parse Durankolak</a>
+	<div id="console"></div>
+	<script src = "scripts/js-console.js"></script>
+	<script>
+	function parseDurankolak(){
+		var arguments = new Array();
+		arguments.push(document.getElementById("args").value);		
+		jsConsole.writeLine(Solve(arguments));		
+	}
+	
+	
+	function Solve(arguments){
+		var duranString = arguments[0];
+		var len = duranString.length;
+		var i;
+		var durankolakNums = new Array();
+		var lower = 'abcdefghijklmnopqrstuvwxyz';
+		var upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		var parsedDuran = 0;
+		var j=0;		
+		
+		for(i = 0;i < 168;i++){
+			if(i < 26){
+				durankolakNums.push(upper[i % 26]);
+			}
+			else{
+				durankolakNums.push(lower[Math.floor(i / 26) - 1] + upper[i % 26]);
+			}
+		}
+		
+		
+		if(duranString.length % 2 !== 0){
+			duranString = " " + duranString;
+			len++;
+		}
+		
+		for(i = len - 1;i >= 0; i -= 2){
+			parsedDuran += parseDuran(duranString[i - 1] + duranString[i]) * Math.pow(168,(len - i - 1) / 2) ;
+		}
+		
+		function parseDuran(str){
+			str = str.trim();
+			for(j = 0;j < 168; j++){
+				if(str == durankolakNums[j]){
+					return j;
+				}
+			}
+		}
+		
+		return parsedDuran;
+	}
+	
+	//function Solve(args){
+	//	var counter = 0;
+	//	for(var i = 0; i < args.length;i++){
+	//		counter++;
+	//	}
+	//	return counter;
+	//}
+	
+	
+	
+	</script>
+	
+	</body>
+
+ </html>

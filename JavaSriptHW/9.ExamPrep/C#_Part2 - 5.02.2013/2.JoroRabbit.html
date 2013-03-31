@@ -1,0 +1,87 @@
+<html>
+	<head>
+	<title>2.JoroRabbit</title>	
+	<link type = "text/css" rel = "stylesheet" href = "styles/style.css"/>
+	<!-- <style>
+	
+	</style> -->
+	</head>
+	<body>
+	<h2>Joro is a rabbit. But he is no ordinary rabbit – he just loves to jump around. But jumping around without any precalculated direction is too ordinary, so he likes jumping in just a given direction and to make it more fun, the jumping is done in a circle. By given terrain, help Joro find longest fun and not ordinary route of jumps.
+You are given the terrain as sequence of numbers. The terrain should form a circle, so the last number is before the first, and the first is after the last.
+	</h2>
+	
+	<form"action="#" method="POST">			
+		<label for = "args">Arguments (separated by comma) =  </label>
+		<!-- <textarea id = "text" rows = "10" cols = "30"  >A simple text for the sake of test and demo of the functionality of finding a word in a text texta TExt teXt. It will only find words not substrings! i.e. will find text but will omit atext or texta</textarea>	 -->
+		<input id="args"/>
+	</form>
+	
+	<a href = "#" onclick = "joroRabbit()">Find Jump Route</a>
+	<!-- <div id="console"></div> -->
+	<!-- <script src = "scripts/js-console.js"></script> -->
+	<script>
+	function joroRabbit(){
+		var arguments = document.getElementById("args").value;
+		
+		console.log(Solve(arguments));		
+	}
+	
+	
+	function Solve(arguments){
+		var i = 0;
+		var jumpLen = 1,jump = 0;
+		var maxRoute = 0,currentRoute = 0;
+		var nextNode = 0,currentNode = 0;		
+		var args = arguments[0].split(',');		
+		var len = args.length;
+		
+		for(i = 0;i < len;i++){
+			args[i] = parseInt(args[i]);
+		}
+		
+		for(i = 0; i < len ;i++){
+			for(jump = 1;jump < len;jump++){
+				currentRoute = 1;
+				currentNode = i;
+				while(true){
+					if((currentNode + jump) >= len){
+						nextNode = jump - (len - currentNode);
+					}
+					else{
+						nextNode = currentNode + jump;
+					}
+					
+					if(args[nextNode] > args[currentNode]){
+						currentRoute ++;
+						currentNode = nextNode;
+					}
+					else{
+						break;
+					}
+				}
+				
+				if(currentRoute > maxRoute){
+					maxRoute = currentRoute;
+				}	
+				
+			}		
+		}	
+		return maxRoute;
+	}
+	
+	//function Solve(args){
+	//	var counter = 0;
+	//	for(var i = 0; i < args.length;i++){
+	//		counter++;
+	//	}
+	//	return counter;
+	//}
+	
+	
+	
+	</script>
+	
+	</body>
+
+ </html>

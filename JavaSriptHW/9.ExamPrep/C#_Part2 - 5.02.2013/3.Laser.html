@@ -1,0 +1,190 @@
+<html>
+	<head>
+	<title>3.Laser</title>	
+	<link type = "text/css" rel = "stylesheet" href = "styles/style.css"/>
+	<!-- <style>
+	
+	</style> -->
+	</head>
+	<body>
+	<h2>
+		Given a cuboid with width,height,depth, made from cubes. A laser is shot and in one of 26 directions and burnes all cubes in its path until it reaches buned one where stips. On wall it is reflected like light reflects. Where will it end given a start point? 
+	</h2>
+	
+	<form"action="#" method="POST">			
+		<label for = "args">Arguments (separated by comma) =  </label>
+		<!-- <textarea id = "text" rows = "10" cols = "30"  >A simple text for the sake of test and demo of the functionality of finding a word in a text texta TExt teXt. It will only find words not substrings! i.e. will find text but will omit atext or texta</textarea>	 -->
+		<input id="args"/>
+	</form>
+	
+	<a href = "#" onclick = "shootLaser()">Shoot Laser</a>
+	<div id="console"></div>
+	<script src = "scripts/js-console.js"></script>
+	<script>
+	function shootLaser(){
+		<!-- var arguments = document.getElementById("args").value; -->
+		var args = new Array(
+			"5 10 5",
+			"2 6 3",
+			"1 1 1"
+		);
+		Solve(args);		
+	}
+	
+	
+	function Solve(args){
+		var dimensions = args[0].split(' ');
+		var width = parseInt(dimensions[0]);
+		var height = parseInt(dimensions[1]);
+		var depth = parseInt(dimensions[2]);
+		var cuboid = new Array();
+		var current = copy(args[1].split(' '));
+		var direction = copy(args[2].split(' '));
+		var lastVisited = copy(current);
+		var burnSign = 5;
+		
+		initializeCuboid();
+		
+		//drawCube();
+		
+		var result = fireLaser(current,direction).join(' ');
+		jsConsole.writeLine(result);
+		return result;
+		
+		function fireLaser(current,direction){
+			do{
+				if(isBurned(current) === true) {
+					return lastVisited;
+				}
+				
+				burn(current);
+				
+				drawCube();
+				
+				direction = checkDirection(current,direction);
+				
+				lastVisited = copy(current);
+				
+				current = getNext(current,direction);
+				
+			}while(true);
+		
+		}
+		
+		function getNext(current,direction){
+			
+			next = new Array();
+			
+			next[0] = parseInt(current[0] + direction[0]);
+			next[1] = parseInt(current[1] + direction[1]);
+			next[2] = parseInt(current[2] + direction[2]);
+			                                           
+			return next;
+		}
+		
+		function initializeCuboid(){
+			var w,h,d;
+			
+			for(w = 0; w < width; w++){
+				cuboid.push(new Array());
+				for(h = 0; h < height; h++){
+					cuboid[w].push(new Array());					
+					for(d = 0; d < depth; d++){
+						if((w === 0 || w === width - 1) && (h === 0 || h === height - 1)){
+							cuboid[w][h].push(0);
+						}
+						else if((h === 0 || h === height - 1) && (d === 0 || d === depth - 1)){
+							cuboid[w][h].push(0);
+						}
+						else if((w === 0 || w === width - 1) && (d === 0 || d === depth - 1)){
+							cuboid[w][h].push(0);
+						}
+						else{
+							cuboid[w][h].push(1);
+						}
+					}
+				}
+			}		
+		}
+		
+		//current and direction are Array(3) 
+		//holding w,h,d 
+		function checkDirection(current,direction){
+			var dirW = parseInt(direction[0]);
+			var dirH = parseInt(direction[1]);
+			var dirD = parseInt(direction[2]);
+			
+			var nextW = parseInt(current[0] + direction[0]);
+			var nextH = parseInt(current[1] + direction[1]);
+			var nextD = parseInt(current[2] + direction[2]);
+			
+			
+			if(nextW > width - 1 || nextW < 0) {
+				dirW = - dirW;
+			}
+			if(nextH > height - 1 || nextH < 0) {
+				dirH = - dirH;
+			}
+			if(nextD > depth - 1 || nextD < 0) {
+				dirD = - dirD
+			}
+			
+			return new Array(dirW,dirH,dirD);						
+		}	
+		
+		function burn(curr){
+			cuboid[curr[0]][curr[1]][curr[2]] = burnSign;
+		}
+		
+		function isBurned(curr){
+			if(cuboid[curr[0]][curr[1]][curr[2]] !== 1){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		
+		function copy(array){
+			var newArray = new Array();
+			for(var i = 0; i < array.length; i++){
+				newArray[i] = parseInt(array[i]);
+			}
+			return newArray;
+		}
+		
+		
+		function drawCube(){
+			var w,h,d;
+			
+			for(h = 0; h < height; h++){
+				for(d = 0; d < depth; d++){
+					for(w = 0; w < width; w++){
+						jsConsole.write(cuboid[w][h][d]);
+					}
+					jsConsole.write("+");
+				}
+				jsConsole.writeLine("");
+			}
+			
+		jsConsole.writeLine("------------------------------------------------");
+		}
+		
+		
+	}
+	
+	//function Solve(args){
+	//	var counter = 0;
+	//	for(var i = 0; i < args.length;i++){
+	//		counter++;
+	//	}
+	//	return counter;
+	//}
+	
+	
+	
+	</script>
+	
+	</body>
+
+ </html>
