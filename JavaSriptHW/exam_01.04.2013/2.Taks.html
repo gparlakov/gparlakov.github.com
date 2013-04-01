@@ -1,0 +1,135 @@
+<html>
+	<head><title>2.Task</title><link type = "text/css" rel = "stylesheet" href = "styles/style.css"/>	<!-- <style>	</style> --></head>
+	<body>
+	<h2>Exam task 2
+	</h2>
+	
+
+	<form"action="#" method="POST">			
+		<label for = "args">Arguments (separated by comma) =  </label>
+		<!-- <textarea id = "text" rows = "10" cols = "30"  >A simple text for the sake of test and demo of the functionality of finding a word in a text texta TExt teXt. It will only find words not substrings! i.e. will find text but will omit atext or texta</textarea>	 -->
+		<input id="args"/>
+	</form>
+	
+	<a href = "#" onclick = "task2()">Task 2</a>
+	<div id="console"></div>
+	<script src = "scripts/js-console.js"></script>
+	<script>
+	function task2(){
+	    var args = new Array('3 4','1 3','lrrd','dlll','rddd');
+		//arguments.push(document.getElementById("args").value);		
+		jsConsole.writeLine(Solve(args));		
+	}
+		
+	function Solve(args){
+	    var firstRow = args[0].split(' ');
+	    var secondRow = args[1].split(' ');
+	    var rows = parseInt(firstRow[0]);
+	    var cols = parseInt(firstRow[1]);
+	    var startRow = parseInt(secondRow[0]);
+	    var startCol = parseInt(secondRow[1]);
+	    var directions = new Array();
+	    var numbers = new Array();
+	    var i = 2;
+	    var r, c;
+	    var currSum = 0, cellsPassed = 0;
+
+	    for (i = 2; i < 2 + rows; i++) {
+	        directions.push(String(args[i]));
+	    }
+
+	    for (r = 0; r < rows; r++) {
+	        numbers.push(new Array());
+	        for (c = 0; c < cols; c++) {
+	            numbers[r].push(parseInt(c + 1 + cols * r));
+	        }
+	    }
+	    var result = start(startRow, startCol);
+	    jsConsole.writeLine(result);
+	    return result;
+
+	    function start(startRow,startCol){
+	        var curRow = startRow;
+	        var curCol = startCol;
+	        var endString = '';
+	        do {
+	            if (isInside(curRow,curCol) && numbers[curRow][curCol] !== 'passed') {
+	                cellsPassed++;
+	                currSum += parseInt(numbers[curRow][curCol]);
+	                numbers[curRow][curCol] = 'passed';
+	                if (checkRow(curRow, curCol) !== 0) {
+	                    curCol += checkRow(curRow, curCol);
+	                }
+	                else {
+	                    curRow += checkCol(curRow, curCol);
+	                }
+	            }
+	            else {
+	                if (!isInside(curRow, curCol)) {
+	                    endString = 'out ' + currSum;
+	                }
+	                else if (numbers[curRow][curCol] === 'passed') {
+	                    endString = 'lost ' + cellsPassed;
+	                }
+	                break;
+	            }	            
+
+	        } while (true);
+	        return endString;
+	    }
+     
+	    function isInside(curRow, curCol) {
+	        var isIns = true;
+	        if (curRow > rows - 1 || curRow < 0 || curCol > cols - 1 || curCol < 0) {
+	            isIns = false;
+	        }
+
+	        return isIns;
+	    }
+
+	    function checkRow(curRow, curCol) {
+	        var result = 0;	        
+	        switch(directions[curRow][curCol]){
+	            case 'l': {
+	                result = -1;
+	                break;
+	            }
+	            case 'r': {
+	                result = 1;
+	                break;
+	            }
+	            default:{
+	                break;
+	            }
+	        }
+
+	        return result;
+	    }
+
+
+	    function checkCol(curRow, curCol) {
+	        var result = 0;
+	        switch (directions[curRow][curCol]) {
+	            case 'u': {
+	                result = -1;
+	                break;
+	            }
+	            case 'd': {
+	                result = 1;
+	                break;
+	            }
+	            default: {
+	                break;
+	            }
+	        }
+
+	        return result;
+	    }
+	}
+	
+	
+	</script>
+	
+	</body>
+
+ </html>

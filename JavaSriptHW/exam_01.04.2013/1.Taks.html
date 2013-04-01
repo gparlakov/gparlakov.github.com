@@ -1,0 +1,56 @@
+<html>
+	<head><title>1. Task</title><link type = "text/css" rel = "stylesheet" href = "styles/style.css"/>	<!-- <style>	</style> --></head>
+	<body>
+	<h2>Exam task 1
+	</h2>
+	
+
+	<form"action="#" method="POST">			
+		<label for = "args">Arguments (separated by comma) =  </label>
+		<!-- <textarea id = "text" rows = "10" cols = "30"  >A simple text for the sake of test and demo of the functionality of finding a word in a text texta TExt teXt. It will only find words not substrings! i.e. will find text but will omit atext or texta</textarea>	 -->
+		<input id="args"/>
+	</form>
+	
+	<a href = "#" onclick = "task1()">Task 1</a>
+	<div id="console"></div>
+	<script src = "scripts/js-console.js"></script>
+	<script>
+	function task1(){
+	    var args = new Array('8', '1', '6', '-9', '4', '4', '-2', '10', '-1');
+		//args.push(document.getElementById("args").value);		
+		jsConsole.writeLine(Solve(args));		
+	}
+		
+	function Solve(args) {
+	    var numbers = new Array();
+	    var len = parseInt(args[0]);
+	    var i = 0, j = 0;
+	    var currSum = 0,maxSum = -2000000;
+
+	    for (i = 1; i < len + 1; i++) {
+	        numbers.push(parseInt(args[i]));
+	    }
+
+	    for(i = 0; i < len; i++){
+	        currSum = numbers[i];
+	        if (currSum > maxSum) {
+	            maxSum = currSum;
+	        }
+	        for (j = i + 1; j < len; j++) {
+	            currSum += numbers[j];
+	            if (currSum > maxSum) {
+	                maxSum = currSum;
+	            }
+	            //else {
+	            //    break;
+	            //}
+	        }
+	    }
+	    return maxSum;		
+	}
+	
+	</script>
+	
+	</body>
+
+ </html>

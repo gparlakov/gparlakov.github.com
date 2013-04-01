@@ -1,0 +1,218 @@
+<html>
+	<head><title>3.Task </title><link type = "text/css" rel = "stylesheet" href = "styles/style.css"/>	<!-- <style>	</style> --></head>
+	<body>
+	<h2>Exam task 3
+	</h2>
+	
+
+	<form"action="#" method="POST">			
+		<label for = "args">Arguments (separated by comma) =  </label>
+		<!-- <textarea id = "text" rows = "10" cols = "30"  >A simple text for the sake of test and demo of the functionality of finding a word in a text texta TExt teXt. It will only find words not substrings! i.e. will find text but will omit atext or texta</textarea>	 -->
+		<input id="args"/>
+	</form>
+	
+	<a href = "#" onclick = "task3()">Task 3</a>
+	<div id="console"></div>
+	<!--<script src = "scripts/js-console.js"></script>-->
+	<script>
+	function task3(){
+	    var args = new Array('def func sum[1, 2,   3, -6]',
+            'def newList [func, 10,    11]',
+            'def newFunc sum[func, 100, newList]',
+            ' [newFunc]'
+            );
+		//arguments.push(document.getElementById("args").value);		
+		console.log(Solve(args));		
+	}
+		
+	function Solve(args){
+	    var i = 0;
+        var len = args.length;
+        var list = new Object();
+        var mainResult = '';
+
+	    for (i = 0; i < len; i++) {
+	        mainResult = parseLine(args[i]);
+	    }
+
+
+
+	    function parseLine(line) {
+	        var openArgs = line.indexOf('[');
+	        var closeArgs = line.lastIndexOf(']');
+
+	        var lineCommand = cleanWhites(line.substr(0, openArgs).split(' '));
+
+	        var lineArgs = line.substr(openArgs, closeArgs - openArgs + 1);
+            
+	        if (lineCommand[0] === 'def') {
+                // def varName sum[1,2,3,4,]
+	            if (lineCommand.length > 2) {
+	                addLine(lineCommand[1],lineArgs,lineCommand[2]);
+	            }
+	            else {
+	                addLine(lineCommand[1], lineArgs);
+	                
+	            }
+	        }
+	        else {	            
+	            return doCommand(lineCommand[0], lineArgs);
+	        }
+	    }
+
+	    function addLine(varName,args,command) {
+	        commResult = args.substr(1,args.length - 2);
+
+	        if (command) {
+	            commResult = doCommand(command, args);
+	        }
+	        else {
+	            commResult = splitArgs(commResult).join(',');
+	        }
+	        list[varName] = commResult;	        
+	    }
+
+
+	    function doCommand(comm, args) {
+	        var result = 0;
+	        args = args.substr(1, args.length - 2);
+	        switch (comm) {
+	            case 'min': {
+	                result = getMin(args);
+	                break;
+	            }
+	            case 'max': {
+	                result = getMax(args);
+	                break;
+	            }
+	            case 'sum': {
+	                result = getSum(args);
+	                break;
+	            }
+	            case 'avg': {
+	                result = getAvg(args);
+	                break;
+	            }
+	            default: {
+	                result = list[args.trim()];
+	                break;
+	            }
+	        }
+
+	        return result;
+	    }
+
+	    function getMax(args) {
+	        var l = 0;
+	        var numbers = splitArgs(args);
+	        var max = numbers[0];
+
+	        for (l = 0; l < numbers.length; l++) {
+	            if (numbers[l] > max) {
+	                max = numbers[l];
+	            }
+	        }
+
+	        return max;
+	    }
+
+	    function getMin(args) {
+	        var l = 0;
+	        var numbers = splitArgs(args);
+	        var min = numbers[0];
+
+	        for (l = 0; l < numbers.length; l++) {
+	            if (numbers[l] < min) {
+	                min = numbers[l];
+	            }
+	        }
+
+	        return min;
+	    }
+
+	    function getSum(args) {
+	        var l = 0;
+	        var numbers = splitArgs(args);
+	        var sum = 0;
+
+	        for (l = 0; l < numbers.length; l++) {
+	            sum += numbers[l];
+	        }
+
+	        return sum;
+	    }
+
+	    function getAvg(args) {
+	        var sum = 0,l = 0;
+	        var numbers = splitArgs(args);
+
+	        for (l = 0; l < numbers.length; l++) {
+	            sum += numbers[l];
+	        }
+	        
+	        return parseInt(sum / numbers.length);
+	    }
+
+
+	    //returns an array of numbers also reads vars that are already varred :) (varosani) 
+        // from an array split by ','
+	    function splitArgs(args) {
+	        var k = 0,m = 0;
+	        var argsSplit = args.split(",");
+	        var argsSplitAndParsed = new Array();
+	        var lineTemp = '';
+	        var tempArr;
+
+	        argsSplit = cleanWhites(argsSplit);
+
+	        for (k = 0; k < argsSplit.length; k++) {
+	            if (list[argsSplit[k]] === 'undefined') {
+	                return;
+	            }
+
+	            if (isNaN(parseInt(argsSplit[k]))) {
+	                //if(){
+	                //   argsSplitAndParsed.push( parseInt(list[argsSplit[k]]));
+	                //}
+	                lineTemp = list[argsSplit[k]];
+
+	                if (isNaN(lineTemp)) {
+	                    tempArr = splitArgs(lineTemp);
+	                    for (m = 0; m < tempArr.length; m++) {
+	                        argsSplitAndParsed.push(tempArr[m]);
+	                    }
+	                }
+	                else {
+	                    argsSplitAndParsed.push(parseInt(lineTemp));
+	                }
+	            }
+	            else {
+	                argsSplitAndParsed.push(parseInt(argsSplit[k]));
+	            }
+	        }
+
+	        return argsSplitAndParsed;
+	    }
+
+	    //cleans whitespaces out of array of strings!!
+	    function cleanWhites(arr) {
+	        var result = new Array();
+	        var j = 0;
+
+	        for (j = 0; j < arr.length; j++) {
+	            if (arr[j] !== "" && arr[j] !== " ") {
+	                result.push(arr[j].trim());
+	            }
+	        }
+
+	        return result;
+	    }
+
+	    return mainResult;	    
+	}
+	
+	</script>
+	
+	</body>
+
+ </html>
