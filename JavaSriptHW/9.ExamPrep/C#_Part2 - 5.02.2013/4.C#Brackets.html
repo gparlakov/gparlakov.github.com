@@ -9,7 +9,17 @@
 	<body>
 	<h2>Given some Code and indent string format the code correctly
 	</h2>	
-	
+	<div>
+		<p>Input:</p>
+		<p>5                                </p>
+		<p>....  = separator string          </p>
+		<p>using System;    namespace Stars{</p>
+		<p>    {class     Program{          </p>
+		<p>static    string[] separators    </p>
+		<p>= new string[] { " " };}         </p>
+		<p>    }}				             </p>
+		
+	</div>
 	<!-- <form"action="#" method="POST">			
 		<label for = "args">Arguments (separated by comma) =  </label>		
 		<input id="args"/>
@@ -19,7 +29,7 @@
 	<div id="console"></div>
 	<script src = "scripts/js-console.js"></script>
 	<script>
-	var args= new Array(
+	var args = new Array(
 					'5',
 					'....',
 					'using System;    namespace Stars{',
@@ -103,7 +113,7 @@
 			}			
 		}
 		function addLine(){
-			formatedCode += newLine + '\r';//+ '<br/>'
+			formatedCode += newLine + '<br/>'; //'\r';//
 			newLine= "" + indents;
 			space = 0;
 		}
@@ -124,7 +134,9 @@
 	
 	
 	</script>
-	
+	<footer>
+		I've added '&ltbr\&gt' for right display here. In the bgcoder tests it's '\r'
+	</footer>
 	</body>
 
  </html>

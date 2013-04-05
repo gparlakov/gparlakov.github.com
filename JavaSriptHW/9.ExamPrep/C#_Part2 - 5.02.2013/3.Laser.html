@@ -2,9 +2,15 @@
 	<head>
 	<title>3.Laser</title>	
 	<link type = "text/css" rel = "stylesheet" href = "styles/style.css"/>
-	<!-- <style>
-	
-	</style> -->
+	<style>
+	.buttons{
+		margin:10px auto;
+		text-align:center;	
+	}
+	#console{
+		font-size:10px;
+	}
+	</style>
 	</head>
 	<body>
 	<h2>
@@ -29,16 +35,32 @@
 		so the leftmost matrix is the first(the closest to you) "wall" of the cube and the rightmost is the last(furthest) wall
 		also for easier writing the bottom and top have changed places - bottom is on top and vise versa :)
 	</p>
-	<a href = "#" onclick = "shootLaser()">Shoot Laser</a>
+	<p>
+		Path of laser is marked with 5 for better view. The first draw is the starting point and the last is where it stops.
+	</p>
+	<div class = 'buttons'>
+		<a href = "#" onclick = "zeroTest()">Zero Test</a>
+		<a href = "#" onclick = "myTest()">One more</a>
+	</div>
 	<div id="console"></div>
 	<script src = "scripts/js-console.js"></script>
 	<script>
-	function shootLaser(){
+	function zeroTest(){
 		<!-- var arguments = document.getElementById("args").value; -->
 		var args = new Array(
 			'5 10 5',
 			'2 6 3',
 			'1 0 1' 
+		);
+		Solve(args);		
+	}
+	
+	function myTest(){
+		<!-- var arguments = document.getElementById("args").value; -->
+		var args = new Array(
+			'5 10 5',
+			'2 2 1',
+			'1 1 1' 
 		);
 		Solve(args);		
 	}
