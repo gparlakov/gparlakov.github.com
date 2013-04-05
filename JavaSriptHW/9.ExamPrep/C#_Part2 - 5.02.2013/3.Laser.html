@@ -24,11 +24,11 @@
 	function shootLaser(){
 		<!-- var arguments = document.getElementById("args").value; -->
 		var args = new Array(
-			"5 10 5",
-			"2 6 3",
-			"1 1 1"
+			'5 10 5',
+			'0 2 1',
+			'1 1 1' 
 		);
-		Solve(args);		
+		console.log(Solve(args));		
 	}
 	
 	
@@ -45,7 +45,7 @@
 		
 		initializeCuboid();
 		
-		//drawCube();
+		drawCube();
 		
 		var result = fireLaser(current,direction).join(' ');
 		jsConsole.writeLine(result);
@@ -75,9 +75,9 @@
 			
 			next = new Array();
 			
-			next[0] = parseInt(current[0] + direction[0]);
-			next[1] = parseInt(current[1] + direction[1]);
-			next[2] = parseInt(current[2] + direction[2]);
+			next[0] = parseInt(current[0]) + parseInt(direction[0]);
+			next[1] = parseInt(current[1]) + parseInt(direction[1]);
+			next[2] = parseInt(current[2]) + parseInt(direction[2]);
 			                                           
 			return next;
 		}
@@ -114,9 +114,9 @@
 			var dirH = parseInt(direction[1]);
 			var dirD = parseInt(direction[2]);
 			
-			var nextW = parseInt(current[0] + direction[0]);
-			var nextH = parseInt(current[1] + direction[1]);
-			var nextD = parseInt(current[2] + direction[2]);
+			var nextW = parseInt(current[0]) + parseInt(direction[0]);
+			var nextH = parseInt(current[1]) + parseInt(direction[1]);
+			var nextD = parseInt(current[2]) + parseInt(direction[2]);
 			
 			
 			if(nextW > width - 1 || nextW < 0) {
@@ -155,11 +155,14 @@
 		
 		
 		function drawCube(){
-			var w,h,d;
+			var w,h,d,p; //p for perspective view
 			
 			for(h = 0; h < height; h++){
 				for(d = 0; d < depth; d++){
 					for(w = 0; w < width; w++){
+						//for(p = 0;p < depth - d - 1;p++){
+						//	jsConsole.writeLine(" ");
+						//}
 						jsConsole.write(cuboid[w][h][d]);
 					}
 					jsConsole.write("+");
