@@ -11,12 +11,12 @@
 		Given a cuboid with width,height,depth, made from cubes. A laser is shot and in one of 26 directions and burnes all cubes in its path until it reaches buned one where stips. On wall it is reflected like light reflects. Where will it end given a start point? 
 	</h2>
 	
-	<form"action="#" method="POST">			
+	<!-- <form"action="#" method="POST">			
 		<label for = "args">Arguments (separated by comma) =  </label>
-		<!-- <textarea id = "text" rows = "10" cols = "30"  >A simple text for the sake of test and demo of the functionality of finding a word in a text texta TExt teXt. It will only find words not substrings! i.e. will find text but will omit atext or texta</textarea>	 -->
+		<textarea id = "text" rows = "10" cols = "30"  >A simple text for the sake of test and demo of the functionality of finding a word in a text texta TExt teXt. It will only find words not substrings! i.e. will find text but will omit atext or texta</textarea>	
 		<input id="args"/>
-	</form>
-	
+	</form> -->
+	<p>The test is hardcoded. If you want to change it  </p>
 	<a href = "#" onclick = "shootLaser()">Shoot Laser</a>
 	<div id="console"></div>
 	<script src = "scripts/js-console.js"></script>
@@ -25,13 +25,13 @@
 		<!-- var arguments = document.getElementById("args").value; -->
 		var args = new Array(
 			'5 10 5',
-			'0 2 1',
-			'1 1 1' 
+			'2 6 3',
+			'1 0 1' 
 		);
-		console.log(Solve(args));		
+		Solve(args);		
 	}
 	
-	
+	//the requirment for function Solve(args) from bgcoder.com
 	function Solve(args){
 		var dimensions = args[0].split(' ');
 		var width = parseInt(dimensions[0]);
@@ -41,14 +41,14 @@
 		var current = copy(args[1].split(' '));
 		var direction = copy(args[2].split(' '));
 		var lastVisited = copy(current);
-		var burnSign = 5;
+		var burnSign = 5;// this is a 5 for better veiw of the laser-path
 		
 		initializeCuboid();
 		
-		drawCube();
+		//drawCube(); //this is the start cube with burned edges
 		
 		var result = fireLaser(current,direction).join(' ');
-		jsConsole.writeLine(result);
+		jsConsole.writeLine(result); // comment before send // result is the coordinates of the last cube the laser has burned
 		return result;
 		
 		function fireLaser(current,direction){
@@ -59,7 +59,7 @@
 				
 				burn(current);
 				
-				drawCube();
+				drawCube(); // comment before send
 				
 				direction = checkDirection(current,direction);
 				
@@ -84,19 +84,21 @@
 		
 		function initializeCuboid(){
 			var w,h,d;
-			
-			for(w = 0; w < width; w++){
+			cuboid.push("empty"); // so the cuboid[0] is empty and we start from the cuboid[1]
+			for(w = 1; w <= width; w++){
 				cuboid.push(new Array());
-				for(h = 0; h < height; h++){
-					cuboid[w].push(new Array());					
-					for(d = 0; d < depth; d++){
-						if((w === 0 || w === width - 1) && (h === 0 || h === height - 1)){
+				cuboid[w].push("empty"); // so the cuboid[0][0] is empty and we start from the cuboid[1][1]
+				for(h = 1; h <= height; h++){
+					cuboid[w].push(new Array());
+					cuboid[w][h].push("empty");	// so the cuboid[0][0][0] is empty and we start from the cuboid[1][1][1]
+					for(d = 1; d <= depth; d++){
+						if((w === 1 || w === width) && (h === 1 || h === height)){
 							cuboid[w][h].push(0);
 						}
-						else if((h === 0 || h === height - 1) && (d === 0 || d === depth - 1)){
+						else if((h === 1 || h === height) && (d === 1 || d === depth)){
 							cuboid[w][h].push(0);
 						}
-						else if((w === 0 || w === width - 1) && (d === 0 || d === depth - 1)){
+						else if((w === 1 || w === width) && (d === 1 || d === depth)){
 							cuboid[w][h].push(0);
 						}
 						else{
@@ -108,7 +110,7 @@
 		}
 		
 		//current and direction are Array(3) 
-		//holding w,h,d 
+		//holding width,height,depth 
 		function checkDirection(current,direction){
 			var dirW = parseInt(direction[0]);
 			var dirH = parseInt(direction[1]);
@@ -119,13 +121,13 @@
 			var nextD = parseInt(current[2]) + parseInt(direction[2]);
 			
 			
-			if(nextW > width - 1 || nextW < 0) {
+			if(nextW > width || nextW < 1) {
 				dirW = - dirW;
 			}
-			if(nextH > height - 1 || nextH < 0) {
+			if(nextH > height || nextH < 1) {
 				dirH = - dirH;
 			}
-			if(nextD > depth - 1 || nextD < 0) {
+			if(nextD > depth || nextD < 1) {
 				dirD = - dirD
 			}
 			
@@ -153,16 +155,15 @@
 			return newArray;
 		}
 		
-		
+		//draws the cube as matrixes of depth 1,2,3, ... devided by '+'
+		//so the leftmost matrix is the first "wall" of the cube and the rightmost is the last wall
+		//also for easier writing the bottom and top have changed places - bottom is on top and vise versa :)
 		function drawCube(){
-			var w,h,d,p; //p for perspective view
+			var w,h,d; 
 			
-			for(h = 0; h < height; h++){
-				for(d = 0; d < depth; d++){
-					for(w = 0; w < width; w++){
-						//for(p = 0;p < depth - d - 1;p++){
-						//	jsConsole.writeLine(" ");
-						//}
+			for(h = 1; h <= height; h++){
+				for(d = 1; d <= depth; d++){
+					for(w = 1; w <= width; w++){
 						jsConsole.write(cuboid[w][h][d]);
 					}
 					jsConsole.write("+");
@@ -170,21 +171,11 @@
 				jsConsole.writeLine("");
 			}
 			
-		jsConsole.writeLine("------------------------------------------------");
+			jsConsole.writeLine("------------------------------------------------");
 		}
 		
 		
-	}
-	
-	//function Solve(args){
-	//	var counter = 0;
-	//	for(var i = 0; i < args.length;i++){
-	//		counter++;
-	//	}
-	//	return counter;
-	//}
-	
-	
+	}	
 	
 	</script>
 	
