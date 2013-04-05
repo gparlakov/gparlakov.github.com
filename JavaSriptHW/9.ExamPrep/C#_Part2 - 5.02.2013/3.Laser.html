@@ -8,7 +8,7 @@
 	</head>
 	<body>
 	<h2>
-		Given a cuboid with width,height,depth, made from cubes. A laser is shot and in one of 26 directions and burnes all cubes in its path until it reaches buned one where stips. On wall it is reflected like light reflects. Where will it end given a start point? 
+		Given a cuboid with width,height,depth, made from cubes. A laser is shot from a given starting point in one of 26 directions and burnes all cubes in its path until it reaches buned one where stips. On wall it is reflected like light reflects. Where will it end given a start point? 
 	</h2>
 	
 	<!-- <form"action="#" method="POST">			
@@ -16,7 +16,19 @@
 		<textarea id = "text" rows = "10" cols = "30"  >A simple text for the sake of test and demo of the functionality of finding a word in a text texta TExt teXt. It will only find words not substrings! i.e. will find text but will omit atext or texta</textarea>	
 		<input id="args"/>
 	</form> -->
-	<p>The test is hardcoded. If you want to change it  </p>
+	<p>
+		The test is hardcoded.And it is:
+			<p> var args = new Array(<p>
+			<p>'5 10 5', //width height depth of cuboid</p> 
+			<p>'2 6 3',  //starting point</p>
+			<p>'1 0 1'	 //direction (+1 width 0 height +1 depth) effectively moving on 6-th "floor" </p>
+		); 
+	</p>
+	<p>
+		I'm displaying the cuboid on "console"  as matrixes of depth 1,2,3, ... devided by '+' and a new draw for each move of the laser
+		so the leftmost matrix is the first(the closest to you) "wall" of the cube and the rightmost is the last(furthest) wall
+		also for easier writing the bottom and top have changed places - bottom is on top and vise versa :)
+	</p>
 	<a href = "#" onclick = "shootLaser()">Shoot Laser</a>
 	<div id="console"></div>
 	<script src = "scripts/js-console.js"></script>
