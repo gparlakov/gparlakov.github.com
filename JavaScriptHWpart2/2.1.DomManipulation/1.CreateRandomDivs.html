@@ -1,0 +1,128 @@
+<html>
+	<head>
+		<title>1.CreateRandomDivs</title>	
+		<link type="text/css" rel="stylesheet" href = "styles/commonStyles.css" />
+		<style>
+			#stopBtn{
+				display:none;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>
+			Write a script that creates a number of div elements.
+		</h2>	
+		<div id="example">
+			<ul>Each div element must have the following
+				<li>Random width and height between 20px and 100px</li>
+				<li>Random background color</li>
+				<li>Random font color</li>
+				<li>Random position on the screen (position:absolute)</li>
+				<li>A strong element with text "div" inside the div</li>
+				<li>Random border-radius</li>
+				<li>Random border color</li>
+				<li>Random border-width between 1px and 20px</li>
+			</ul>
+		</div>
+		<form action="#" method = "get">
+			<!-- <fieldset>
+				<legend >Source</legend>
+				<label for = "source">This is the source: </label>				
+				<textarea rows = "10" cols = "40" id = "source" >Some text including email : gosho_t@abv.bg and another pesho@gmail.com . Then a few more with longer server like miro@kivi.score.seventh.bg, divna1__@abv.bg</textarea>
+				 -->
+				<label for="numDivs">Specify Number of Divs to Create or Leave Random for, guess :), random</label>
+				<input type="text" id="numDivs" value = "Random"/>
+				<a href = "#" onclick = "generateDivsStart()">Generate Divs</a>
+				<a href = "#" onclick = "startDisco()">Disco</a>		
+				<a href = "#" id = "stopBtn" onclick = "endDisco()">End Disco</a>	
+			<!-- </fieldset>	 -->
+		</form>
+		
+		<div id="wrapper"></div>
+		
+		<!-- <script src = "scripts/js-console.js"></script> -->
+		<!-- <script src = "scripts/libraryStrings.js"></script> -->
+		<script>			
+			var disco;
+			var wrapper = document.getElementById("wrapper");
+			
+			function startDisco() {				
+					disco = setInterval(generateDivsStart,30);	
+					document.getElementById("stopBtn").style.display = "inline";
+			}
+			function endDisco() {
+				window.clearInterval(disco);
+				wrapper.innerHTML = "";
+				document.getElementById("stopBtn").style.display = "";
+			}
+			function generateDivsStart() {
+				var numDivs = document.getElementById("numDivs").value;
+				
+				if(numDivs.toLowerCase() === "random"){
+					numDivs = parseInt(Math.random() * 100);
+				}
+				else{
+					numDivs = parseInt(numDivs);
+				}
+				
+				if(isNaN(numDivs)){
+					wrapper.innerHTML = "<p>This is not a number</p>";
+				}
+				else{
+					wrapper.innerHTML = "";
+					wrapper.appendChild(generateDivs(numDivs));
+				}
+			}	
+		
+			function generateDivs(number) {
+				var divs = document.createDocumentFragment();
+				
+				for(var i = 0;i < number;i++) {					
+					var newDiv = generateRandomDiv();
+					newDiv.innerHTML = "This is " + (i + 1) + " <strong>div</strong>";
+					divs.appendChild(newDiv);
+				}		
+				
+				wrapper.appendChild(divs);
+			}
+			//will return randomly styled div
+			function generateRandomDiv() {
+				var newDiv = document.createElement("div");
+				var height = generateRandomNumber(20,100);
+				newDiv.style.backgroundColor = genereteRandomColor();				
+				newDiv.style.width = generateRandomNumber(20,100) + "px";
+				newDiv.style.higth = height + "px";
+				newDiv.style.fontSize = parseInt(height / 5) + "px";
+				newDiv.style.color = genereteRandomColor();
+				newDiv.style.position = "absolute";
+				newDiv.style.left = generateRandomNumber(0,99) + "%";
+				newDiv.style.top = generateRandomNumber(0,99) + "%";
+				newDiv.style.borderStyle = "solid";
+				newDiv.style.borderRadius = generateRandomNumber(0,200) + "px";
+				newDiv.style.borderColor = genereteRandomColor();	
+				newDiv.style.borderWidth = generateRandomNumber(0,20) + "px";
+				return newDiv;
+			}
+			
+			function genereteRandomColor() {
+				var red = parseInt(Math.random() * 255);
+				var green = parseInt(Math.random() * 255);
+				var blue = parseInt(Math.random() * 255);
+				var color = "rgb(" + red + "," + green + "," + blue + ")";
+				return color;
+			}
+			
+			////will generate random number in the interval [start, end]
+			function generateRandomNumber(start,end) {
+				if(start > end) {
+					return generateRandomNumber(end, start);
+				}
+				
+				var difference = parseInt(end) - parseInt(start);				
+				var randomLength = parseInt((Math.random() * difference) + start); 				
+				return randomLength;
+			}
+		</script>
+	</body>
+
+ </html>
