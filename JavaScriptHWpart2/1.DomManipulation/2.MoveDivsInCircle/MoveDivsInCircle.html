@@ -1,0 +1,74 @@
+<html>
+	<head>
+		<title>MoveDivsInCircle</title>	
+		<link type="text/css" rel="stylesheet" href = "styles/commonStyles.css" />		
+		<style>			
+		</style>
+	</head>
+	<body>
+		<h2>
+			Write a script that creates 5 div elements and moves them in circular path with interval of 100 milliseconds
+		</h2>	
+		
+		<a href = "#" onclick = "onStartMovingDivs()">Move Divs</a>
+		<!-- <a href = "#" id="stopBtn" onclick = "onStopMoveingDivs()">Stop Divs</a>	 -->
+		<!-- <a href = "#" onclick = "moveDivs()">Test btn</a>		 -->
+		
+		<div id="first"></div>
+		<!-- <div id="second"></div>
+		<div id="third"></div>
+		<div id="fourth"></div>
+		<div id="fifth"></div> -->
+		<script src = "scripts/movableDiv.js"></script>
+		<script>	
+		var movement;
+		
+		function onStartMovingDivs(){
+			
+			//document.getElementById("stopBtn").style.display = "inline";
+			var newDiv = createMovableDiv(200,200);
+			newDiv.element.style.width = "20px";
+			newDiv.element.style.height = "20px";
+			newDiv.element.style.backgroundColor="skyblue";
+			newDiv.element.style.position="abolute";
+			document.getElementById("first").appendChild(newDiv.element);
+			window.setInterval(moveCircular(newDiv),100);
+		}
+		
+		function onStopMoveingDivs(){
+			window.clearInterval(movement);
+			window.setTimeout(function() {document.getElementById("stopBtn").style.display = "inline";},500);
+		}
+		
+		
+		//function moveDivs(){
+		//	var divs = document.getElementsByTagName("div");
+		//	for(var i = 0;i < divs.length;i++){
+		//		divs[i].style.top = "200px";
+		//		divs[i].style.left = "200px";				
+		//	}		
+		//	
+		//	for(var i = 0;i < divs.length;i++){
+		//		moveDiv(divs[i]);			
+		//	}
+		//	
+		//}
+		
+		//function moveDiv(divToMove){			
+		//	var j = 0;
+		//	do{
+		//		setInterval(j++,100);
+		//		newPosition(divToMove,j);
+		//	}while(j < 63)
+		//}
+		//function newPosition(divToMove,angle){
+		//		//var posLeft = parseInt(divToMove.style.left);
+		//		//var posTop = parseInt(divToMove.style.top);
+		//		console.log("i");
+		//		divToMove.style.top = (200 + Math.cos(angle/10)*100) + "px";
+		//		divToMove.style.left = (200 + Math.sin(angle/10)*100) + "px";
+		//}				
+		</script>
+	</body>
+
+ </html>
