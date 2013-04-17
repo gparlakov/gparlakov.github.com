@@ -39,36 +39,3 @@ html > body{
 			margin-left:20px;
 			color:inherit;
 		}
-
-	div{
-		width:10px;
-		height:10px;
-		position:absolute;
-		background-color:red;
-		border-radius:50px;
-	}
-	
-		#first{
-			left:50px;
-			top:50px;
-		}
-		
-		#second{			
-			left:75px;
-			top:75px;
-		}
-		
-		#third{
-			left:100px;
-			top:100px;
-		}
-		
-		#fourth{
-			left:75px;
-			top:125px;
-		}
-		
-		#fifth{
-			left:50px;
-			top:150px;
-		}

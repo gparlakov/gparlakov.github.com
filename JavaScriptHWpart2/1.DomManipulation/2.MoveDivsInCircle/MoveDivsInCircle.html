@@ -12,29 +12,40 @@
 		
 		<a href = "#" onclick = "onStartMovingDivs()">Move Divs</a>
 		<!-- <a href = "#" id="stopBtn" onclick = "onStopMoveingDivs()">Stop Divs</a>	 -->
-		<!-- <a href = "#" onclick = "moveDivs()">Test btn</a>		 -->
+		<!-- <a href = "#" onclick = "initialize()">Test btn</a>		 -->
 		
-		<div id="first"></div>
+		<div id="wrapper"></div>
 		<!-- <div id="second"></div>
 		<div id="third"></div>
 		<div id="fourth"></div>
 		<div id="fifth"></div> -->
 		<script src = "scripts/movableDiv.js"></script>
 		<script>	
-		var movement;
+		var movement,
+			newDiv,
+			centerLeft = 200,
+			centerTop = 200;
+		
+		function initialize(){
+			
+		
+		}
 		
 		function onStartMovingDivs(){
 			
 			//document.getElementById("stopBtn").style.display = "inline";
-			var newDiv = createMovableDiv(200,200);
+			newDiv = createMovableDiv(centerTop,centerLeft);
 			newDiv.element.style.width = "20px";
 			newDiv.element.style.height = "20px";
 			newDiv.element.style.backgroundColor="skyblue";
-			newDiv.element.style.position="abolute";
-			document.getElementById("first").appendChild(newDiv.element);
-			window.setInterval(moveCircular(newDiv),100);
+			newDiv.element.style.position="absolute";
+			document.getElementById("wrapper").appendChild(newDiv.element);
+			setInterval(moveStarter,100);
+		}	
+
+		function moveStarter(){
+			moveCircular(newDiv);
 		}
-		
 		function onStopMoveingDivs(){
 			window.clearInterval(movement);
 			window.setTimeout(function() {document.getElementById("stopBtn").style.display = "inline";},500);

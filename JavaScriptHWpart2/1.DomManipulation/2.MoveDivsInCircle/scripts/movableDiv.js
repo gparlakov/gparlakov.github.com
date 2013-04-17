@@ -1,9 +1,17 @@
-function createMovableDiv(posTop,posLeft){
-	return{	
+
+// posTop and posLeft is the center of new object
+// speed from 0.03 to 0.1 
+// moves in circles
+function createMovableDiv(posTop,posLeft,speed){
+	if (!speed) {
+		var speed = 0.03;
+	}	
+	return { 	
 		centerTop : posTop,
 		centerLeft : posLeft,
 		positionTop : posTop,
 		positionLeft : posLeft,
+		speed:speed,
 		degree:0,			
 		element:document.createElement("div")
 	}
@@ -19,7 +27,7 @@ function updateDegree(movableDiv) {
 		movableDiv.degree = 0;
 	}
 	else{			
-		movableDiv.degree += 0.1; 
+		movableDiv.degree += movableDiv.speed; 
 	}
 }
 
@@ -27,6 +35,5 @@ function moveCircular(movableDiv) {
 	updateDegree(movableDiv);				
 	movableDiv.positionTop = movableDiv.centerTop + Math.cos(movableDiv.degree) * 100;
 	movableDiv.positionLeft = movableDiv.centerLeft + Math.sin(movableDiv.degree) * 100;
-	updateElement(movableDiv);	
-	console.log("move");
+	updateElement(movableDiv);
 }
