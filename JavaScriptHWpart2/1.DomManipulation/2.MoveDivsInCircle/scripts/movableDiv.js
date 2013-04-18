@@ -4,7 +4,7 @@
 // moves in circles
 function createMovableDiv(posTop,posLeft,speed){
 	if (!speed) {
-		var speed = 0.03;
+		var speed = 0.02;
 	}	
 	return { 	
 		centerTop : posTop,

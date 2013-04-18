@@ -8,77 +8,109 @@
 	<body>
 		<h2>
 			Write a script that creates 5 div elements and moves them in circular path with interval of 100 milliseconds
-		</h2>	
-		
-		<a href = "#" onclick = "onStartMovingDivs()">Move Divs</a>
-		<!-- <a href = "#" id="stopBtn" onclick = "onStopMoveingDivs()">Stop Divs</a>	 -->
-		<!-- <a href = "#" onclick = "initialize()">Test btn</a>		 -->
-		
+		</h2>
+		<form class = "rightForm">
+			<fieldset>
+			<legend>Add Divs</legend>
+			<label for = "speed" >Speed (0.02 to 0.2)</label>
+			<input type="text" id= "speed" value = "0.04" />			
+			<label for = "interval" >Interval seconds</label>
+			<input type="interval" id= "interval" value = "2" />			
+			<label for = "numberDivs" >How many Divs?</label>
+			<input type="numberDivs" id= "numberDivs" value = "5" />			
+			<a href = "#" onclick = "initialize()">Add Divs</a>
+			</fieldset>
+			<fieldset>
+			<legend>Remove Divs</legend>
+			<label for = "divToStop" >Which div to stop?</label>
+			<input type="text" id= "divToStop" value = "All" />
+			<a href = "#" id="stopBtn" onclick = "stopMoveingDivs()">Stop Div(s)</a>
+			</fieldset>
+		</form>
 		<div id="wrapper"></div>
-		<!-- <div id="second"></div>
-		<div id="third"></div>
-		<div id="fourth"></div>
-		<div id="fifth"></div> -->
+		
 		<script src = "scripts/movableDiv.js"></script>
 		<script>	
-		var movement,
-			newDiv,
+		var movementObject = new Array(),
+			divs = new Array(),
 			centerLeft = 200,
 			centerTop = 200;
 		
-		function initialize(){
+		function initialize() {		
+			var numberDivs = parseInt(document.getElementById("numberDivs").value);
+			if(isNaN(numberDivs)) {
+				numberDivs = 5;
+			}
 			
-		
+			var interval = parseFloat(document.getElementById("interval").value);
+			if(isNaN(interval)) {
+				interval = 2;
+			}
+			
+			var speed = parseFloat(document.getElementById("speed").value);
+			if(isNaN(speed) || 0.002 > speed || speed > 0.5) {
+				speed = 0.025;
+			}
+			
+			for(var num = 0;num < numberDivs;num ++) {
+				setTimeout(function () {addMOvingDiv(centerTop,centerLeft,speed);},num * interval * 1000);
+			}
+			document.getElementById("stopBtn").style.display = "block";
 		}
 		
-		function onStartMovingDivs(){
+		function addMOvingDiv(top,left) {			
+			var newDivIndex = divs.length;
+			divs.push(createMovableDiv(top,left));
+			divs[newDivIndex].element.class = "movingDiv";
+			divs[newDivIndex].element.style.width = "20px";
+			divs[newDivIndex].element.style.height = "20px";
+			divs[newDivIndex].element.style.backgroundColor = "skyblue";
+			divs[newDivIndex].element.style.position = "absolute";
+			divs[newDivIndex].element.style.borderRadius = "25px";
+			document.getElementById("wrapper").appendChild(divs[newDivIndex].element);
 			
-			//document.getElementById("stopBtn").style.display = "inline";
-			newDiv = createMovableDiv(centerTop,centerLeft);
-			newDiv.element.style.width = "20px";
-			newDiv.element.style.height = "20px";
-			newDiv.element.style.backgroundColor="skyblue";
-			newDiv.element.style.position="absolute";
-			document.getElementById("wrapper").appendChild(newDiv.element);
-			setInterval(moveStarter,100);
+			movementObject.push(setInterval(function() {moveCircular(divs[newDivIndex]);},100));
 		}	
-
-		function moveStarter(){
-			moveCircular(newDiv);
+		
+		function stopMoveingDivs() {
+			var divToStopString = document.getElementById("divToStop").value.toLowerCase();
+			var divToStop = parseInt(divToStopString);			
+			//stop all moving divs
+			if(divToStopString === "all") {			
+				for(var movingDivIndex = 0;movingDivIndex < movementObject.length; movingDivIndex++){
+					stopAndPaint(movingDivIndex);					
+				}				
+				//hide stop button after 0.5s
+				window.setTimeout(function() {document.getElementById("stopBtn").style.display = "";},500);
+			}
+			else{
+				if(isNaN(divToStop)) {
+					document.getElementById("wrapper").innerHTML+="<p>Not a number</p>";
+				}
+				else{					
+					stopAndPaint(divToStop -1 );					
+				}
+			}		
 		}
-		function onStopMoveingDivs(){
-			window.clearInterval(movement);
-			window.setTimeout(function() {document.getElementById("stopBtn").style.display = "inline";},500);
+		function stopAndPaint(movingObjIndex) {
+			stopMovingObject(movingObjIndex);
+			turnDivRed(movingObjIndex);
+			removeDivFromArrays(movingObjIndex);
 		}
 		
+		function stopMovingObject(movingObjIndex) {
+			window.clearInterval(movementObject[movingObjIndex]);
+		}
 		
-		//function moveDivs(){
-		//	var divs = document.getElementsByTagName("div");
-		//	for(var i = 0;i < divs.length;i++){
-		//		divs[i].style.top = "200px";
-		//		divs[i].style.left = "200px";				
-		//	}		
-		//	
-		//	for(var i = 0;i < divs.length;i++){
-		//		moveDiv(divs[i]);			
-		//	}
-		//	
-		//}
+		function turnDivRed(divIndex) {
+			divs[divIndex].element.style.backgroundColor = "red";
+		}
 		
-		//function moveDiv(divToMove){			
-		//	var j = 0;
-		//	do{
-		//		setInterval(j++,100);
-		//		newPosition(divToMove,j);
-		//	}while(j < 63)
-		//}
-		//function newPosition(divToMove,angle){
-		//		//var posLeft = parseInt(divToMove.style.left);
-		//		//var posTop = parseInt(divToMove.style.top);
-		//		console.log("i");
-		//		divToMove.style.top = (200 + Math.cos(angle/10)*100) + "px";
-		//		divToMove.style.left = (200 + Math.sin(angle/10)*100) + "px";
-		//}				
+		function removeDivFromArrays(divIndex){
+			divs.splice(divIndex,1);
+			movementObject.splice(divIndex,1);
+		}
+		
 		</script>
 	</body>
 
