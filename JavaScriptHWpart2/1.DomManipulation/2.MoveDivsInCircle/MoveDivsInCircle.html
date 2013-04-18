@@ -13,7 +13,7 @@
 			<fieldset>
 			<legend>Add Divs</legend>
 			<label for = "speed" >Speed (0.02 to 0.2)</label>
-			<input type="text" id= "speed" value = "0.04" />			
+			<input type="text" id= "speed" value = "0.065" />			
 			<label for = "interval" >Interval seconds</label>
 			<input type="interval" id= "interval" value = "2" />			
 			<label for = "numberDivs" >How many Divs?</label>
@@ -23,8 +23,10 @@
 			<fieldset>
 			<legend>Remove Divs</legend>
 			<label for = "divToStop" >Which div to stop?</label>
+			<p>In order of their appearence. 1 = first, 11 == eleventh ...</p>
 			<input type="text" id= "divToStop" value = "All" />
 			<a href = "#" id="stopBtn" onclick = "stopMoveingDivs()">Stop Div(s)</a>
+			<p id="errorMessage"></p>
 			</fieldset>
 		</form>
 		<div id="wrapper"></div>
@@ -46,36 +48,48 @@
 			if(isNaN(interval)) {
 				interval = 2;
 			}
-			
+			//if speed is not a number or too bog or too small will be set to 
+			//default for the sake of demo
 			var speed = parseFloat(document.getElementById("speed").value);
 			if(isNaN(speed) || 0.002 > speed || speed > 0.5) {
-				speed = 0.025;
+				document.getElementById("speed").value = "Set to default"
+				speed = 0.065;
 			}
 			
 			for(var num = 0;num < numberDivs;num ++) {
 				setTimeout(function () {addMOvingDiv(centerTop,centerLeft,speed);},num * interval * 1000);
 			}
+		
+			//makes stop-button visible
 			document.getElementById("stopBtn").style.display = "block";
 		}
 		
-		function addMOvingDiv(top,left) {			
+		function addMOvingDiv(top,left,speed) {			
+			//will be the index of next pushed element
 			var newDivIndex = divs.length;
-			divs.push(createMovableDiv(top,left));
+			divs.push(createMovableDiv(top,left,speed));
 			divs[newDivIndex].element.class = "movingDiv";
 			divs[newDivIndex].element.style.width = "20px";
 			divs[newDivIndex].element.style.height = "20px";
 			divs[newDivIndex].element.style.backgroundColor = "skyblue";
 			divs[newDivIndex].element.style.position = "absolute";
 			divs[newDivIndex].element.style.borderRadius = "25px";
+			//update position of element previous to appending it 
+			//so it does not appear at some postion
+			updateElement(divs[newDivIndex]);
+			
 			document.getElementById("wrapper").appendChild(divs[newDivIndex].element);
 			
+			//inserts the ("movement" as object) inside an array of movement objects 
+			//the goal is to be able to stop chosen element
 			movementObject.push(setInterval(function() {moveCircular(divs[newDivIndex]);},100));
 		}	
+		
 		
 		function stopMoveingDivs() {
 			var divToStopString = document.getElementById("divToStop").value.toLowerCase();
 			var divToStop = parseInt(divToStopString);			
-			//stop all moving divs
+			
 			if(divToStopString === "all") {			
 				for(var movingDivIndex = 0;movingDivIndex < movementObject.length; movingDivIndex++){
 					stopAndPaint(movingDivIndex);					
@@ -85,13 +99,14 @@
 			}
 			else{
 				if(isNaN(divToStop)) {
-					document.getElementById("wrapper").innerHTML+="<p>Not a number</p>";
+					document.getElementById("errorMessage").innerHTML+="<p>Not a number</p>";
 				}
 				else{					
 					stopAndPaint(divToStop - 1);					
 				}
 			}		
 		}
+		
 		function stopAndPaint(movingObjIndex) {
 			stopMovingObject(movingObjIndex);
 			turnDivRed(movingObjIndex);
@@ -106,10 +121,11 @@
 			divs[divIndex].element.style.backgroundColor = "red";
 		}
 		
-		function removeDivFromArrays(divIndex){
-			divs.splice(divIndex,1);
-			movementObject.splice(divIndex,1);
-		}
+		//not used for now - introduces bug
+		//function removeDivFromArrays(divIndex){
+		//	divs.splice(divIndex,1);
+		//	movementObject.splice(divIndex,1);
+		//}
 		
 		</script>
 	</body>
