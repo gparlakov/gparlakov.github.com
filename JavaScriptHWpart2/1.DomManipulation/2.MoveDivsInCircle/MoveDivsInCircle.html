@@ -88,14 +88,14 @@
 					document.getElementById("wrapper").innerHTML+="<p>Not a number</p>";
 				}
 				else{					
-					stopAndPaint(divToStop -1 );					
+					stopAndPaint(divToStop - 1);					
 				}
 			}		
 		}
 		function stopAndPaint(movingObjIndex) {
 			stopMovingObject(movingObjIndex);
 			turnDivRed(movingObjIndex);
-			removeDivFromArrays(movingObjIndex);
+			//removeDivFromArrays(movingObjIndex);
 		}
 		
 		function stopMovingObject(movingObjIndex) {
