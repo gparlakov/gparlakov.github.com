@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<title>Query Selector Shim Test</title>	
+		<link type="text/css" rel="stylesheet" href = "styles/commonStyles.css" />		
+		<style>			
+		</style>
+	</head>
+	<body onLoad = "checkForQuerySelector()">
+		<h2>
+			Write a script that shims querySelector and querySelectorAll in older browsers
+		</h2>
+		<!-- <form class = "rightForm">
+			<fieldset>
+			<legend>Add Divs</legend>
+			<label for = "speed" >Speed (0.02 to 0.2)</label>
+			<input type="text" id= "speed" value = "0.065" />			
+			<label for = "interval" >Interval seconds</label>
+			<input type="interval" id= "interval" value = "2" />			
+			<label for = "numberDivs" >How many Divs?</label>
+			<input type="numberDivs" id= "numberDivs" value = "5" />			
+			<a href = "#" onclick = "initialize()">Add Divs</a>
+			</fieldset>
+			<fieldset>
+			<legend>Remove Divs</legend>
+			<label for = "divToStop" >Which div to stop?</label>
+			<p>In order of their appearence. 1 = first, 11 == eleventh ...</p>
+			<input type="text" id= "divToStop" value = "All" />
+			<a href = "#" id="stopBtn" onclick = "stopMoveingDivs()">Stop Div(s)</a>
+			<p id="errorMessage"></p>
+			</fieldset>
+		</form> -->
+		 <div id="testDiv">Test Div</div>
+		
+		<script src = "scripts/querySelector.js"></script>
+		<script>	
+			function checkForQuerySelector (){
+				
+				//document.querySelector("#testDiv").innerHTML += "<p>Working</p>";
+				if(!document.querySelector){
+					addQueries();
+					console.log(querySelectorAll("test"));
+				}
+				
+			}
+		</script>
+	</body>
+
+ </html>
