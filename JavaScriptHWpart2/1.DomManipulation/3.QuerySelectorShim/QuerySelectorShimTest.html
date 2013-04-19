@@ -9,7 +9,7 @@
 		<h2>
 			Write a script that shims querySelector and querySelectorAll in older browsers
 		</h2>
-		<!-- <form class = "rightForm">
+		<form id = "rightForm">
 			<fieldset>
 			<legend>Add Divs</legend>
 			<label for = "speed" >Speed (0.02 to 0.2)</label>
@@ -28,18 +28,21 @@
 			<a href = "#" id="stopBtn" onclick = "stopMoveingDivs()">Stop Div(s)</a>
 			<p id="errorMessage"></p>
 			</fieldset>
-		</form> -->
+		</form>
 		 <div id="testDiv">Test Div</div>
 		
 		<script src = "scripts/querySelector.js"></script>
 		<script>	
 			function checkForQuerySelector (){
-				
+				var a = this.document;
+				console.log(a);
 				//document.querySelector("#testDiv").innerHTML += "<p>Working</p>";
-				if(!document.querySelector){
-					addQueries();
-					console.log(querySelectorAll("test"));
-				}
+				//if(!document.querySelector){
+				//	addQueries();
+				//	console.log(document.querySelector("form,form"));
+				//}
+				var nodesTree = getNodesTree(this.document);
+				console.log(nodesTree);
 				
 			}
 		</script>
