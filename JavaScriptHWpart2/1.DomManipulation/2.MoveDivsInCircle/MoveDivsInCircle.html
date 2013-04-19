@@ -13,7 +13,7 @@
 			<fieldset>
 			<legend>Add Divs</legend>
 			<label for = "speed" >Speed (0.02 to 0.2)</label>
-			<input type="text" id= "speed" value = "0.065" />			
+			<input type="range" min = "0.02" max = "0.25" step = "0.005" id = "speed" value = "0.065" />			
 			<label for = "interval" >Interval seconds</label>
 			<input type="interval" id= "interval" value = "2" />			
 			<label for = "numberDivs" >How many Divs?</label>
@@ -23,8 +23,8 @@
 			<fieldset>
 			<legend>Remove Divs</legend>
 			<label for = "divToStop" >Which div to stop?</label>
-			<p>In order of their appearence. 1 = first, 11 == eleventh ...</p>
 			<input type="text" id= "divToStop" value = "All" />
+			<p>In order of their appearence. 1 = first, 11 == eleventh ...</p>
 			<a href = "#" id="stopBtn" onclick = "stopMoveingDivs()">Stop Div(s)</a>
 			<p id="errorMessage"></p>
 			</fieldset>
