@@ -1,0 +1,41 @@
+<html>
+	<head>
+		<title>ChangeColorsOfTextfield</title>	
+		<link type="text/css" rel="stylesheet" href = "styles/commonStyles.css" />		
+		<style>			
+		</style>
+	</head>
+	<body onLoad = "checkForQuerySelector()">
+		<h2>
+			Create a text area and two inputs with type="color"
+		</h2>
+		<div class = "example">
+			<li>Make the font color of the text area as the value of the first color input</li>
+			<li>Make the background color of the text area as the value of the second input</li>
+		</div>
+		<form >
+			<textarea > Some text</textarea>
+			<label for = "textColor"> Text Color </label>
+			<input id = "textColor" type="color" value = "#FFFFFF" onChange = "changeTextColor()"/>
+			<label for = "backGroundColor"> Background Color </label>
+			<input id="backGroundColor" type="color" value = "rgb(23,231,35)" onChange = "changeBackGroundColor()"/>
+		</form>
+
+		
+		<script src = "scripts/querySelector.js"></script>
+		<script>
+			var element = document.querySelector('textarea');
+			function changeTextColor() {
+				var value = document.getElementById('textColor').value;
+				element.style.color = value;
+			}
+			
+			function changeBackGroundColor() {
+				var value = document.getElementById('backGroundColor').value;
+				element.style.backgroundColor = value;
+			}		
+			
+		</script>
+	</body>
+
+ </html>
