@@ -34,15 +34,14 @@
 		<script src = "scripts/querySelector.js"></script>
 		<script>	
 			function checkForQuerySelector (){
-				var a = this.document;
-				console.log(a);
 				//document.querySelector("#testDiv").innerHTML += "<p>Working</p>";
 				//if(!document.querySelector){
-				//	addQueries();
-				//	console.log(document.querySelector("form,form"));
+					addQueries();
+					var nodesTree = getNodesTree(this.document);
+					var form = document.querySelectorAll("input");
+					console.log(form);
 				//}
-				var nodesTree = getNodesTree(this.document);
-				console.log(nodesTree);
+				
 				
 			}
 		</script>

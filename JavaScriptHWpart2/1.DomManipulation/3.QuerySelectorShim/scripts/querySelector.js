@@ -1,3 +1,4 @@
+var nodesTree = getNodesTree(this.document);
 function addQueries(){
 	
 	document.querySelectorAll = querySelectorAllShim;
@@ -8,7 +9,7 @@ function addQueries(){
 }
 
 function querySelectorAllShim(selectors){
-	var resultElement = new Array();;
+	var resultElement = new Array();
 	var i;
 	
 	if(selectors.indexOf(',') > 0){
@@ -18,8 +19,27 @@ function querySelectorAllShim(selectors){
 		}
 	}
 	else{
-		if(selectors.indexOf(' ') > 0){			 
-		}
+		//TODO multiple words in selector String
+		//if(selectors.indexOf(' ') > 0){			 
+		//}
+		var selectorStr;
+		switch(selectors[0]) {
+			case "#":{
+				selectorStr = selectors.substr(1).toUpperCase();
+				resultElement = searchTree(nodesTree,selectorStr,"id");
+				break;
+			}
+			case ".":{
+				selectorStr = selectors.substr(1).toUpperCase();
+				resultElement = searchTree(nodesTree,selectorStr,"class");
+				break;
+			}
+			default:{
+				selectorStr = selectors.toUpperCase();
+				resultElement = searchTree(nodesTree,selectorStr);
+				break;			
+			}
+		}		
 	}
 	
 	return resultElement;
@@ -28,18 +48,53 @@ function querySelectorAllShim(selectors){
 function getNodesTree(htmlObject){
 	var nodesTree = new Object();	
 	var nextNode = htmlObject.firstChild;	
-	while(nextNode != null){		
-		nodesTree[nextNode.nodeName] = getNodesTree(nextNode);
+	while(nextNode != null){
+		
+		nodesTree[nextNode.nodeName] = nextNode;
+		nodesTree.CHILDREN = getNodesTree(nextNode);
 		nextNode = nextNode.nextSibling;
 	}
 	
 	return nodesTree;
 }
 
-function clearTextNodes(array){
-	var cleanedArray = new Array();
-	for(var i = 0;i < array.length;i++){
-		//if(typeof array[i] !== 'TextNode'){}
-		console.log(typeof array[i]);
+function searchTree(tree,selector,typeOfSelector){
+	var resultElements = new Array();
+	
+	if(!typeOfSelector){
+		typeOfSelector = "simple";
 	}
+	
+	for(var i in tree){
+		switch(typeOfSelector){
+			case "simple":{
+				if(i === selector){
+					resultElements.push(tree[i]);
+				}
+				break;
+			}
+			case "class":{
+				if(tree[i].className === selector){
+					resultElements.push(tree[i]);
+				}
+				break;
+			}
+			case "id":{
+				if(tree[i].id === selector){
+					resultElements.push(tree[i]);
+				}
+				break;
+			}
+		
+		}
+		
+		if(i === "CHILDREN"){
+			var resultsInChildren = searchTree(tree[i].CHILDREN,selector,typeOfSelector);
+			if(resultsInChildren){
+				resultElements.push(resultsInChildren);
+			}
+		}
+	}
+		
+	return resultElements;	
 }
