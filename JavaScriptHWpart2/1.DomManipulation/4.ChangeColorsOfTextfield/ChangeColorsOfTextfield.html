@@ -1,11 +1,22 @@
-<html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<title>ChangeColorsOfTextfield</title>	
-		<link type="text/css" rel="stylesheet" href = "styles/commonStyles.css" />		
+		<link type="text/css" rel="stylesheet" href = "styles/commonStyles.css" />	
+		<!--[if lte IE 9]>    
+			<link type="text/css" href="styles/spectrum.css" rel="stylesheet" />
+			<script src="scripts/jquery-1.9.1.js"></script>
+			<script src="scripts/spectrum.js"></script>	
+			<script src="scripts/extras/modernizr-custom.js"></script>		
+			<script src="scripts/polyfiller.js"></script>		
+			<script>
+				$.webshims.polyfill('forms forms-ext');
+			</script>
+		<![endif]-->
 		<style>			
 		</style>
 	</head>
-	<body onLoad = "checkForQuerySelector()">
+	<body>
 		<h2>
 			Create a text area and two inputs with type="color"
 		</h2>
@@ -13,12 +24,12 @@
 			<li>Make the font color of the text area as the value of the first color input</li>
 			<li>Make the background color of the text area as the value of the second input</li>
 		</div>
-		<form >
+		<form action="#" method = "GET">
 			<textarea > Some text</textarea>
 			<label for = "textColor"> Text Color </label>
-			<input id = "textColor" type="color" value = "#FF00FF" onChange = "changeTextColor()"/>
+			<input id = "textColor" type="color" value = "#000" onChange = "changeTextColor()"/>
 			<label for = "backGroundColor"> Background Color </label>
-			<input id="backGroundColor" type="color" value = "#880000" onChange = "changeBackGroundColor()"/>
+			<input id="backGroundColor" type="color" value = "#FFFFFF" onChange = "changeBackGroundColor()"/>
 		</form>
 
 		

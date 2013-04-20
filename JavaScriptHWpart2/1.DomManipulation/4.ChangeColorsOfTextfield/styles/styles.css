@@ -1,0 +1,48 @@
+﻿ body,
+header,
+footer,
+aside,
+section,
+div,
+p,
+ul,
+li,
+a,
+article,
+h1,
+h2 {
+  margin: 0;
+  padding: 0;
+}
+html,
+
+body {
+  height: 100%;
+}
+
+/* form{
+	width:300px;
+	margin:0 auto;	
+	border:2px solid skyblue;
+	padding:5px;
+	
+}
+	form:after{
+		display:block;
+		content:"";
+		height:0;
+		clear:both;
+	} */
+
+/* form input{	
+	display:block;
+	float:right;
+	width:150px;
+	margin:5px;
+}
+form label{
+    margin:5px;
+	clear:both;
+	display:block;
+	float:left;
+} 
