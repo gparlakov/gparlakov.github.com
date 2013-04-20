@@ -51,7 +51,7 @@
 			//if speed is not a number or too bog or too small will be set to 
 			//default for the sake of demo
 			var speed = parseFloat(document.getElementById("speed").value);
-			if(isNaN(speed) || 0.002 > speed || speed > 0.5) {
+			if(isNaN(speed) || 0.002 > speed || speed > 0.4) {
 				document.getElementById("speed").value = "Set to default"
 				speed = 0.065;
 			}

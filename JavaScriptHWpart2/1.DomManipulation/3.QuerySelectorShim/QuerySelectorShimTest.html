@@ -1,48 +1,67 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Query Selector Shim Test</title>	
 		<link type="text/css" rel="stylesheet" href = "styles/commonStyles.css" />		
-		<style>			
-		</style>
 	</head>
 	<body onLoad = "checkForQuerySelector()">
 		<h2>
 			Write a script that shims querySelector and querySelectorAll in older browsers
 		</h2>
+		
+		<!-- I'm using the code from a previous task -->
 		<form id = "rightForm">
-			<fieldset>
-			<legend>Add Divs</legend>
-			<label for = "speed" >Speed (0.02 to 0.2)</label>
-			<input type="text" id= "speed" value = "0.065" />			
-			<label for = "interval" >Interval seconds</label>
-			<input type="interval" id= "interval" value = "2" />			
-			<label for = "numberDivs" >How many Divs?</label>
-			<input type="numberDivs" id= "numberDivs" value = "5" />			
-			<a href = "#" onclick = "initialize()">Add Divs</a>
+			#rightForm
+			<fieldset >
+				<legend>Legend</legend>
+				<label for = "speed" >Label</label>
+				<input class = "firstFieldsetInputs" type="text" id= "speed" value = ".firstFieldsetInputs" />			
+				<label for = "interval" >Label</label>
+				<input class = "firstFieldsetInputs" type="interval" id= "interval" value = ".firstFieldsetInputs" />			
+				<label for = "numberDivs" >Label</label>
+				<input class = "firstFieldsetInputs" type="numberDivs" id= "numberDivs" value = ".firstFieldsetInputs" />			
+				<a href = "#" onclick = "">Button</a>
 			</fieldset>
-			<fieldset>
-			<legend>Remove Divs</legend>
-			<label for = "divToStop" >Which div to stop?</label>
-			<p>In order of their appearence. 1 = first, 11 == eleventh ...</p>
-			<input type="text" id= "divToStop" value = "All" />
-			<a href = "#" id="stopBtn" onclick = "stopMoveingDivs()">Stop Div(s)</a>
-			<p id="errorMessage"></p>
+			<fieldset id="secondFieldset">
+				#secondFieldset
+				<legend>Legend</legend>
+				<label for = "divToStop" >Label</label>
+				<p>p element</p>
+				<input type="text" id= "divToStop" value = "All" />
+				<a href = "#" id="stopBtn" onclick = "">button</a>
+				<p id="errorMessage">#errorMessage</p>
 			</fieldset>
 		</form>
-		 <div id="testDiv">Test Div</div>
+		<div id="testDiv">Test Div</div>
 		
 		<script src = "scripts/querySelector.js"></script>
 		<script>	
 			function checkForQuerySelector (){
-				//document.querySelector("#testDiv").innerHTML += "<p>Working</p>";
-				//if(!document.querySelector){
+				
+				if(!document.querySelector){
 					addQueries();
-					var nodesTree = getNodesTree(this.document);
-					var form = document.querySelectorAll("input");
-					console.log(form);
-				//}
+					write("testDiv", "<h3>Queries added!</h3>");
+				}
 				
+				var form = document.querySelectorAll("form");
+				write("testDiv",'document.querySelectorAll("form") = ' + form);
 				
+				var inputSearch = document.querySelectorAll("input");
+				write("testDiv", 'document.querySelectorAll("input") = ' + inputSearch);
+				
+				var inputSearchFirst = document.querySelector("input");
+				write("testDiv", 'document.querySelector("input") = ' + inputSearchFirst);
+				
+				var classSearch = document.querySelectorAll(".firstFieldsetInputs");
+				write("testDiv", 'document.querySelectorAll(".firstFieldsetInputs") = ' + classSearch);
+				
+				var idSearch = document.querySelectorAll("#secondFieldset");
+				write("testDiv", 'document.querySelectorAll("#secondFieldset") = ' + idSearch);
+			}
+			
+			function write(inElement,text){
+				var elementToWrite = document.getElementById(inElement);
+				elementToWrite.innerHTML+="<p class = 'result'>" + text +"</p>";
 			}
 		</script>
 	</body>
