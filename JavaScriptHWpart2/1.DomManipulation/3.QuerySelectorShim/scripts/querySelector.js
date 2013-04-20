@@ -1,100 +1,130 @@
-var nodesTree = getNodesTree(this.document);
-function addQueries(){
-	
-	document.querySelectorAll = querySelectorAllShim;
-	document.querySelector = function(selectors) {
-		var findAll = querySelectorAllShim(selectors);
-		return findAll[0];
-	}
+//this function will add querySelector and querySelectorAll
+//for document element
+function addQueries(){	
+	Array.addArray = addArray;	
+	document.querySelectorAll = querySelectorAllShim;	
+	document.querySelector = querySelectorShim;
 }
 
 function querySelectorAllShim(selectors){
-	var resultElement = new Array();
+	var resultElements = new Array();
 	var i;
 	
-	if(selectors.indexOf(',') > 0){
+	if(selectors.indexOf(",") > 0){
 		var selectorsSplit = selectorsString.split(',');		
 		for(i = 0; i < selectorsSplit.length; i++){
-			resultElement.push(querySelectorAllShim(selectorsSplit[i]));
+			resultElements.push(querySelectorAllShim(selectorsSplit[i]));
 		}
 	}
 	else{
 		//TODO multiple words in selector String
-		//if(selectors.indexOf(' ') > 0){			 
+		//if(selectors.indexOf(" ") > 0){			 
 		//}
-		var selectorStr;
-		switch(selectors[0]) {
+		var selectorStr,selectorFirstChar = selectors.substr(0,1);
+		switch(selectorFirstChar) {
 			case "#":{
-				selectorStr = selectors.substr(1).toUpperCase();
-				resultElement = searchTree(nodesTree,selectorStr,"id");
+				selectorStr = selectors.substr(1);
+				resultElements = searchTree(this,selectorStr,"id");
 				break;
 			}
 			case ".":{
-				selectorStr = selectors.substr(1).toUpperCase();
-				resultElement = searchTree(nodesTree,selectorStr,"class");
+				selectorStr = selectors.substr(1);
+				resultElements = searchTree(this,selectorStr,"class");
 				break;
 			}
 			default:{
 				selectorStr = selectors.toUpperCase();
-				resultElement = searchTree(nodesTree,selectorStr);
+				resultElements = searchTree(this,selectorStr);
 				break;			
 			}
 		}		
 	}
 	
-	return resultElement;
+	return resultElements;
 }
 
-function getNodesTree(htmlObject){
-	var nodesTree = new Array();	
-	var nextNode = htmlObject.firstChild;	
-	while(nextNode != null){
-		
-		nodesTree.push(nextNode);
-		nodesTree.CHILDREN = getNodesTree(nextNode);
-		nextNode = nextNode.nextSibling;
-	}
-	
-	return nodesTree;
+function querySelectorShim(selectors){
+	var findAll = document.querySelectorAll(selectors);
+	return findAll[0];
 }
 
-function searchTree(tree,selector,typeOfSelector){
-	var resultElements = new Array();
-	
+function searchTree(element,selector,typeOfSelector,comparer){
+	//if not se typeOfSelector is set to simple
 	if(!typeOfSelector){
 		typeOfSelector = "simple";
 	}
 	
-	for(var i in tree){
-		switch(typeOfSelector){
-			case "simple":{
-				if(i === selector){
-					resultElements.push(tree[i]);
-				}
-				break;
-			}
-			case "class":{
-				if(tree[i].className === selector){
-					resultElements.push(tree[i]);
-				}
-				break;
-			}
-			case "id":{
-				if(tree[i].id === selector){
-					resultElements.push(tree[i]);
-				}
-				break;
-			}
-		
+	//get comparer if not given by caller(given in recursive calling below)	
+	if(!comparer){
+		var comparer = getComparer(typeOfSelector);
+	}
+	
+	var resultElementss = new Array();
+	var childNodesSelected = new Array();
+	var currentNode = element;
+	
+	while(currentNode) {	
+		var selectBy = comparer(currentNode)
+		if(selector === selectBy){
+			resultElementss.push(currentNode);
+		}
+		if(currentNode.firstChild){
+			childNodesSelected = searchTree(currentNode.firstChild,selector,typeOfSelector,comparer);
 		}
 		
-		if(i === "CHILDREN"){
-			var resultsInChildren = searchTree(tree[i].CHILDREN,selector,typeOfSelector);
-			if(resultsInChildren){
-				resultElements.push(resultsInChildren);
-			}
+		if(childNodesSelected.length > 0){
+			addArray(resultElementss,childNodesSelected);
+			childNodesSelected = new Array();
+		}
+		
+		currentNode = currentNode.nextSibling;
+	}
+	
+	return resultElementss;	
+}
+
+//returns ref to anothe function which will be the comparer
+//comparer returns id,class or tagname of element defined by typeOfSelector
+function getComparer(typeOfSelector){
+	var comparer;
+	switch(typeOfSelector){
+		case "class":{			
+			comparer = getClass;			
+			break;
+		}
+		case "id":{
+			comparer = getId;
+			break;
+		}			
+		case "simple":{
+			comparer = getTagName;
+			break;
+		}
+		default:{
+			alert("This is not an acceptable selector");
+			break;
 		}
 	}
-		
-	return resultElements;	
+	
+	return comparer;
+}
+
+
+function getClass(element){	 
+	return element.className;
+} 
+
+function getId(element){
+	return element.id;
+} 
+
+function getTagName(element){
+	return element.nodeName;
+} 
+
+function addArray(arrayToBeExpanded,arrayToAdd){
+	var i,len = arrayToAdd.length;
+	for(i = 0;i < len;i++) {
+		arrayToBeExpanded.push(arrayToAdd[i]);
+	}
 }
