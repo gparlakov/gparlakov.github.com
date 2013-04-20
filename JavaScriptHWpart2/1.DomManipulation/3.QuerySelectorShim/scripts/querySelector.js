@@ -46,11 +46,11 @@ function querySelectorAllShim(selectors){
 }
 
 function getNodesTree(htmlObject){
-	var nodesTree = new Object();	
+	var nodesTree = new Array();	
 	var nextNode = htmlObject.firstChild;	
 	while(nextNode != null){
 		
-		nodesTree[nextNode.nodeName] = nextNode;
+		nodesTree.push(nextNode);
 		nodesTree.CHILDREN = getNodesTree(nextNode);
 		nextNode = nextNode.nextSibling;
 	}
