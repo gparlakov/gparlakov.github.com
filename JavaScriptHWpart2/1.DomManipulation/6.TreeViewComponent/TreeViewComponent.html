@@ -39,16 +39,16 @@
 				var elem = new treeViewElement();
 				elem.innerHTML = "menuItem";		
 				
-				//second evel elements
+				//second level elements
 				for(i = 0; i < subLevelOneCount;i++){
 					var elemChild = new treeViewElement()
-					elemChild.innerHTML = "child1";				
+					elemChild.innerHTML = "sub level 1";				
 					elem.addSubElement(elemChild);
 					
 					//third level elements
 					for(var j = 0; j < subLevelTwoCount;j++){
 						var elemChild2 = new treeViewElement()
-						elemChild2.innerHTML = "child2";				
+						elemChild2.innerHTML = "sub level 2";				
 						elemChild.addSubElement(elemChild2);						
 					}
 				}

@@ -1,8 +1,10 @@
+//constructor of tree view element with functions 
+//to addSubElement and show/hide sub elements list
+//In CSS file I've declared classes for visibleChildren and invisibleChildren
 function treeViewElement(){
 	var component = document.createElement("li");
 	component.name = "treeViewComponent";
-	//component.status = "hiddenChildren";
-	component.className = "hiddenChildren"
+	component.className = "invisibleChildren"
 		
 	function display(element,displayStyle) {
 		if(element.firstChild) {
@@ -19,36 +21,27 @@ function treeViewElement(){
 	function addSubElement(element){	
 		var ulList = this.getElementsByTagName("ul");
 		var ul = ulList[0];
-		if(!ul){
+		if(!ul) {
 			ul = document.createElement("ul");
 			ul.name = "subElement";
 		}
-		ul.appendChild(element);		
-		this.appendChild(ul);
-		ul.style.display = "none";
-		//ul.style.position = "absolute";
 		
+		ul.appendChild(element);
+		ul.style.display = "none";		
+		this.appendChild(ul);	
 	}
 	
 	function showHide(event){
 		if(this === event.target && this.className === "visibleChildren") {
-			display(this,"none");
-			//this.status = "hiddenChildren";
-			this.className = "hiddenChildren";
+			display(this,"none");			
+			this.className = "invisibleChildren";
 		}
 		else {
 			display(this,"");
-			//this.status = "visibleChildren";
 			this.className = "visibleChildren";
 		}
 	}	
 	
-	
-	//component.onmouseclick = showHide;
-	//component.onclick = showHide;
-	//component.onmouseover = showHide;
-	//component.onmouseout = hide;
-	//component.updateElements = updateElements;
 	component.addSubElement = addSubElement;
 	component.addEventListener("click",showHide);
 	return component;
