@@ -22,8 +22,7 @@ html > body{
 			padding: 10px 15px;
 			margin : 10px auto;
 			text-decoration:none;
-			border-radius:5px;
-			width:50%;
+			border-radius:5px;			
 			text-align:center;
 		}
 		a:hover{
@@ -58,5 +57,11 @@ html > body{
 		display:inline-block;
 		width:35%;
 	}
+	
+form a{
+	display:block;	
+	margin:0 auto;
+	width:10%;
+}
 
 
