@@ -1,0 +1,70 @@
+html,body,a,label,form,input,fieldset,h2,p,div{
+	padding:0px;
+	margin:0;
+}
+html > body{
+	width:960px;
+	margin:0 auto;
+	
+}
+	body:after{
+		display:block;
+		content:"";
+		height:0px;
+		clear:both;
+	}
+	h2{
+		text-align:center;
+	}				
+		a{		
+			background:skyblue;		
+			padding: 10px 15px;
+			margin : 10px auto;
+			text-decoration:none;
+			border-radius:5px;			
+			text-align:center;
+		}
+		a:hover{
+			-moz-box-shadow: 2px -2px 3px #888888; /* Old Firefox */
+			box-shadow: 2px -2px 15px #888888;
+			
+		}
+		a:active{
+			background-color:skyblue
+			-moz-box-shadow: none; /* Old Firefox */
+			box-shadow: none;
+			color:inherit;
+		}
+
+form{
+	width:30%;
+	margin:10px auto;
+	display:block;
+	padding:10px;
+	text-align:center;
+	
+}	
+
+	form label{
+		display:inline-block;
+		width:80%;
+		margin:10px 0px;
+	}	
+	
+	form input{
+		width:15%;		
+	}	
+	
+.hiddenChildren > ul{
+	display:none;		
+}
+
+.visibleChildren > ul{
+	display:block;	
+}	 
+	
+#wrapper,#wrapper  ul {
+	list-style-image:url('../img/arrow_small.png') ;	
+}
+
+

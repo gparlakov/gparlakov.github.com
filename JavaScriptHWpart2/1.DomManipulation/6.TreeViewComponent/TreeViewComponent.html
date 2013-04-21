@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Tree view components</title>	
+		<link type="text/css" rel="stylesheet" href = "styles/commonStyles.css" />
+	</head>
+	<body>
+		<h2>
+			Create a TreeView component			
+		</h2>
+		
+		<ul>                                                                                                                         
+			<li>Initially only the top items must be visible
+			<li>On item click</li>
+				<ul>
+					<li>If its children are hidden (collapsed), they must be made visible (expanded)</li>
+					<li>If its children are visible (expanded), they must be made hidden (collapsed)</li>
+				</ul>
+			<li>Research about events</li>
+		</ul>	
+		
+		<form method = "GET" action = "#">
+			<label for = "subLevelOne"> Sub level 1 items count </label>
+			<input id = "subLevelOne" type = "number" value = "2"/>
+			<label for = "subLevelTwo"> Sub level 2 items count </label>
+			<input id = "subLevelTwo" type = "number" value = "4"/>
+			<a onClick = "addElements()">Add Element</a>
+		</form>
+		
+		<ul id = "wrapper">			
+		</ul>
+		
+		<script src = "scripts/treeViewElement.js"></script>
+		<script>
+			function addElements(){
+				var subLevelOneCount = parseInt(document.getElementById("subLevelOne").value);
+				var subLevelTwoCount = parseInt(document.getElementById("subLevelTwo").value);
+				var wrapper = document.getElementById("wrapper");				
+				var elem = new treeViewElement();
+				elem.innerHTML = "menuItem";		
+				
+				//second evel elements
+				for(i = 0; i < subLevelOneCount;i++){
+					var elemChild = new treeViewElement()
+					elemChild.innerHTML = "child1";				
+					elem.addSubElement(elemChild);
+					
+					//third level elements
+					for(var j = 0; j < subLevelTwoCount;j++){
+						var elemChild2 = new treeViewElement()
+						elemChild2.innerHTML = "child2";				
+						elemChild.addSubElement(elemChild2);						
+					}
+				}
+				
+				wrapper.appendChild(elem);
+			}
+		</script>
+	</body>
+
+ </html>
