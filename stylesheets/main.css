@@ -107,9 +107,13 @@ ul>li{
 #menu>ul>li:hover>ul{
 display : block;
 }
-
+	#menu > p{
+		color:#ffffdd
+	}
+	
 	#logo3d{		
-		position:absolute;
+		position:fixed;
 		left:0px;
-		bottom:0px;
+		bottom:-10px;
+		width:20%%;
 	}
