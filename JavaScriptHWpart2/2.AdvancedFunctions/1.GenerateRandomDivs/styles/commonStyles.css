@@ -1,0 +1,89 @@
+html,body,a,label,form,input,fieldset,h2,p,div{
+				padding:0px;
+				margin:0;
+			}
+			html>body{
+				width:1280px;
+				margin:0 auto;
+				
+			}
+				body:after,
+                form:after {
+					display:block;
+					content:"";
+					height:0px;
+					clear:both;
+				}
+				h2{
+					text-align:center;
+				}
+				
+				form{
+					display:block;					
+				}
+
+                    fieldset {
+                       padding:10px;
+                        width:45%;
+                        float:left;
+                        margin:5px 20px;
+                    }
+					    label,input,button,a,select{
+						    vertical-align:middle;                            
+					    }
+
+                        label {
+                            padding-left:10px;
+                        }
+				
+					a{
+						display:inline-block;
+						background:skyblue;		
+						padding: 10px;
+						margin : 10px 25px;
+						text-decoration:none;
+						border-radius:5px;						
+						text-align:center;
+					}
+					a:hover{
+						-moz-box-shadow: 2px -2px 3px #888888; 
+						box-shadow: 2px -2px 15px #888888;
+						margin-left:18px;
+					}
+					a:active
+					{
+						background-color:skyblue
+						-moz-box-shadow: none; 
+						box-shadow: none;
+						margin-left:20px;
+						color:inherit;
+					}
+					
+/*** Divs styles***/
+.red,
+#blue,
+#gray{
+    float:left;
+    width:250px;
+    height:400px;
+    margin:10px 20px;
+    padding:0;
+}
+
+.red {
+    border:1px solid red;
+}
+
+#blue {
+    border:1px solid blue;
+}
+
+#gray {
+    border:2px solid #888888;
+}
+
+.result > div,
+.result > span,
+.result > p{
+    border:1px solid skyblue;
+}
