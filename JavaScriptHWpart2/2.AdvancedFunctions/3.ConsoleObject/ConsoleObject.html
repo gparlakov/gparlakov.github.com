@@ -1,0 +1,37 @@
+<html>
+	<head>
+		<title>Console Object</title>	
+		<link type="text/css" rel="stylesheet" href = "styles/commonStyles.css" />	
+	</head>
+	<body>
+		<h2>
+			Create a module to work with the console object.Implement functionality for
+		</h2>
+
+        <ul>
+           <li>Writing a line to the console </li>
+           <li>Writing a line to the console using a format</li>
+           <li>Writing to the console should call toString() to each element</li>
+           <li>Writing errors and warnings to the console with and without format</li>
+        </ul>
+		<a href = "#" onclick = "startFunc()">Start</a>
+		
+		<div id="console">
+        <!--  Moving object.element goes in here-->
+        </div>
+		
+		<script src = "scripts/consoleObject.js"></script>
+		<script>
+		    function startFunc() {
+		        //var email = 'nettuts@tutsplus.com';
+		        //var string = email.replace(/([a-z\d_-]+)@([a-z\d_-]+)\.[a-z]{2,4}/ig, '$1, $2'); // alerts "nettuts, tutsplus"  
+		        consoleP.writeLine("hello");
+		        consoleP.writeLine("Hello {0} and {1} and again {0}", "moto", "goto");
+		        consoleP.writeError("Error: {0} and {1}", "Type", "Object");
+		        consoleP.writeWarning("Warning: {0} and {1}", "Type", "Array");
+		    }
+		    
+		</script>
+	</body>
+
+ </html>
