@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<title>MoveDivsInCircle</title>	
+		<link type="text/css" rel="stylesheet" href = "styles/commonStyles.css" />	
+	</head>
+	<body>
+		<h2>
+			Create a module that works with moving div elements. Implement functionality for:
+		</h2>
+
+        <ul>
+           <li>Add new moving div element to the DOM</li>
+           <li>The module should generate random background, font and border colors for the div element</li>
+           <li>All the div elements are with the same width and height</li>
+           <li>The movements of the div elements can be either circular or rectangular</li>
+           <li>The elements should be moving all the time</li>
+        </ul>
+		<a href = "#" onclick = "addDivs()">Add Div</a>
+		
+		<div id="wrapper">
+        <!--  Moving object.element goes in here-->
+        </div>
+		
+		<script src = "scripts/movableObj.js"></script>
+		<script>
+		    function addDivs() {
+		        var MaxRight = 800;
+		        var MaxDown = 500;
+		        var left = parseInt(Math.random() * MaxRight);
+		        var top = parseInt(Math.random() * MaxDown);                
+		        var elem = createMovableObject(left, top, 0.05, 100);		        
+		        var wrapper = document.getElementById("wrapper");
+		        elem.element.innerHTML = "Moving Div";
+                wrapper.appendChild(elem.element);
+		        
+                if (Math.random() < 0.51) {
+		            setInterval(function () { elem.moveCircular(); }, 1000 / 60);
+		        }
+		        else {
+		            setInterval(function () { elem.moveRectangular(); }, 1000 / 60);
+		        }
+		    }
+		</script>
+	</body>
+
+ </html>

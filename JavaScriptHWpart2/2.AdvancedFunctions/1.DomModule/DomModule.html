@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>1.Dom Module</title>	
+		<link type="text/css" rel="stylesheet" href = "styles/commonStyles.css" />		
+	</head>
+	<body>
+		<h2>
+			Create a module for working to work with DOM. The module should have the following functionality:
+		</h2>	
+		<div id="condition">          
+            <ul>
+                <li>Add element to parent element by given selector   </li>
+                <li>Remove element from the DOM  by given selector    </li>
+                <li>Attach event to given selector by given event type and event hander </li>
+                <li>Add elements to buffer, which appends them to the DOM when their for some selector count becomes 100 </li>
+                <li>The buffer contains elements for each selector it gets</li>
+                <li>Get elements by CSS selector</li>
+                <li>The module should reveal only the methods</li>
+			</ul>
+		</div>
+
+		<form action="#" method="GET">
+            <fieldset>
+                <legend>Add element</legend>                
+                <label for="typeElem">Type Element</label>
+                <select id="typeElem" >
+                    <option value="p">p</option>
+                    <option value="div">div</option>
+                    <option value="span">span</option>
+                    <option value="a">a</option>
+                </select>
+                <label for="parentToAddTo">Where to add it?</label>
+                    <select id="parentToAddTo">
+                        <option value="#gray">#gray</option>
+                        <option value=".red">.red</option>
+                        <option value="#blue">#blue</option>
+                    </select>
+                <a onclick='addChild()'>Add</a> 
+            </fieldset> 
+               
+           <fieldset>
+                <legend>Remove Element</legend>                
+                <label for="typeElemToRemove">Type Element</label>
+                <select id="typeElemToRemove" >
+                    <option value="p.added">p</option>
+                    <option value="div.added">div</option>
+                    <option value="span.added">span</option>
+                    <option value="a.added">a</option>
+                </select>
+                <label for="parentToRemoveFrom">Where to remove it from?</label>
+                    <select id="parentToRemoveFrom">
+                        <option value="#gray">#gray</option>
+                        <option value=".red">.red</option>
+                        <option value="#blue">#blue</option>
+                    </select>
+                 <a onclick='deleteChild()'>Remove</a>	 
+            </fieldset> 
+
+             <fieldset>
+                <legend>Add Event To</legend>                
+                <label for="typeElemToAddEventTo">Type Elem To Add Event To</label>
+                <select id="typeElemToAddEventTo" >
+                    <option value="p.added">p</option>
+                    <option value="div.added">div</option>
+                    <option value="span.added">span</option>
+                    <option value="a.added">a</option>
+                </select>
+                <label for="eventToAddTo">On what event?</label>
+                <select id="eventToAddTo">
+                    <option value="onclick">onclick</option>
+                    <option value="onmouseover">onmouseover</option>                    
+                </select>                                 
+                <a onclick='addEventHandler()'>Add Event Handler</a>	
+                <p>Event handler = function to change color to red and back to original.</p>
+            </fieldset>
+            
+            <fieldset>
+                <legend>Add Elements To Buffer</legend>                        
+                <label for="typeElemToAddEventToBuffer">Type Elem To  Add to buffer</label>
+                <select id="typeElemToAddEventToBuffer" >
+                    <option value="p.added">p</option>
+                    <option value="div.added">div</option>
+                    <option value="span.added">span</option>
+                    <option value="a.added">a</option>
+                </select>
+                <p></p><label for="bufferToAddTo">In which buffer (elements will be displayed in it when buffer is full) </label>
+                    <select id="bufferToAddTo">
+                            <option value="#gray">#gray</option>
+                            <option value=".red">.red</option>
+                            <option value="#blue">#blue</option>                  
+                    </select>  
+                </p>                               
+                <a onclick='addElemToBuffer()'>Add Theese Elements To Buffer</a>
+                <p>Will add <strong>all</strong> such elements in the selected buffer elements.</p>  
+                <p>Buffer fills with 10 elements</p>      
+            </fieldset>  
+
+		</form>
+		
+		<div id="blue" class="result">
+            <!-- Elements go in here -->
+		</div>
+        <div class="red result">
+            <!-- Elements go in here -->
+        </div>
+		
+        <div id="gray" class="result">
+            <!-- Elements go in here -->
+        </div>
+
+		<script src="scripts/domModule.js"></script>
+		<script>
+		    function addChild() {
+		        var typeElement = document.getElementById('typeElem').value;
+		        var parentSelector = document.getElementById('parentToAddTo').value;
+		        var elem = document.createElement(typeElement);
+		        elem.className = "added";
+		        elem.innerHTML = 'new ' + typeElement + ' added';
+		        domModule.addChild(elem, parentSelector);
+            }
+
+            function deleteChild() {		    
+                var parentSelector = document.getElementById('parentToRemoveFrom').value;
+                var elemSelector = document.getElementById('typeElemToRemove').value;
+                domModule.deleteChild(elemSelector, parentSelector);    
+            }
+
+            //changes color to rad and back to original on click
+            function addEventHandler() {
+                var elemSelector = document.getElementById('typeElemToAddEventTo').value;
+                var event = document.getElementById('eventToAddTo').value;
+
+                domModule.attachEvent(elemSelector, event, function (ev) {
+                    //for IE support
+                    if (!ev) {
+                        ev = window.event;
+                    }
+
+                    if (this.style.backgroundColor !== "red") {
+                        this.style.backgroundColor = "red";
+                    }
+                    else {
+                        this.style.backgroundColor = "";
+                    }
+
+                    //to stop event chain
+                    if (ev.stopPropagation) {
+                        ev.stopPropagation();
+                    }
+                    else if (ev.preventDefault) {
+                        ev.preventDefault();
+                    }
+                    //IE 8 stops propagating/repeating the event up the event chain/ with this
+                    else if (ev.cancelBubble === false) {
+                        ev.cancelBubble = true;
+                    }
+                    return false;
+                });
+            }
+
+            function addElemToBuffer() {
+                var elemSelector = document.getElementById('typeElemToAddEventToBuffer').value;
+                var buffer = document.getElementById('bufferToAddTo').value;                
+                domModule.addElementToBuffer(elemSelector, buffer);
+            }
+		</script>
+	</body>
+
+ </html>

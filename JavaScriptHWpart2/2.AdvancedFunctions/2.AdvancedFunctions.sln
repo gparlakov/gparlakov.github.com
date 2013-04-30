@@ -1,24 +1,44 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "1.GenerateRandomDivs", "1.GenerateRandomDivs\", "{05C36B0B-2768-4A06-B598-75532E9981CF}"
+# Visual Studio 2010
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "1.DomModule", "1.DomModule\", "{EB5E285B-E20C-428C-B665-A88E7085B390}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		Debug.AspNetCompiler.VirtualPath = "/1.GenerateRandomDivs"
-		Debug.AspNetCompiler.PhysicalPath = "1.GenerateRandomDivs\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\1.GenerateRandomDivs\"
+		Debug.AspNetCompiler.VirtualPath = "/1.DomModule"
+		Debug.AspNetCompiler.PhysicalPath = "1.DomModule\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\1.DomModule\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/1.GenerateRandomDivs"
-		Release.AspNetCompiler.PhysicalPath = "1.GenerateRandomDivs\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\1.GenerateRandomDivs\"
+		Release.AspNetCompiler.VirtualPath = "/1.DomModule"
+		Release.AspNetCompiler.PhysicalPath = "1.DomModule\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\1.DomModule\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "61422"
+		VWDPort = "49572"
+	EndProjectSection
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "2.GenerateMovingDivs", "2.GenerateMovingDivs\", "{C292C374-0884-4BEC-A23B-7B113935B4D7}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/2.GenerateMovingDivs"
+		Debug.AspNetCompiler.PhysicalPath = "2.GenerateMovingDivs\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\2.GenerateMovingDivs\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/2.GenerateMovingDivs"
+		Release.AspNetCompiler.PhysicalPath = "2.GenerateMovingDivs\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\2.GenerateMovingDivs\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "49555"
 	EndProjectSection
 EndProject
 Global
@@ -26,8 +46,10 @@ Global
 		Debug|Any CPU = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{05C36B0B-2768-4A06-B598-75532E9981CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{05C36B0B-2768-4A06-B598-75532E9981CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB5E285B-E20C-428C-B665-A88E7085B390}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB5E285B-E20C-428C-B665-A88E7085B390}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C292C374-0884-4BEC-A23B-7B113935B4D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C292C374-0884-4BEC-A23B-7B113935B4D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
