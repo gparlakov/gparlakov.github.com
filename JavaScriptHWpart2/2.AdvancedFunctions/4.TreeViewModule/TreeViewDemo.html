@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<title>Console Object</title>	
+		<link type="text/css" rel="stylesheet" href = "styles/commonStyles.css" />	
+	</head>
+	<body>
+		<h2>
+			*Wrap the TreeView from the previous presentation into a module
+		</h2>
+
+        <pre>
+            var controls = …            var treeView = controls.treeView("div.tree-view");            var jsnode=treeView.addNode();            jsnode.content("JavaScript");            var js1subnode = jsnode.addNode();            js1subnode.content("JavaScript - part 1");            var js2subnode = jsnode.addNode();            hs2subnode.content("JavaScript - part 2");            var jslibssubnode = jsnode.addNode();            jslibssubnode.content("JS Libraries");            var jsframeworksnode = jsnode.addNode();            jsframeworksnode.content("JS Frameworks and UI");            var webnode = treeView.addNode();            Webnode.content("Web");
+        </pre>
+        <fieldset>
+            <legend>Example</legend>
+            <div class="tree-view">                <ul>                <li>                    <a href="#">JavaScript</a>                    <ul>                        <li><a href="#">JavaScript - part 1</a></li>                        <li><a href="#">JavaScript - part 2</a></li>                        <li><a href="#">JS Libraries</a></li>                        <li><a href="#">JS Frameworks and UI</a></li>                    </ul>                </li>                <li><a href="#">Web</a></li>                </ul>            </div>
+        </fieldset>
+		<a href = "#" onclick = "startFunc()">Start</a>
+		
+		<div id="result">
+        <!--  Moving object.element goes in here-->
+        </div>
+
+        <script src="scripts/treeView.js"></script>
+		<script>
+		    function startFunc() {
+		        var controls = new treeViewControls();
+		        var treeView = controls.treeView('#result');
+		        var node = treeView.addNode();
+		        node.content("hi");
+
+		        //var controls = new treeViewControls();		        //var treeView = controls.treeView("div#result");		        //var jsnode = treeView.addNode();		        //jsnode.content("JavaScript");		        //var js1subnode = jsnode.addNode();		        //js1subnode.content("JavaScript - part 1");		        ////var js2subnode = jsnode.addNode();		        ////hs2subnode.content("JavaScript - part 2");		        ////var jslibssubnode = jsnode.addNode();		        ////jslibssubnode.content("JS Libraries");		        ////var jsframeworksnode = jsnode.addNode();		        ////jsframeworksnode.content("JS Frameworks and UI");                //		        ////var webnode = treeView.addNode();		        ////webnode.content("Web");
+		    }
+		    
+		</script>
+	</body>
+
+ </html>
