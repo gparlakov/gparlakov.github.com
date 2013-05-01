@@ -1,0 +1,165 @@
+<html>
+	<head>
+		<title>Vehicles Demo</title>
+        <link href="styles/vehiclesStyles.css" rel="stylesheet" />			
+	</head>
+	<body>
+		<h2>
+			Design vehicles class hierarchy
+		</h2>
+
+        
+		<button onclick = "landVehicleDemo()">Land Vehicle Demo</button>
+		<button onclick = "airVehicleDemo()">Air Vehicle Demo</button>
+        <button onclick = "seaVehicleDemo()">Sea Vehicle Demo</button>
+        <button onclick = "amphibianDemo()">Amphibian Vehicle Demo</button>
+        <button onclick = "clearConsole()">Clear Console</button>
+		<div id="console">
+        <!--  Moving object.element goes in here-->
+        </div>
+
+        <!-- Usings :) In a website they should be in one file for minimizing HTTP requests -->
+        <!--    for example vehicles.NS.minified.js -->
+        <script src="scripts/consoleObject.js"></script>
+        <script src="scripts/VehicleNS.js"></script>
+        <script src="scripts/PropulsionUnitsNS.js"></script>
+        
+		<script>
+		    function landVehicleDemo() {
+		        try{
+		            var jsConsole = consoleP;
+		            var fourWheelsRadiusFour = getFourWheels(4);
+		            var fourWheelsRadiusFive = getFourWheels(5);
+                    var fourWheelsRadius
+		            var car1 = new VehicleNS.LandVehicle(fourWheelsRadiusFour);
+		            var car2 = new VehicleNS.LandVehicle(fourWheelsRadiusFive);
+
+		            jsConsole.writeWarning("----Land vehicles Demo----");
+                    jsConsole.writeLine("Car1 speed : {0} before acceleration", car1.getSpeed())
+                    jsConsole.writeLine("Car2 speed : {0} before acceleration", car2.getSpeed())
+                    car1.accelerate();
+                    car2.accelerate();
+		            jsConsole.writeLine("Car1 speed : {0} after acceleration", car1.getSpeed())
+		            jsConsole.writeLine("Car2 speed : {0} after acceleration", car2.getSpeed())                    
+		        }
+		        catch (ex) {
+		            consoleP.writeError("{0}. Error of type {1}", ex.message, ex.name);
+		        }
+		    }
+
+		    function airVehicleDemo() {
+		        try {
+		            var jsConsole = consoleP;
+
+		            jsConsole.writeWarning("----Air vehicles Demo----");
+		            var propellerNozzle = new PropulsionUnitsNS.PropellingNozzle(5);
+		            var propNozzle2 = new PropulsionUnitsNS.PropellingNozzle(5);
+		            var plane = new VehicleNS.AirVehicle(propellerNozzle);
+		            var plane2 = new VehicleNS.AirVehicle(propNozzle2);
+
+		            jsConsole.writeGreen("Two planes with same value for power (of nozzle) second is with afterburner off");
+		            plane2.toggleAfterburner();
+		            jsConsole.writeLine("Plane speed before acceleration {0}", plane.getSpeed());
+		            jsConsole.writeLine("Plane2  speed before acceleration {0}", plane2.getSpeed());
+		            plane.accelerate();
+		            plane2.accelerate();
+		            jsConsole.writeLine("Plane speed after acceleration {0}", plane.getSpeed());
+		            jsConsole.writeLine("Plane2 speed after acceleration {0}", plane2.getSpeed());
+		            jsConsole.writeGreen("Now we toggle afterburners on the two planes. So Plane is Afterburner ON, Plane2 - OFF");
+		            jsConsole.writeGreen("That way the second will get acceleration of 5 and the first - 10 so they shoul be equal in the end");
+		            plane.toggleAfterburner();
+		            plane2.toggleAfterburner();
+		            plane.accelerate();
+		            plane2.accelerate();
+		            jsConsole.writeLine("Plane speed after new acceleration {0}", plane.getSpeed());
+		            jsConsole.writeLine("Plane2 speed after new acceleration {0}", plane2.getSpeed());
+		        }
+		        catch (ex) {
+		            consoleP.writeError("{0}. Error of type {1}", ex.message, ex.name);
+		        }
+		    }
+
+		    function seaVehicleDemo() {
+		        try {
+		            var jsConsole = consoleP;
+
+		            jsConsole.writeWarning("----Sea vehicles Demo----");
+		            var propeller1 = new PropulsionUnitsNS.Propeller(5, "clockwise");
+		            var propeller2 = new PropulsionUnitsNS.Propeller(10, "counterClockwise");
+		            var propeller3 = new PropulsionUnitsNS.Propeller(5, "clockwise");
+
+		            var boat1 = new VehicleNS.SeaVehicle(1);
+		            var boat2 = new VehicleNS.SeaVehicle(2);
+
+		            boat1.addPropulsion(propeller1);
+		            boat2.addPropulsion(propeller2);
+		            boat2.addPropulsion(propeller3);
+
+		            boat1.accelerate();
+		            boat2.accelerate();
+
+		            jsConsole.writeGreen("Boat1 has one propeller(clockwise = positive direction)");
+		            jsConsole.writeGreen("Boat2 has two propellers(1 clockwise = +5; 1 counterClockwis = -10; total -5;)");		            
+		           
+		            boat1.accelerate();
+		            boat2.accelerate();
+		            jsConsole.writeLine("Boat1 speed after acceleration {0}", boat1.getSpeed());
+		            jsConsole.writeLine("Boat2 speed after acceleration {0}", boat2.getSpeed());
+		            jsConsole.writeGreen("Now we toggle(reverse direction of spinning) directions on the two boats.");
+		            boat1.reverseDirectionOfPropeller();
+		            boat2.reverseDirectionOfPropeller();
+		            boat1.accelerate();
+		            boat2.accelerate();
+		            jsConsole.writeLine("Boat1 speed after new acceleration {0}", boat1.getSpeed());
+		            jsConsole.writeLine("Boat2 speed after new acceleration {0}",boat2.getSpeed());
+		        }
+		        catch (ex) {
+		            consoleP.writeError("{0}. Error of type {1}", ex.message, ex.name);
+		        }
+		    }
+
+		    function amphibianDemo() {
+		        try {
+		            var jsConsole = consoleP;
+
+		            jsConsole.writeWarning("----Amphibian vehicle Demo----");
+		            var fourWheelsRadiusFour = getFourWheels(4);                    
+		            var propeller1 = new PropulsionUnitsNS.Propeller(5, "clockwise");
+		            var amphibian = new VehicleNS.AmphibianVehicle(fourWheelsRadiusFour, propeller1, "sea");
+
+		            jsConsole.writeGreen("Create an amphibian vehicle with two parts - one land and one sea. Set it to mode 'sea'");
+		            amphibian.accelerate();
+		            amphibian.accelerate();
+		            jsConsole.writeLine("Amphibian speed in sea mode {0} after 2 accelerations.", amphibian.getSpeed());
+		            amphibian.reverseDirectionOfPropeller();
+                    amphibian.accelerate();
+		            jsConsole.writeLine("Amphibian speed in sea mode {0} after 1 (de)acceleration", amphibian.getSpeed());
+
+		            amphibian.changeMode("land");
+		            amphibian.accelerate();
+		            jsConsole.writeLine("Amphibian speed in land mode {0} after 1 acceleration", amphibian.getSpeed());
+		            amphibian.accelerate();
+		            jsConsole.writeLine("Amphibian speed in land mode {0} after 1 more acceleration", amphibian.getSpeed());
+		            
+		        }
+		        catch (ex) {
+		            consoleP.writeError("{0}. Error of type {1}", ex.message, ex.name);
+		        }
+		    }
+
+		    function getFourWheels(raduis) {
+		        var fourWheels = new Array();
+		        for (var i = 0; i < 4; i++) {
+		            fourWheels.push(new PropulsionUnitsNS.Wheel(raduis));
+		        }
+
+		        return fourWheels;
+		    }
+
+		    function clearConsole() {
+		        document.getElementById('console').innerHTML = '';
+		    }
+		</script>
+	</body>
+
+ </html>
