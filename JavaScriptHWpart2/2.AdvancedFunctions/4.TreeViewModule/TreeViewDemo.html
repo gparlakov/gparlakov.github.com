@@ -10,12 +10,38 @@
 		</h2>
         <article class="task-conditions">
             <pre>
-                var controls = …<br />                var treeView = controls.treeView("div.tree-view");<br />                var jsnode=treeView.addNode();<br />                jsnode.content("JavaScript");<br />                var js1subnode = jsnode.addNode();<br />                js1subnode.content("JavaScript - part 1");<br />                var js2subnode = jsnode.addNode();<br />                hs2subnode.content("JavaScript - part 2");<br />                var jslibssubnode = jsnode.addNode();<br />                jslibssubnode.content("JS Libraries");<br />                var jsframeworksnode = jsnode.addNode();<br />                jsframeworksnode.content("JS Frameworks and UI");<br />                var webnode = treeView.addNode();<br />                Webnode.content("Web");<br />
+                var controls = ï¿½<br />
+                var treeView = controls.treeView("div.tree-view");<br />
+                var jsnode=treeView.addNode();<br />
+                jsnode.content("JavaScript");<br />
+                var js1subnode = jsnode.addNode();<br />
+                js1subnode.content("JavaScript - part 1");<br />
+                var js2subnode = jsnode.addNode();<br />
+                hs2subnode.content("JavaScript - part 2");<br />
+                var jslibssubnode = jsnode.addNode();<br />
+                jslibssubnode.content("JS Libraries");<br />
+                var jsframeworksnode = jsnode.addNode();<br />
+                jsframeworksnode.content("JS Frameworks and UI");<br />
+                var webnode = treeView.addNode();<br />
+                Webnode.content("Web");<br />
             </pre>
 
             <fieldset>
                 <legend>Example</legend>
-                <div class="tree-view">                    <ul>                    <li>                        <a href="#">JavaScript</a>                        <ul>                            <li><a href="#">JavaScript - part 1</a></li>                            <li><a href="#">JavaScript - part 2</a></li>                            <li><a href="#">JS Libraries</a></li>                            <li><a href="#">JS Frameworks and UI</a></li>                        </ul>                    </li>                    <li><a href="#">Web</a></li>                    </ul>                </div>
+                <div class="tree-view">
+                    <ul>
+                    <li>
+                        <a href="#">JavaScript</a>
+                        <ul>
+                            <li><a href="#">JavaScript - part 1</a></li>
+                            <li><a href="#">JavaScript - part 2</a></li>
+                            <li><a href="#">JS Libraries</a></li>
+                            <li><a href="#">JS Frameworks and UI</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Web</a></li>
+                    </ul>
+                </div>
             </fieldset>
         </article>
 
@@ -54,7 +80,7 @@
 		        var nodeCsPartIILessonII = addNodeAndContent(nodeCsPartII, "Lesson II: Delegates");
 		        var nodeCsPartIILessonIII = addNodeAndContent(nodeCsPartII, "Lesson III: Lambda");
 		        var nodeCsPartIILessonIV = addNodeAndContent(nodeCsPartII, "Lesson IV: Events");
-            }
+            	    }
 		    
 		    function addNodeAndContent(parentNode, content) {
 		        var childNode = parentNode.addNode();
