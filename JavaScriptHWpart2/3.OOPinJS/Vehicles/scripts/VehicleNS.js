@@ -3,14 +3,14 @@ Function.prototype.inherit = function (parent) {
     this.prototype.constructor = parent;
 };
 
-Function.prototype.extend = function(parent){
-    for(var i = 1; i < arguments.length; i++){
-        var propertyName = arguments[i]
+Function.prototype.extend = function (parent) {
+    for (var i = 1; i < arguments.length; i++) {
+        var propertyName = arguments[i];
         this[propertyName] = parent[propertyName];
     }
 
     return this;
-}
+};
 var VehicleNS = (function () {
     var LAND_VEHICLE_WHEELS = 4;
    
@@ -163,10 +163,10 @@ var VehicleNS = (function () {
         var car = new LandVehicle(fourWheels);
 
         var vehicleMode = mode;
-        this.changeMode = function(mode){
+        this.changeMode = function (mode) {
             if (mode === "sea") {
                 this.getSpeed = boat.getSpeed;
-                this.accelerate = boat.accelerate;                
+                this.accelerate = boat.accelerate;
             }
             else if (mode === "land") {
                 this.getSpeed = car.getSpeed;
@@ -175,14 +175,14 @@ var VehicleNS = (function () {
             else {
                 throw exception;
             }
-        }
+        };
 
         this.changeMode(vehicleMode);
 
         var exception = {
             message: "Amphibian has modes 'sea' and 'land'. You failed to specifiy which to use.",
             name: "Vehicle Error"
-        }
+        };
     }
 
     
