@@ -1,0 +1,48 @@
+html,body,a,label,form,input,fieldset,h2,p,div{
+	padding:0px;
+	margin:0;
+}
+	body:after,
+    .task-conditions:after
+    {
+		display:block;
+		content:"";
+		height:0px;
+		clear:both;
+	}
+
+	h2{
+		text-align:center;
+	}				
+	
+    .task-conditions {
+	    border:1px inset black;	
+    }
+
+        fieldset,pre {
+            float: left;
+	        width: 49%;
+            margin: 0;
+            padding: 0;	
+        }
+	
+.button{
+    margin-left: 50px;
+}
+
+#result{
+    padding: 10px 30px;
+}	
+    #result ul {
+	    list-style-type: none;
+    }
+
+.ul-opened:before {
+    content: url(../images/arrow_small_down.png);
+}  
+
+.ul-closed:before {
+	content: url(../images/arrow_small_right.png);
+       
+}
+
