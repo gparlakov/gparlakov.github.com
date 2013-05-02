@@ -1,4 +1,5 @@
 ﻿var domModule = function () {
+	var BUFFER_SIZE = 100;
     var buffer = document.createDocumentFragment();
 
     var addChild = function (element, parentSelector) {
@@ -29,7 +30,7 @@
         for (var i = 0; i < elements.length; i++) {
             buffer[bufferName].appendChild(elements[i]);
             buffer[bufferName].count++;
-            if (buffer[bufferName].count >= 10) {
+            if (buffer[bufferName].count >= BUFFER_SIZE) {
                 appendAllElementsFrom(bufferName);
             }
         }
