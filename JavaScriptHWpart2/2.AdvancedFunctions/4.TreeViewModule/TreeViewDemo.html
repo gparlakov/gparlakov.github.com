@@ -30,41 +30,30 @@
 		    function startFunc() {
 		        var module = new treeViewModule();
 		        var treeView = module.treeView('#result');
-		        
-
+				
 		        var nodeJS = addNodeAndContent(treeView, "Java Script");
-
-		        var nodeCs = addNodeAndContent(treeView, "C# Track");
-                
+		        var nodeCs = addNodeAndContent(treeView, "C# Track");                
 		        var nodePS = addNodeAndContent(treeView, "Photoshop");
-
-		        var nodeJsPartI = addNodeAndContent(nodeJS, "Part I");
-
+		        
+				var nodeJsPartI = addNodeAndContent(nodeJS, "Part I");
 		        var nodeJsPartII = addNodeAndContent(nodeJS, "Part II");
 		        var nodeJsAdvancedFunctions = addNodeAndContent(nodeJsPartII, "Advanced Functions");
 		        var nodeJsOop = addNodeAndContent(nodeJsPartII, "OOP in JS");
 
-
 		        var nodeCsPartI = addNodeAndContent(nodeCs, "C# part I");
 		        var nodeCsPartII = addNodeAndContent(nodeCs, "C# part II");
-
 		        var nodeCsPartILessonI = addNodeAndContent(nodeCsPartI, "Lesson I: Intro To C#");
 		        var nodeCsPartILessonII = addNodeAndContent(nodeCsPartI, "Lesson II: Variables");
 		        var nodeCsPartILessonIII = addNodeAndContent(nodeCsPartI, "Lesson III: Arrays");
-		        var nodeCsPartILessonIV = addNodeAndContent(nodeCsPartI, "Lesson IV: Methods");
-
+		        var nodeCsPartILessonIV = addNodeAndContent(nodeCsPartI, "Lesson IV: Methods");				
 		        var nodeCsPartILessonIPointI = addNodeAndContent(nodeCsPartILessonI, "Point 1");
 		        var nodeCsPartILessonIPointII = addNodeAndContent(nodeCsPartILessonI, "Point 2");
 		        var nodeCsPartILessonIPointIII = addNodeAndContent(nodeCsPartILessonI, "Point 3");
-		        var nodeCsPartILessonIIIPointISubpointI = addNodeAndContent(nodeCsPartILessonIPointI, "SubPoint 1");
-
-		        
-
+		        var nodeCsPartILessonIIIPointISubpointI = addNodeAndContent(nodeCsPartILessonIPointI, "SubPoint 1");		        
 		        var nodeCsPartIILessonI = addNodeAndContent(nodeCsPartII, "Lesson I: OOP");
 		        var nodeCsPartIILessonII = addNodeAndContent(nodeCsPartII, "Lesson II: Delegates");
 		        var nodeCsPartIILessonIII = addNodeAndContent(nodeCsPartII, "Lesson III: Lambda");
 		        var nodeCsPartIILessonIV = addNodeAndContent(nodeCsPartII, "Lesson IV: Events");
-
             }
 		    
 		    function addNodeAndContent(parentNode, content) {
