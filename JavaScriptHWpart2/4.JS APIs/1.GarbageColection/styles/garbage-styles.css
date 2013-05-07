@@ -1,0 +1,26 @@
+﻿/* File Created: май 7, 2013 */
+.trash-can{
+  position:absolute;
+  left:55px;
+  top:250px;  
+  width:350px;
+  height: 250px;
+  background-repeat: no-repeat;
+}
+
+.opened
+{
+    background-image: url('../images/trash_opened.png');
+}
+
+.closed
+{
+    background-image: url('../images/trash_empty.png');
+}
+
+.garbage
+{
+    position:absolute;
+    top:500px;
+    left:650px;
+}
