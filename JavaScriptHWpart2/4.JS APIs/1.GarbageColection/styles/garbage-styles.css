@@ -1,10 +1,15 @@
 ﻿/* File Created: май 7, 2013 */
+#gameField{
+    height:750px;
+}
+	
+
 .trash-can{
   position:absolute;
   left:55px;
   top:250px;  
-  width:350px;
-  height: 250px;
+  width:256px;
+  height:256px;
   background-repeat: no-repeat;
 }
 
@@ -21,6 +26,4 @@
 .garbage
 {
     position:absolute;
-    top:500px;
-    left:650px;
 }
