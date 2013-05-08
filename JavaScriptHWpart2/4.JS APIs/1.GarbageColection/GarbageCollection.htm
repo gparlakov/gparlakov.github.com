@@ -7,7 +7,18 @@
 </head>
 <body>
     <div class="trash-can closed"></div>
-    <img class="garbage" src="images/garbage.png" />
+    <button onclick = "startGame()" id="startButton" >Start</button>
+    <button onclick = "startGame()" id="newGameButton" disabled = "true">New Game</button>
+    
     <script src="scripts/garbageScrips.js" type="text/javascript"></script>
+    <script>
+        function startGame() {
+            var startButton = document.getElementById("startButton");
+            startButton.disabled = true;
+            var newGameButton = document.getElementById("newGameButton");
+            newGameButton.disabled = false;
+            gameGarbageCollection();
+        }
+    </script>
 </body>
 </html>
