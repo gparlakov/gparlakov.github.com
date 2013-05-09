@@ -85,6 +85,7 @@ var gameGarbageCollection = function () {
                 alert("Game Won! In " + time / 1000 + " seconds");
                 var playerName = prompt("Nickname for score board: ");
                 scoreKeeping().addPlayerScore(playerName, time / 1000);
+				scoreKeeping().displayScoreBoard();
             }
             return false;
         };
@@ -102,25 +103,28 @@ var gameGarbageCollection = function () {
 };
 
 var scoreKeeping = function () {
-    function copyObjectProperties (obj) {
-        var result = {};
-        for (var i in obj) {
-            result[i] = obj[i];
-        }
-
-        return result;
-    };
+    //function copyObjectProperties (obj) {
+    //    var result = {};
+    //    for (var i in obj) {
+    //        result[i] = obj[i];
+    //    }
+    //
+    //    return result;
+    //};
 
     function addPlayerScore (playerName, time) {
-        if (!localStorage.garbageGame) {
-            localStorage.garbageGame = {};
+        if (!localStorage.getData('highScore')) {
+            localStorage.setData('highScore',playerName + ":" + Math.floor(time, 3));
+			return;
         };
-
-        localStorage.garbageGame[playerName] = parseFloat(time);
+		var scores = localStorage.getData('highScore');
+		
+		
+        //localStorage.garbageGame[playerName] = parseFloat(time);
     }
 
     function displayScoreBoard () {
-        if (!localStorage.garbageGame) {
+        if (!localStorage.getData('highScore')) {
             alert("No Scores");
             return;
         }
