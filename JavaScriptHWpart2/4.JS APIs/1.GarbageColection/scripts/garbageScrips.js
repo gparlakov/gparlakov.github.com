@@ -178,10 +178,10 @@ var scoreKeeping = function () {
         var scoresJSON = localStorage.getItem('highScore');
 
         var scores = scoresJSON.match(/[\w]+:[\d\.]+/g);
-        if(countToShow && parseInt(countToShow) < scores.lenght){         
+        if (countToShow && parseInt(countToShow) < scores.length) {
             var countOfScoresToShow = countToShow;
         }
-        else{
+        else {
             countOfScoresToShow = scores.length;
         }
 

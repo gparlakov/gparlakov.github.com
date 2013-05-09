@@ -7,7 +7,7 @@
 </head>
 <body>
     <button onclick = "startGame()" id="startButton" >Start</button>
-    <button onclick = "showHighScore()" id="showHighScore" >Show full high-score</button>
+    <button onclick = "showHighScore()" id="showHighScore" >Show high-score</button>
     <button onclick = "clearHighScore()" id="clearHightScore" >Clear high-score</button>
     <div id="gameField">
     </div>
@@ -16,11 +16,13 @@
     <script>
 
         function startGame() {
+            var GAME_DIFFICULTY = 1;
+            
             var startButton = document.getElementById("startButton");
             startButton.disabled = true;
 
             var game = gameGarbageCollection();
-            game.initialize(0.5, document.getElementById('gameField'));
+            game.initialize(GAME_DIFFICULTY, document.getElementById('gameField'));
             game.startGame();
         }
 
@@ -29,6 +31,9 @@
         }
 
         function clearHighScore() {
+            var gameField = document.getElementById('gameField');
+            gameField.innerHTML = "";
+             
             if (localStorage.getItem('highScore')) {
                 localStorage.removeItem('highScore');
             }
