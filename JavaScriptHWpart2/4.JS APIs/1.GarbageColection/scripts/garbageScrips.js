@@ -1,17 +1,26 @@
 ﻿/* File Created: май 7, 2013 */
+
 var gameGarbageCollection = function () {
+    var COUNT_OF_HIGHSCORES = 5;
+
     var timeStart;
     var numberGarbages;
-    var gameFieldElement = document.getElementsByTagName('body')[0];
+    var gameFieldElement = null;
+
+
 
     //Difficulty of game = 10 - 50 pieces of trash to cleanUp 
     var initialize = function (difficulty, gameFieldElement) {
+        if (!gameFieldElement && gameFieldElement === null) {
+            throw { 'Garbage Game Error': 'Failed to point where te game will take place. Need gamefield element.' };
+        }
+        else {
+            setGameFieldElement(gameFieldElement);
+        }
+        clearGameField();
+
         if (!difficulty) {
             difficulty = 1;
-        }
-
-        if (!gameFieldElement) {
-            gameFieldElement = document.getElementsByTagName('body')[0];
         }
 
         numberGarbages = parseInt(difficulty * 10);
@@ -36,7 +45,7 @@ var gameGarbageCollection = function () {
             createRandomGarbage(i);
         }
 
-        //starts gamer timer
+        //starts game time
         timeStart = new Date();
     };
 
@@ -85,7 +94,12 @@ var gameGarbageCollection = function () {
                 alert("Game Won! In " + time / 1000 + " seconds");
                 var playerName = prompt("Nickname for score board: ");
                 scoreKeeping().addPlayerScore(playerName, time / 1000);
-				scoreKeeping().displayScoreBoard();
+                clearGameField();
+                scoreKeeping().displayScoreBoard(gameFieldElement, COUNT_OF_HIGHSCORES);
+
+                if (gameFinished) {
+                    gameFinished();
+                }
             }
             return false;
         };
@@ -96,74 +110,98 @@ var gameGarbageCollection = function () {
         }
     };
 
+    var setGameFieldElement = function (element) {
+        gameFieldElement = element;
+    }
+
+    function clearGameField() {
+        var element = gameFieldElement.firstChild;
+        while (element) {
+            element.outerHTML = "";
+            element = element.nextSibling;
+        }
+
+    }
+
     return {
         initialize: initialize,
-        startGame: startGame
+        startGame: startGame,
+        setGameFieldElement: setGameFieldElement,
+        getGameFieldElement: gameFieldElement
     }
 };
 
 var scoreKeeping = function () {
-    //function copyObjectProperties (obj) {
-    //    var result = {};
-    //    for (var i in obj) {
-    //        result[i] = obj[i];
-    //    }
-    //
-    //    return result;
-    //};
+    function addPlayerScore(playerName, time) {
+        var newScore = playerName + ":" + time;
 
-    function addPlayerScore (playerName, time) {
-        if (!localStorage.getData('highScore')) {
-            localStorage.setData('highScore',playerName + ":" + Math.floor(time, 3));
-			return;
-        };
-		var scores = localStorage.getData('highScore');
-		
-		
-        //localStorage.garbageGame[playerName] = parseFloat(time);
-    }
-
-    function displayScoreBoard () {
-        if (!localStorage.getData('highScore')) {
-            alert("No Scores");
+        if (!localStorage.getItem('highScore')) {
+            localStorage.setItem('highScore', newScore + '|');
             return;
         }
 
-        var scoreBoardCopy = copyObjectProperties(localStorage.garbageGame);
-        var length = scoreBoardCopy.length;
-        var scores = [];
-
-        for (var i = 0; i < length; i++) {
-            scores.push(pullBestScore(scoreBoardCopy));
-        }
-
-
-    };
-
-    function pullBestScore (scoreBoard) {
-        var bestScore = null;
-        var bestKey = null;
-        for (var i in scoreBoard) {
-            if (bestScore === null) {
-                bestScore = parseFloat(scoreBoard[i]);
-                bestKey = i;
-            }
-            else {
-                if (parseFloat(scoreBoard[i]) < bestScore) {
-                    bestScore = parseFloat(scoreBoard[i]);
-                    bestKey = i;
-                }
-            }
-        }
-
-        var result = i + "   :   " + Math.round(bestScore, 3);
-        scoreBoard[bestKey] = null;
-        return result;
+        var scores = localStorage.getItem('highScore');
+        scores = pushNewScore(scores, newScore);
+        localStorage.setItem('highScore', scores);
     }
 
+    function pushNewScore(scores, newScore) {
+        var scoresSplit = scores.match(/[\w]+:[\d\.]+/g);
+        var newTime = parseScoreTime(newScore);
+        var scorePushed = false;
+        for (var i = 0; i < scoresSplit.length; i++) {
+            var currTime = parseScoreTime(scoresSplit[i]);
+            if (newTime < currTime) {
+                scoresSplit.splice(i, 0, newScore);
+                scorePushed = true;
+                break;
+            }
+        }
+
+        if (!scorePushed) {
+            scoresSplit.push(newScore);
+        }
+
+        return scoresSplit.join('|');
+    };
+
+    //takes time from score
+    function parseScoreTime(score) {
+        var timeString = score.match(/:[\d\.\d]+\b/)[0];
+        var time = parseFloat(timeString.substr(1));
+        return time;
+    }
+
+    function displayScoreBoard(gameFieldElement, countToShow) {
+        var scoreBoardDiv = createDivWithClass('scoreBoard');
+
+        var scoresJSON = localStorage.getItem('highScore');
+
+        var scores = scoresJSON.match(/[\w]+:[\d\.]+/g);
+        if(countToShow && parseInt(countToShow) < scores.lenght){         
+            var countOfScoresToShow = countToShow;
+        }
+        else{
+            countOfScoresToShow = scores.length;
+        }
+
+        for (var i = 0; i < countOfScoresToShow; i++) {
+            var nextScoreDiv = createDivWithClass('score');
+            var currentScore = scores[i].split(':');
+            nextScoreDiv.innerHTML = '<div style="clear:both"><p style="float:left;">' + currentScore[0] + '</p><p style="float:right">' + currentScore[1] + '</p></div>';
+            scoreBoardDiv.appendChild(nextScoreDiv);
+        }
+
+        gameFieldElement.appendChild(scoreBoardDiv);
+    }
+
+    var createDivWithClass = function (name) {
+        var div = document.createElement('div');
+        div.className = name;
+        return div;
+    };
+
     return {
-        copyObject: copyObjectProperties,
-        pullBestScore: pullBestScore,
         displayScoreBoard: displayScoreBoard,
         addPlayerScore: addPlayerScore
     };

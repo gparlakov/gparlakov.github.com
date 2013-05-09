@@ -7,25 +7,40 @@
 </head>
 <body>
     <button onclick = "startGame()" id="startButton" >Start</button>
-    <button onclick = "startGame()" id="newGameButton" disabled = "true">New Game</button>
+    <button onclick = "showHighScore()" id="showHighScore" >Show full high-score</button>
+    <button onclick = "clearHighScore()" id="clearHightScore" >Clear high-score</button>
     <div id="gameField">
     </div>
     
     <script src="scripts/garbageScrips.js" type="text/javascript"></script>
     <script>
-        var displayScoreBoard = function () {
-            scoreKeeping().displayScoreBoard();
-        } ();
 
         function startGame() {
             var startButton = document.getElementById("startButton");
             startButton.disabled = true;
-            var newGameButton = document.getElementById("newGameButton");
-            newGameButton.disabled = false;
 
             var game = gameGarbageCollection();
             game.initialize(0.5, document.getElementById('gameField'));
-            game.startGame();         
+            game.startGame();
+        }
+
+        function gameFinished() {
+            var startButton = document.getElementById("startButton").disabled = false;
+        }
+
+        function clearHighScore() {
+            if (localStorage.getItem('highScore')) {
+                localStorage.removeItem('highScore');
+            }
+        }
+
+        function showHighScore() {
+            if (localStorage.getItem('highScore')) {
+                var gameField = document.getElementById('gameField');
+                gameField.innerHTML = '';
+                gameFinished();
+                scoreKeeping().displayScoreBoard(gameField);
+            }
         }
     </script>
 </body>

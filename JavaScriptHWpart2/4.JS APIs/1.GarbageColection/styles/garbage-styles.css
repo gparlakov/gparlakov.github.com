@@ -1,4 +1,12 @@
 ﻿/* File Created: май 7, 2013 */
+html,body,div,p
+{
+    padding:0;
+    margin: 0;
+    zoom:1;
+}
+
+
 #gameField{
     height:750px;
 }
@@ -27,3 +35,16 @@
 {
     position:absolute;
 }
+
+/**Scoreboard**/
+
+#scoreBoard, .scoreBoard
+{
+    position:absolute;
+    width:150px;
+    font-size:20px;
+    color:Red;
+    top:10%;
+    left:45%;
+}
+	
