@@ -176,23 +176,24 @@ var scoreKeeping = function () {
         var scoreBoardDiv = createDivWithClass('scoreBoard');
 
         var scoresJSON = localStorage.getItem('highScore');
+		if(scoresJSON){
+			var scores = scoresJSON.match(/[\w]+:[\d\.]+/g);
+			if (countToShow && parseInt(countToShow) < scores.length) {
+				var countOfScoresToShow = countToShow;
+			}
+			else {
+				countOfScoresToShow = scores.length;
+			}
 
-        var scores = scoresJSON.match(/[\w]+:[\d\.]+/g);
-        if (countToShow && parseInt(countToShow) < scores.length) {
-            var countOfScoresToShow = countToShow;
-        }
-        else {
-            countOfScoresToShow = scores.length;
-        }
+			for (var i = 0; i < countOfScoresToShow; i++) {
+				var nextScoreDiv = createDivWithClass('score');
+				var currentScore = scores[i].split(':');
+				nextScoreDiv.innerHTML = '<div style="clear:both"><p style="float:left;">' + currentScore[0] + '</p><p style="float:right">' + currentScore[1] + '</p></div>';
+				scoreBoardDiv.appendChild(nextScoreDiv);
+			}
 
-        for (var i = 0; i < countOfScoresToShow; i++) {
-            var nextScoreDiv = createDivWithClass('score');
-            var currentScore = scores[i].split(':');
-            nextScoreDiv.innerHTML = '<div style="clear:both"><p style="float:left;">' + currentScore[0] + '</p><p style="float:right">' + currentScore[1] + '</p></div>';
-            scoreBoardDiv.appendChild(nextScoreDiv);
-        }
-
-        gameFieldElement.appendChild(scoreBoardDiv);
+			gameFieldElement.appendChild(scoreBoardDiv);
+		}
     }
 
     var createDivWithClass = function (name) {
