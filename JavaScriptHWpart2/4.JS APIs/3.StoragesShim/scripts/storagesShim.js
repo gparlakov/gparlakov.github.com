@@ -1,15 +1,19 @@
 ﻿(function () {
+    //takes param {timeTolive:<days>}
     var LocalStorageShim = function (param) {
-        this.timeToLive = new Date();
-        if (param.timeToLive) {
+        if (param && param.timeToLive) {
+            this.timeToLive = new Date();
             this.timeToLive.setTime(this.timeToLive.getTime() + param.timeToLive * 24 * 60 * 60 * 1000); //adds given amount of days to cookie's time to live
+            this.timeToLive = this.timeToLive.toUTCString();
         }
-        this.timeToLive = this.timeToLive.toUTCString();
     };
 
     LocalStorageShim.prototype = {
         setItem: function (key, value) {
-            var newCookie = "'" + key + "=" + value + "; expires=" + this.timeToLive + ";path=/'";
+            var newCookie = key + '=' + value + ';'
+            if (this.timeToLive) {
+                newCookie += 'expires=' + this.timeToLive + ';path=/;';
+            }
             document.cookie = newCookie;
         },
         getItem: function (key) {
@@ -27,18 +31,43 @@
                 }
 
                 nextCookie = nextCookie.substr(j);
-                if (nextCookie.startsWith(key)) {
+
+                if (nextCookie.substr(0, key.length) === key) {
                     return nextCookie;
                 }
             }
         }
     }
 
-    //if (!localStorage1) {
-    document.cookie = 'c1=cookie1; expires=Thu, 30 Apr 2014 21:44:00 UTC; path=/';
+    if (typeof localStorage === 'undefined') {
+        localStorage = new LocalStorageShim({ timeToLive: 999 });
+    }
 
-    localStorage1 = new LocalStorageShim({ timeToLive: 999 });
-    //}
-    localStorage1.setItem('huij', 'putka');
-    localStorage1.getItem('huij');
+    if (typeof sessionStorage === 'undefined') {
+        sessionStorage = new LocalStorageShim(); //without param will make new cookies expires = Date().now;
+    }
+
+    //since all browsers from IE7 onwards do carry the localStorage and sessionStorage
+    //for testing purposes:
+
+    if (typeof LocalStorage === 'undefined') {
+        LocalStorage = new LocalStorageShim({ 'timeToLive': 999 });
+    }
+
+    if (typeof SessionStorage === 'undefined') {
+        SessionStorage = new LocalStorageShim();
+    }
 })()
+
+function startTest() {
+    console.log('before init');
+    console.log(LocalStorage.getItem('testLocalStorage'));
+    console.log(SessionStorage.getItem('testSessinStorage'));
+
+    LocalStorage.setItem('testLocalStorage', 'fromLocalStorage');
+    SessionStorage.setItem('testSessinStorage', 'fromSessionStorage');
+
+    console.log('After init');
+    console.log(LocalStorage.getItem('testLocalStorage'));
+    console.log(SessionStorage.getItem('testSessinStorage'));
+}
