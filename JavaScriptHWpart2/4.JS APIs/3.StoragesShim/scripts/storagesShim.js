@@ -58,16 +58,3 @@
         SessionStorage = new LocalStorageShim();
     }
 })()
-
-function startTest() {
-    console.log('before init');
-    console.log(LocalStorage.getItem('testLocalStorage'));
-    console.log(SessionStorage.getItem('testSessinStorage'));
-
-    LocalStorage.setItem('testLocalStorage', 'fromLocalStorage');
-    SessionStorage.setItem('testSessinStorage', 'fromSessionStorage');
-
-    console.log('After init');
-    console.log(LocalStorage.getItem('testLocalStorage'));
-    console.log(SessionStorage.getItem('testSessinStorage'));
-}
