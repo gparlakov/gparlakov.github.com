@@ -1,0 +1,51 @@
+﻿/* File Created: май 12, 2013 */
+html,body,div,p 
+{
+    margin:0;
+    padding:0;
+    zoom:1;
+}
+
+body:after
+{
+    display: block;
+    content:"";
+    clear:both;
+}
+
+#inputForm 
+{
+    /*float:left;
+    width:300px;*/
+}
+    #inputForm button
+    {
+        border-color:Lime Green Green Lime;
+        background-color:Green;
+        border-radius:5px;
+        color:White;
+    }
+   #inputForm button:hover
+   {    
+       background-color:Lime;
+   }
+
+#list-wrapper {
+	float:left;
+}
+
+
+.selected 
+{
+    background-color:green;
+    border-radius:5px;
+}
+
+.selected:after
+{
+    content:"Done";
+    color:Lime; 
+    margin:10px;
+    /*width:15px;
+    height:10px; */  
+}
