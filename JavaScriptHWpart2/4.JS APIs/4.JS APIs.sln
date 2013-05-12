@@ -61,6 +61,27 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "4.DrawWithCanvas", "4.DrawW
 		VWDPort = "49642"
 	EndProjectSection
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "5.BouncingBall", "5.BouncingBall\", "{27559C97-ED88-4741-A27D-C15EA968D045}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/5.BouncingBall"
+		Debug.AspNetCompiler.PhysicalPath = "5.BouncingBall\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\5.BouncingBall\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/5.BouncingBall"
+		Release.AspNetCompiler.PhysicalPath = "5.BouncingBall\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\5.BouncingBall\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "51282"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,6 +93,8 @@ Global
 		{BEAEC6F1-6BAD-446A-A4F5-9F14DF51EC98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC24ED84-717C-451E-B346-A26C63EBA206}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AC24ED84-717C-451E-B346-A26C63EBA206}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27559C97-ED88-4741-A27D-C15EA968D045}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27559C97-ED88-4741-A27D-C15EA968D045}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
