@@ -13,7 +13,6 @@
         this.ctx;
         this.images = [];
         this.current = null;
-
     }
 
     CaroucelController.prototype = {
@@ -96,6 +95,9 @@
             if (this.current > 0) {
                 nextLeft = this.current - 1;
             }
+			else{
+				nextLeft = this.images.length - 1;
+			}
 
             return nextLeft;
         },
@@ -105,6 +107,9 @@
             if (this.current < this.images.length - 1) {
                 nextRight = this.current + 1;
             }
+			else{
+				nextRight = 0;
+			}
 
             return nextRight;
         },
@@ -128,7 +133,6 @@
                 this.current = nextLeft;
             }
         }
-
     }
 
     var caroucelController = new CaroucelController();
