@@ -1,4 +1,6 @@
-﻿;(function () {
+﻿/*shim for object create, extend and createAndInit function for 
+intitalizing an object in one step */
+; (function () {
     if (!Object.create) {
         Object.create = function (obj) {
             var f = function () { };
@@ -18,8 +20,8 @@
         return new f();
     }
 
-    /*Create an object and gives him the init arguments
-    *that you specify: createAndInit(Person,"Name","Age","LName", etc.)
+    /*@Creates an object and gives him the init arguments
+    *@that you specify: createAndInit(Person,"Name","Age","LName", etc.)
     */
     Object.prototype.createAndInit = function () {
         var obj = arguments[0];
@@ -36,6 +38,8 @@
     }
 })();
 
+//got it to work down to ie8 
+//(ie7 was impossible -> can't add smth to prototype)
 Element.prototype.addEventHandler = function (event, func) {
     if (document.addEventListener) {
         return document.addEventListener(event, func, false);
@@ -55,29 +59,64 @@ Element.prototype.addEventHandler = function (event, func) {
 
 var SliderControl = (function () {
     var Image = {
-        init: function (url) {
-            this.url = url;
+        init: function (title, urlThumb, urlBig) {
+            this.title = title;
+            this.urlThumb = urlThumb;
+            this.urlBig = urlBig;
         },
-        render: function () {
+        renderThumbnail: function () {
             var img = document.createElement('img');
-            img.setAttribute('src', this.url);
-            img.setAttribute('width', '80px');
-            img.classList.toggle('smallImage');
+            img.setAttribute('src', this.urlThumb);
+            //img.setAttribute('width', '80px');
+            //img.setAttribute('height', '80px');
+            img.className = 'thumbnail';
+            img.setAttribute('title', this.title);
+
+            //takes this attribute from clicked thumbnail
+            img.setAttribute('srcBiggerPic', this.urlBig);
+
             return img;
-        }
+        }//,
+        //renderBig: function () {
+        //    var img = document.createElement('img');
+        //    img.setAttribute('src', this.urlBig);
+        //    img.setAttribute('width', '400px');
+        //    img.setAttribute('height', '400px');
+        //    img.setAttribute('title', this.title);
+
+        //    return img;
+        //}
+    };
+
+    var Button = {
+        init: function (title, buttonImageUrl) {
+            this.title = title;
+            this.imageUrl = buttonImageUrl;
+        },
+        //setParentElem: function (parentElem) {
+        //    this.parentElement = parentElem;
+        //},
+        render: function () {
+            var button = document.createElement('button');
+            button.setAttribute('style', 'background-image:url(\'' + this.imageUrl + '\');');
+            
+            return button;
+        }        
     };
 
     var Controller = {
-        //takes 'parentelem' - dom element or queryString
-        //and 'images' -> object {'url':'../images/fdfd','url':'anotherImage'}        
-        init: function (parentElement, images) {
+        //kinda const string ...
+        slideRightClassName: 'slideRightButton',
+        slideLeftClassName: 'slideLeftButton',
+        //takes 'parentelem' - dom element or queryString    
+        init: function (parentElement) {
             if (typeof parentElement === 'string') {
                 parentElement = document.querySelector(parentElement);
             }
             this.parentElement = parentElement;
-            this.addImages(images);
             this.initEvents();
-            //this.showSmallImages();
+            this.images = {};            
+            this.nextId = 1;
         },
         initEvents: function () {
             var that = this;
@@ -94,32 +133,37 @@ var SliderControl = (function () {
 
                 var target = ev.target || ev.srcElement;
 
-                if (target instanceof HTMLImageElement) {
-                    that.showEnlargedImage(target);
+                if (target instanceof HTMLImageElement &&
+                    target.className === 'thumbnail') {
+                    that.showBigImage(target);
                 }
+
+                if (target.className === 'slideLeftButton') {
+                    that.showNextLeft();//todo
+                }
+
+                if (target.className === 'slideRightButton') {
+                    that.showNextRight();//todo
+                }
+
                 return false;
             }, false)
         },
         addImage: function (imgObject) {
-            var newImage = Object.createAndInit(Image, imgObject.url);
-            this.images.push(newImage);
+            var newImage = Object.createAndInit(
+                Image, imgObject.title, imgObject.urlThumb, imgObject.urlBig);
+            this.images[this.nextId] = newImage;
+            this.nextId++;
         },
-        addImages: function (images) {
-            var i;
-            if (!this.images) {
-                this.images = [];
-            }
-            for (i in images) {
-                if (typeof images[i] === 'string') {
-                    this.addImage({ 'url': images[i] })
-                }
-            }
-        },
-        showSmallImages: function () {
+        showThumbnails: function () {
             var fragment = document.createDocumentFragment();
-            var len = this.images.length;
-            for (var i = 0; i < len; i++) {
-                fragment.appendChild(this.images[i].render());
+
+            for (var i in this.images) {
+                if (this.images[i].renderThumbnail) {
+                    var nextImage = this.images[i].renderThumbnail();
+                    nextImage.sliderId = i;                
+                    fragment.appendChild(nextImage);
+                }
             }
             
             this.parentElement.appendChild(fragment);
@@ -129,32 +173,73 @@ var SliderControl = (function () {
             var children = this.parentElement.childNodes;
             
             for (i = 0; i < children.length; i++) {
-                if (children[i].classList.contains('smallImage')) {
+                if (children[i].className === 'thumbnail') {
                     this.parentElement.removeChild(children[i]);
                     i--;
                 }
             }
         },
-        showEnlargedImage: function (imageElem) {
+        showBigImage: function (imageElem) {
             this.removeBigImage();
             var bigImage = document.createElement('img');
-            bigImage.setAttribute('src', imageElem.getAttribute('src'));
-            bigImage.setAttribute('width', '400px');
-            bigImage.style.display = 'block';
-            bigImage.style.margin = '0 auto';
-            bigImage.classList.toggle('bigImage');
+            var srcBigImage = imageElem.urlBig || imageElem.getAttribute('srcBiggerPic');
+            bigImage.setAttribute('src', srcBigImage);
+            bigImage.setAttribute('class', 'bigImage');
             this.bigImage = bigImage;            
             this.parentElement.appendChild(bigImage);
+            this.renderButtons();
+            this.bigImageSliderId = imageElem.sliderId ;
         },
         removeBigImage: function () {
             if (this.bigImage) {
                 this.parentElement.removeChild(this.bigImage);
             }
         },
-        render: function () {
+        renderThumbnail: function () {
             this.clearSmallImages();
             this.removeBigImage();
-            this.showSmallImages();
+            this.showThumbnails();
+        },
+        addButton: function (position, imageUrl) {
+            switch (position) {
+                case 'left': {
+                    var button = Object.createAndInit(Button,
+                        'left', imageUrl);
+                    this.leftButton = button.render();
+                    this.leftButton.className = this.slideLeftClassName;
+                    break;
+                }
+                case 'right': {
+                    var button = Object.createAndInit(Button,
+                        'right', imageUrl);
+                    this.rightButton = button.render();
+                    this.rightButton.className = this.slideRightClassName;
+                    break;
+                }
+                default: { break; }
+            }
+        },
+        renderButtons: function () {
+            this.parentElement.appendChild(this.leftButton);
+            this.parentElement.appendChild(this.rightButton);
+        },
+        showNextLeft: function (elem) {
+            var id = parseInt(this.bigImageSliderId);            
+            var nextLeft = id - 1;
+            if (nextLeft < 1) {
+                nextLeft = this.nextId - 1;
+            }
+            this.images[nextLeft].sliderId = nextLeft;
+            this.showBigImage(this.images[nextLeft]);
+        },
+        showNextRight: function (elem) {
+            var id = parseInt(this.bigImageSliderId);
+            var nextRight = id + 1;
+            if (nextRight >= this.nextId) {
+                nextRight = 1;
+            }
+            this.images[nextRight].sliderId = nextRight;
+            this.showBigImage(this.images[nextRight]);
         }
     }
 
@@ -164,34 +249,75 @@ var SliderControl = (function () {
 })();
 
 window.onload = function () {
-    var images = { 'url1': 'images/img1.jpg', 'url2': 'images/img2.jpg' };
-    var controls = Object.createAndInit(SliderControl.Controller, '#slider', images);
-    controls.render();
+    var controls = Object.createAndInit(SliderControl.Controller, '#slider');
+    controls.addButton('left', 'images/arrow_left.png');
+    controls.addButton('right', 'images/arrow_right.png');
 
-    controls.addImage({ 'url': 'images/img3.jpg' });
-    controls.addImage({ 'url': 'images/img4.jpg' });
+    controls.addImage({
+        'title': 'image1',
+        'urlThumb': 'images/img1Thumb.jpg',
+        'urlBig': 'images/img1.jpg'
+    });
+    controls.addImage({
+        'title': 'image2',
+        'urlThumb': 'images/img2Thumb.jpg',
+        'urlBig': 'images/img2.jpg'
+    });
+    controls.addImage({
+        'title': 'image3',
+        'urlThumb': 'images/img3Thumb.jpg',
+        'urlBig': 'images/img3.jpg'
+    });
+    controls.addImage({
+        'title': 'image4',
+        'urlThumb': 'images/img4Thumb.jpg',
+        'urlBig': 'images/img4.jpg'
+    });
 
-    controls.render();
+    controls.renderThumbnail();
 
-    //var button = document.createElement('button');
-    //button.innerHTML = 'Add image';
-    //button.onclick = function () {
-    //    var newImageUrl = document.querySelector('.newImageUrlInput').value;
-    //    controls.addImage({ 'url': newImageUrl });
-    //    controls.render();
-    //};
-    ////button.addEventHandler('click', function () {
-    ////    var newImageUrl = document.querySelector('.newImageUrlInput').value;
-    ////    controls.addImage({ 'url': newImageUrl });
-    ////    controls.render();
-    ////}, false)
+    controls.addImage({
+        'title': 'image1',
+        'urlThumb': 'images/img1Thumb.jpg',
+        'urlBig': 'images/img1.jpg'
+    });
+    controls.addImage({
+        'title': 'image2',
+        'urlThumb': 'images/img2Thumb.jpg',
+        'urlBig': 'images/img2.jpg'
+    });
+    controls.addImage({
+        'title': 'image3',
+        'urlThumb': 'images/img3Thumb.jpg',
+        'urlBig': 'images/img3.jpg'
+    });
+    controls.addImage({
+        'title': 'image4',
+        'urlThumb': 'images/img4Thumb.jpg',
+        'urlBig': 'images/img4.jpg'
+    });
 
+    controls.addImage({
+        'title': 'image1',
+        'urlThumb': 'images/img1Thumb.jpg',
+        'urlBig': 'images/img1.jpg'
+    });
+    controls.addImage({
+        'title': 'image2',
+        'urlThumb': 'images/img2Thumb.jpg',
+        'urlBig': 'images/img2.jpg'
+    });
+    controls.addImage({
+        'title': 'image3',
+        'urlThumb': 'images/img3Thumb.jpg',
+        'urlBig': 'images/img3.jpg'
+    });
+    controls.addImage({
+        'title': 'image4',
+        'urlThumb': 'images/img4Thumb.jpg',
+        'urlBig': 'images/img4.jpg'
+    });
 
-    //var input = document.createElement('input');
-    //input.setAttribute('type', 'text');
-    //input.setAttribute('class', 'newImageUrlInput');
-    //input.setAttribute('value', 'images/img3.jpg');
-    //var body = document.querySelector('body');
-    //body.appendChild(button);
-    //body.appendChild(input);
+    controls.renderThumbnail();
+
 };
