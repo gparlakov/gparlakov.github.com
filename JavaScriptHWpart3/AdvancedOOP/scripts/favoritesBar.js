@@ -56,7 +56,7 @@
         },
         render: function () {
             var anchor = document.createElement('a');
-            anchor.innerHTML = '<a href=' + this.url + ' _target="blank">' + this.title + '</a>';
+            anchor.innerHTML = '<a href=' + this.url + ' target="_blank">' + this.title + '</a>';
             return anchor;
         }
     });
@@ -86,11 +86,26 @@
         },
         render: function () {
             var folderElem = document.createElement('span');
-            folderElem.innerHTML = '<span class = "folder">' + this.title + '</span>';
+            folderElem.innerHTML = this.title;
+            folderElem.className = 'folderElement';
             return folderElem;
         },
         renderUrls: function () {
+            var fragment = document.createDocumentFragment();
+            var li = document.createElement('li');
+            var u;
+            
+            for (u in this.urls) {
+                var nextUrl = this.urls[u];
+                if (nextUrl.render) {
+                    var nextUrlLi = li.cloneNode();
+                    var renderedUrl = nextUrl.render();
+                    nextUrlLi.appendChild(renderedUrl);
+                    fragment.appendChild(nextUrlLi);
+                }
+            }
 
+            return fragment;
         }
     });
     Folder.inherit(Item);
@@ -107,16 +122,46 @@
 
         },
         createParentElement: function () {
-            var parentElement = document.createElement('div');
+            var parentElement = document.createElement('ul');
             parentElement.style.position = 'fixed';
             parentElement.style.top = '5px';
-            parentElement.className = 'favoritesBar';
-
+            parentElement.id = 'favoritesBar';
             return parentElement;
         },
         initEvents: function () {
+            var that = this;
+            var parent = this.parentElement;
 
+            if (parent.addEventListener) {
+                parent.addEventListener('click', function () {
+                    that.eventFunc.apply(that);
+                }, false);
+            }
+            else if (parent.attachEvent) {
+                parent.attachEvent('click', function () {
+                    that.eventFunc.apply(that);
+                });
+            }  
+            
         },
+        eventFunc: function (ev) {            
+            ev = ev || window.event;
+            var target = ev.target || ev.srcElement;
+            if (target.className === 'folderElement') {
+                var stopPropagation = ev.stopPropagation() || ev.preventDefault();
+                if (this.renderedFolder) {
+                    this.renderedFolder.outerHTML = '';
+                }
+                var folderId = target.parentElement.folderId;                
+                var list = this.folders[folderId].renderUrls();
+                var ul = document.createElement('ul');
+                ul.appendChild(list);
+                this.renderedFolder = ul;
+                target.parentElement.appendChild(ul);
+            }
+            return false;
+        },
+        
         addFolder: function (title, urls) {
             var newFolder = new Folder(title, urls);
             this.folders[this.nextFolderId] = newFolder;
@@ -130,12 +175,17 @@
             return newUrl;
         },
         render: function () {
+            this.parentElement.innerHTML = '';
             var fragment = document.createDocumentFragment();
+            var li = document.createElement('li');
             if (this.nextFolderId > 1) {
                 for (var f in this.folders) {
                     var nextFolder = this.folders[f];
                     if (nextFolder.render) {
-                        fragment.appendChild(nextFolder.render());
+                        var newLiFolder = li.cloneNode();
+                        newLiFolder.appendChild(nextFolder.render());
+                        newLiFolder.folderId = f;
+                        fragment.appendChild(newLiFolder);
                     }
                 }
             }
@@ -144,7 +194,9 @@
                 for (var u in this.urls) {
                     var nextUrl = this.urls[u];
                     if (nextUrl.render) {
-                        fragment.appendChild(nextUrl.render());
+                        var newLiUrl = li.cloneNode();
+                        newLiUrl.appendChild(nextUrl.render());
+                        fragment.appendChild(newLiUrl);
                     }
                 }
             }
@@ -163,8 +215,16 @@ window.onload = function () {
     var controls = new FavoritesControl.Controller();
     
     var abv = controls.addUrl('abv', 'http://www.abv.bg');
-    var moto = controls.addFolder('moto',
+    var academy = controls.addFolder('academy',
         [{ 'title': 'telerik', 'url': 'http://telerikacademy.com' },
         { 'title': 'forums', 'url': 'http://forums.telerikacademy.com' }]);
     controls.render();
+
+    academy.addUrl('bgcoder', 'http://bgcoder.com');
+
+    var moto = controls.addFolder('moto');
+    moto.addUrl('moto-forum', 'http://motoforum.bg');
+    moto.addUrl('motorika', 'http://motorikabg.com');
+    controls.render();
+
 }
