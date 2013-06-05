@@ -71,9 +71,12 @@
                 this._addUrls(urls)
             }
         },
-        _addUrls: function (urlsObjects) {
-            for (var obj in urlsObjects) {
-                this.addUrl(urlsObjects[obj]);
+        _addUrls: function (urlsArray) {
+            var i;
+            var len = urlsArray.length;
+            for (var i = 0; i < len; i++) {
+                var nextUrl = urlsArray[i];
+                this.addUrl(nextUrl.title, nextUrl.url);
             }
         },
         addUrl: function (title, url) {
@@ -114,8 +117,8 @@
         initEvents: function () {
 
         },
-        addFolder: function (title, folder) {
-            var newFolder = new Folder(title, folder);
+        addFolder: function (title, urls) {
+            var newFolder = new Folder(title, urls);
             this.folders[this.nextFolderId] = newFolder;
             this.nextFolderId++;
             return newFolder;
@@ -130,19 +133,24 @@
             var fragment = document.createDocumentFragment();
             if (this.nextFolderId > 1) {
                 for (var f in this.folders) {
-                    var nextFolder = this.folders[f].render();
-                    fragment.appendChild(nextFolder)
+                    var nextFolder = this.folders[f];
+                    if (nextFolder.render) {
+                        fragment.appendChild(nextFolder.render());
+                    }
                 }
             }
             
             if (this.nextUrlId > 1) {
                 for (var u in this.urls) {
-                    var nextUrl = this.urls[u].render();
-                    fragment.appendChild(nextUrl);
+                    var nextUrl = this.urls[u];
+                    if (nextUrl.render) {
+                        fragment.appendChild(nextUrl.render());
+                    }
                 }
             }
 
             this.parentElement.appendChild(fragment);
+            document.querySelector('body').appendChild(this.parentElement);
         }
     })
 
@@ -153,8 +161,10 @@
 
 window.onload = function () {
     var controls = new FavoritesControl.Controller();
-
-    var url = controls.addUrl('abv', 'http://www.abv.bg');
-
+    
+    var abv = controls.addUrl('abv', 'http://www.abv.bg');
+    var moto = controls.addFolder('moto',
+        [{ 'title': 'telerik', 'url': 'http://telerikacademy.com' },
+        { 'title': 'forums', 'url': 'http://forums.telerikacademy.com' }]);
     controls.render();
 }
