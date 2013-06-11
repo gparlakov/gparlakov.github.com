@@ -57,7 +57,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="1.Slider\styles\sliderStyles.css" />
+    <Content Include="2.AppendElementBeforeAfterAnother\index.html" />
+    <Content Include="2.AppendElementBeforeAfterAnother\scripts\appender.js" />
+    <Content Include="3.GridStudents\index.html" />
+    <Content Include="3.GridStudents\scripts\gridCreator.js" />
     <Content Include="packages.config" />
+    <Content Include="3.GridStudents\students.json" />
     <None Include="Scripts\jquery-2.0.2.intellisense.js" />
     <Content Include="Scripts\jquery-2.0.2.js" />
     <Content Include="Scripts\jquery-2.0.2.min.js" />
@@ -78,9 +84,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="1.Slider\styles\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
