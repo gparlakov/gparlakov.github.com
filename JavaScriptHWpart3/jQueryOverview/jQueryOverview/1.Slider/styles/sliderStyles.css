@@ -12,19 +12,11 @@
     border: 3px solid skyblue;
     border-radius:5px;
 }
-    
-    .left, .right{
-        position:absolute;
-	    top:110%;
-    }
 
-    .left{
-        left:0%;
-    }
-
-    .right{
-        right:0%;
-    }
+button
+{
+    background-color:ButtonHighlight;
+}
 
 .slide{
     width:50%;
@@ -32,7 +24,7 @@
     margin: 10% auto;
 }
 
-/* the elements'    */
+/* the slides' elements style  */
 .red{
     background-color:red;
 }
