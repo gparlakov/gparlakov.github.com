@@ -1,0 +1,24 @@
+﻿body,html,div,button,ul,li,p,span,a {
+    margin:0;
+    padding:0;
+    zoom:1;
+}
+
+button{
+    position:absolute;
+	top:50%;
+}
+
+.left{
+    left:0%;
+}
+
+.right{
+    right:0%;
+}
+
+.slider-parent{
+    position:relative;
+    width:150px;
+    height: 150px; 
+}
