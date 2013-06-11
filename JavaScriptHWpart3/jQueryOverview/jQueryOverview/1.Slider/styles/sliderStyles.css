@@ -4,21 +4,35 @@
     zoom:1;
 }
 
-button{
-    position:absolute;
-	top:50%;
-}
-
-.left{
-    left:0%;
-}
-
-.right{
-    right:0%;
-}
-
 .slider-parent{
     position:relative;
-    width:150px;
-    height: 150px; 
+    width:40%;
+    height: 30%; 
+    margin:0 auto;
+    border: 3px solid skyblue;
+    border-radius:5px;
+}
+    
+    .left, .right{
+        position:absolute;
+	    top:110%;
+    }
+
+    .left{
+        left:0%;
+    }
+
+    .right{
+        right:0%;
+    }
+
+.slide{
+    width:50%;
+    display:block;
+    margin: 10% auto;
+}
+
+/* the elements'    */
+.red{
+    background-color:red;
 }
