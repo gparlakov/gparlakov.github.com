@@ -62,6 +62,9 @@
     <Content Include="2.AppendElementBeforeAfterAnother\scripts\appender.js" />
     <Content Include="3.GridStudents\index.html" />
     <Content Include="3.GridStudents\scripts\gridCreator.js" />
+    <Content Include="3.GridStudents\styles\gridStyles.css" />
+    <Content Include="4.ChangeBackgroundColor\index.html" />
+    <Content Include="4.ChangeBackgroundColor\scripts\backgroundChanger.js" />
     <Content Include="packages.config" />
     <Content Include="3.GridStudents\students.json" />
     <None Include="Scripts\jquery-2.0.2.intellisense.js" />
