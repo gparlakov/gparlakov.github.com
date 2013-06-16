@@ -16,6 +16,19 @@
 button
 {
     background-color:ButtonHighlight;
+    border:1px solid silver;
+    border-radius: 5px;
+    box-shadow: gray 1px 3px 5px ;
+    padding: 3px 10px;
+    background-color: lightgreen;
+	
+}
+button:hover{
+	box-shadow: gray 1px 5px 5px ; 	
+}
+
+button:active{
+	box-shadow: silver 2px 3px 5px ; 	
 }
 
 .slide{

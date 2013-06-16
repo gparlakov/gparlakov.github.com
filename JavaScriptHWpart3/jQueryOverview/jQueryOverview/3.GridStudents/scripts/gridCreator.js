@@ -71,11 +71,14 @@ $(document).ready(function () {
     //$.getJSON("students.json", "", function (data) {
     //    grid.loadArrayOfStudents(data);
     //});
-    grid.loadArrayOfStudents(students);
+    var addStudents = function () {
+        grid.loadArrayOfStudents(students);
+        grid.render();
+    };
 
-    grid.render();
+    setTimeout(addStudents, 1000);
 
-    grid.loadArrayOfStudents(students);
+    setTimeout(addStudents, 3000);
 
-    grid.render();
+    setTimeout(addStudents, 5000);
 });
