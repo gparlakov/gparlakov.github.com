@@ -1,0 +1,32 @@
+body{
+	font-family:"Comic Sans MS";
+	background-color:skyblue;
+	font-size:1.3em;
+}
+
+body,div{
+	margin:0;
+	padding:0;
+	zoom:1;
+}
+
+body{
+	padding:20px 50px;
+}
+
+ul.subListInTreeView{
+	list-style-type:none;
+	padding-left:20px;	
+}
+
+ul.subListInTreeView li:before {
+	content:">";	
+}
+
+li.hasSubItems.closed:before{
+	content:"+";
+}
+
+li.hasSubItems.opened:before{
+	content:"-";
+}
