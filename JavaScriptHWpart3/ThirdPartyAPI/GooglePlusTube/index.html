@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Google + Tube</title>    
+    <link href="styles/googlePlusStyles.css" rel="stylesheet" />  
+    <script src="scripts/jquery-2.0.2.js"></script>
+    <script type="text/javascript">
+         (function () {
+             var po = document.createElement('script');
+             po.type = 'text/javascript';
+             po.async = true;
+             po.src = 'https://apis.google.com/js/client:plusone.js';
+             var s = document.getElementsByTagName('script')[0];
+             s.parentNode.insertBefore(po, s);
+         })();
+    </script>    
+    <script src="scripts/googlePlusTube.js"></script>
+</head>
+
+<body>
+    <div id="gConnect">
+        <button class="g-signin"
+            data-scope="https://www.googleapis.com/auth/plus.login"
+            data-requestvisibleactions="http://schemas.google.com/AddActivity"
+            data-clientId="29996595945.apps.googleusercontent.com"
+            data-callback="onSignInCallback"
+            data-theme="dark"
+            data-cookiepolicy="single_host_origin">
+        </button>
+    </div>
+    <div id="authOps" style="display:none">
+    
+        <button id="disconnect" >Disconnect your Google account from this app</button>
+   
+        <div id="profile"></div>
+
+        <div id="player"></div>
+
+    </div>
+    <div id="loaderror">
+        This section will be hidden by JQuery. If you can see this message, you
+        may be viewing the file rather than running a web server.<br />
+        The sample must be run from http or https. See instructions at
+        <a href="https://developers.google.com/+/quickstart/javascript">
+        https://developers.google.com/+/quickstart/javascript</a>.
+    </div>    
+</body>
+
+</html>

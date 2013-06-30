@@ -1,0 +1,12 @@
+﻿body,html,div {
+    margin: 0;
+    padding: 20px 50px;
+    zoom: 1; 
+    box-sizing: border-box;	
+}
+
+.hidden{
+    display: none;	
+}
+
+
