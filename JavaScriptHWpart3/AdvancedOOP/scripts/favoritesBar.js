@@ -41,8 +41,6 @@
     }
 
 ; var FavoritesControl = (function () {
-   
-
     var Item = Class.create({
         init: function(title){
             this.title = title;
@@ -133,16 +131,14 @@
             var parent = this.parentElement;
 
             if (parent.addEventListener) {
-                parent.addEventListener('click', function () {
-                    that.eventFunc.apply(that);
-                }, false);
+                parent.addEventListener('click',that.eventFunc, false);
             }
             else if (parent.attachEvent) {
-                parent.attachEvent('click', function () {
-                    that.eventFunc.apply(that);
-                });
-            }  
-            
+                parent.attachEvent('click',that.eventFunc);
+            }
+			else{
+				parent.onclick = that.eventFunc;
+			}           
         },
         eventFunc: function (ev) {            
             ev = ev || window.event;
