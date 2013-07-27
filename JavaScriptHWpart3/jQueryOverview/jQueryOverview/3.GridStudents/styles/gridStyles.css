@@ -1,0 +1,13 @@
+﻿body {
+    background-color: skyblue;
+	font-family: 'Comic Sans MS', sans-serif;
+    color:#480079;
+	
+}
+
+table,td,th{
+    border-collapse: collapse;
+	border: double;
+    border-color: gray;	
+}
+
