@@ -1,0 +1,61 @@
+﻿body
+{ 
+    padding:0px;
+    margin:0px;
+    font-family:Consolas;
+    font-size:0.8em;
+    width:600px;
+}
+nav ul{
+    list-style-type:none;
+    display:inline-block;
+
+}
+nav ul li{
+    display:inline-block;
+}
+nav ul li a{
+    text-decoration:none;
+}
+
+hr{
+    width:95%;
+    border:1px solid blue;
+}
+
+.wrapper{
+    margin-left:20px;
+    float:left;
+    width:300px;
+    height:400px;
+    border:1px solid black;
+}
+.container{    
+    display:block;
+    padding:5px;
+    overflow:hidden;
+    margin:5px;
+    float:left;
+    width:40%;
+    height:27%;
+    border:1px solid black;
+}
+
+.onRight{
+    float:left;
+}
+
+    .onRight input {
+        display:block;
+        width:150px;
+        margin:10px 50px;
+    }
+    .onRight input:first-of-type{
+        margin-top:50px;
+    }
+    .onRight p{
+        display:block;
+        width:150px;
+        margin: 10px 50px;
+        text-align:center;        
+    }

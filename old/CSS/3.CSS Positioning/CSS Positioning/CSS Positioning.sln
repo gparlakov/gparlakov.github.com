@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{54447D9E-66F4-4265-99AE-BE031A8D545C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.list", "1.list", "{2C507F18-7B69-4437-A6C3-F2E08052831C}"
+	ProjectSection(SolutionItems) = preProject
+		1.List.html = 1.List.html
+		ListStyles.css = ListStyles.css
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.MusicCategories", "2.MusicCategories", "{D8377E72-3669-4F12-854C-823515737208}"
+	ProjectSection(SolutionItems) = preProject
+		2.MusicCategories.html = 2.MusicCategories.html
+		MusicStyles.css = MusicStyles.css
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.MembersLogin", "3.MembersLogin", "{72240569-49A6-4C96-9915-AD2E87B80612}"
+	ProjectSection(SolutionItems) = preProject
+		3.MembersLogin.html = 3.MembersLogin.html
+		membersStyle.css = membersStyle.css
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.WebsiteCSS", "4.WebsiteCSS", "{AA19F2A2-F0B6-46CD-B4AA-E20594AFCCD2}"
+	ProjectSection(SolutionItems) = preProject
+		4.WebsiteCSS.html = 4.WebsiteCSS.html
+		WebsiteCSS.css = WebsiteCSS.css
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.PriceList", "5.PriceList", "{B91D19BA-E97F-4510-8898-657D878CA4FE}"
+	ProjectSection(SolutionItems) = preProject
+		5.PriceList1.html = 5.PriceList1.html
+		PricesStyle.css = PricesStyle.css
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2C507F18-7B69-4437-A6C3-F2E08052831C} = {54447D9E-66F4-4265-99AE-BE031A8D545C}
+		{D8377E72-3669-4F12-854C-823515737208} = {54447D9E-66F4-4265-99AE-BE031A8D545C}
+	EndGlobalSection
+EndGlobal

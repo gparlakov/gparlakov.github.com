@@ -1,0 +1,25 @@
+﻿body
+{
+    zoom:1;
+    margin:0;
+    padding:0;   
+}
+
+body ul 
+{
+    list-style-type:none;
+    background-color:rgba(242, 32, 32, 0.64)
+}
+
+li ul{
+    display:none;
+}   
+li:hover ul{
+    display: block;
+    width: 75%;
+}
+
+
+
+
+

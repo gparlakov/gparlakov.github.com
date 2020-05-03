@@ -1,0 +1,58 @@
+﻿body
+{
+   margin:0px;
+   padding:0px; 
+}
+
+form{
+    display:block;
+    width:600px;
+    margin:0px;    
+}
+    header{
+        background:-webkit-linear-gradient(left,#7db9e8 0%, #1e5799 20%,#1e5799 80%, #7db9e8 100%);
+        background:-webkit-linear-gradient(top ,#7db9e8 0%, #1e5799 100%);
+        margin:0px;
+        padding:15px;
+        color:wheat;
+        font-size:1.4em;
+    }
+    header img{
+        width:20px;
+    }
+
+    header input[type="submit"]{
+        color: wheat;       
+        width:40px;
+        background-image:url('img/buttCar.png');
+        background-position:center;
+        
+        background-color:rgba(239, 7, 164, 0.15);
+        border-radius:7px;
+        border:1px white;
+    }
+    header input[type="submit"]:hover{
+        background-color:rgba(239, 7, 164, 0.71);  
+         color:wheat;    
+    }
+    header input[type="submit"]:active{
+        background-color:rgba(239, 7, 164, 0.15);
+        color:wheat;
+    }
+    input[type="text"]{
+        display:inline-block;
+        margin-left:10px;
+        margin-right:10px;
+    }
+article{
+    color:lightgray;
+    width:580px;
+    margin:0px;
+    background-color:#053872;
+    padding:10px;
+}
+article h3{
+    color:yellow;
+    margin-top:0px;
+    
+}

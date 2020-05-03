@@ -1,0 +1,20 @@
+html
+{
+	font-family:Consolas,ScriptOnline;
+	color:#0094ff
+}
+@font-face
+{
+	font-family:Script Online;
+	src: url('http://fonts.googleapis.com/css?family=Dancing+Script');
+}
+p:first-line
+{
+	font-weight:bold;
+}
+p:first-letter
+{
+	font-family:Edwardian Script ITC,Segoe Script;
+	font-size:35px;
+}
+

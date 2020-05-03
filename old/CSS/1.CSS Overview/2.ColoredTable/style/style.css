@@ -1,0 +1,59 @@
+body
+{
+	background-color:black;
+	font-family:verdana;
+	font-size:12px;
+}
+
+
+table
+{
+	width:500px;
+	border-collapse:collapse;
+	background-color:white;
+	text-align:left;
+}
+td, th
+{
+	border:solid 1px #ccc;
+	padding:6px;
+	border-bottom:0px;
+	border-top:0px;
+}
+
+tr td:last-of-type
+{
+	width:85px;
+	
+}
+th
+{
+	background-color : rgba(0,255,0,1);
+	color:white;	
+}
+
+tr:nth-of-type(2n)
+{
+	/*border-left:solid 1px;
+	font-size:24px;*/
+	background-color:beige;
+	vertical-align:top;
+}
+
+.bg:before
+{
+	content:url(bg.png);
+	vertical-align:-25%;
+}
+.usa:before
+{
+	content:url(usa16.png);
+}
+.engl:before
+{
+	content:url(england16.png);
+}
+
+
+
+
