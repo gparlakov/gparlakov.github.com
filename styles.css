@@ -136,26 +136,58 @@ body {
   font-size: 15px;
   line-height: 1.5;
 
-  width: 800px;
+  width: 750px;
   margin: 0 auto;
-
-  text-align: center;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 750px) {
   body {
     width: auto;
   }
 }
 
-
 h1 {
-    font-size: 24px;
+  font-size: 24px;
+}
+
+h1.avatar {
+  background: right/contain border-box no-repeat url('./assets/avatar.png') white;
+  background-size: 90px;
+  margin-top: 100px;
+  padding-top: 60px;
 }
 h2 {
-    font-size: 18px;
+  font-size: 18px;
 }
 
+.text-right {
+  text-align: right;
+}
 .text-left {
-    text-align: left;
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.display-inline-block,
+.dspl-ib {
+  display: inline-block;
+}
+
+.font-size-xl, .fxl {
+    font-size: 24px;
+}
+
+.font-size-l, .fl {
+    font-size: 20px;
+}
+
+.font-size-sm, .fs {
+    font-size: 12px;
+}
+
+.img-100-percent {
+    max-width: 100%;
 }
