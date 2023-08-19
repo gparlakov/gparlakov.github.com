@@ -1,0 +1,1 @@
+import{A as o}from"./q-ffa2882e.js";import{S as s,c,H as n,U as i,x as a}from"./q-29eba519.js";const m=t=>{const r=s(),e=c(o);return e.triggerRef=r,n("div",{ref:r,...t,children:i(a,null,3,"h3_0")},null,0,"h3_1")};export{m as s_X4cPs5Kv8iA};

@@ -1,0 +1,1 @@
+import{b as a}from"./q-29eba519.js";import{a as f}from"./q-29eba519.js";const v=({track:e})=>{const[s,o,t]=a();e(t);const n=t.value??s;sessionStorage?.setItem(o,n)},i=()=>{const[e,s,o]=a();o.value=sessionStorage?.getItem(s)??e};export{f as _hW,v as s_BFjzzwqUxiQ,i as s_CUPd3vvOXnA};

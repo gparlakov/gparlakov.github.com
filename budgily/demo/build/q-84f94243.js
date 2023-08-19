@@ -1,0 +1,1 @@
+import{c as l,C as t}from"./q-4142b90a.js";import{Q as n,U as r,x as a,H as e}from"./q-29eba519.js";const _=s=>{const c=n(s,["class"]);return r(t,{class:l("card bg-base-100 ",s.class),...c,children:r(a,null,3,"6e_0")},0,"6e_1")},d=s=>e("div",{...s,children:r(a,null,3,"Bp_0")},null,0,"Bp_1");export{_ as s_6tVAxT4pZiY,d as s_Z0hZmbFoO7c};
