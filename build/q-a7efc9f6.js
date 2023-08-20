@@ -1,0 +1,1 @@
+import{b as n}from"./q-29eba519.js";import{a}from"./q-29eba519.js";const i=({key:o,altKey:r})=>{const[e,t,s]=n();r&&o==="Enter"?s():o==="ArrowLeft"?(typeof e.previous=="function"&&e.previous(),Promise.resolve().then(()=>t.value?.focus())):o==="ArrowRight"&&(typeof e.next=="function"&&e.next(),Promise.resolve().then(()=>t.value?.focus()))};export{a as _hW,i as s_wvdGLpwbbmA};

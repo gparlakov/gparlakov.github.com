@@ -1,0 +1,1 @@
+import{n as s}from"./q-4142b90a.js";import{U as l,N as n,H as o}from"./q-29eba519.js";const t=r=>l(s,{...r},0,"0P_0"),u=r=>n("figure",null,null,o("img",{...r},null,0,null),1,"Ws_0");export{t as s_48FgOChRSeQ,u as s_4fckO3L00vk};

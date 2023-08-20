@@ -1,0 +1,1 @@
+import{b as s}from"./q-29eba519.js";import{b as m}from"./q-caaebdfa.js";import{m as d}from"./q-282399e3.js";import"./q-38c94a1c.js";const i=({track:r})=>{const[e,o]=s();if(r(()=>o.selectedId),o.selectedId!=null)return m(o.selectedId).then(t=>(e.loading=!1,t[0]?e.movement=d(t[0]):e.errorMessage="Not found",t))};export{i as s_xdZay0eQ3Sw};

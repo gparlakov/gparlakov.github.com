@@ -1,0 +1,1 @@
+import{U as n,N as l,K as u,x as r}from"./q-29eba519.js";const e=()=>n(u,{children:[l("main",null,null,l("section",null,null,n(r,null,3,"2G_0"),1,null),1,null),l("footer",null,null,l("a",null,{href:"https://www.builder.io/",target:"_blank"},"Made with ♡ by Builder.io",3,null),3,null)]},1,"2G_1");export{e as s_JB7E6kbQd68};
