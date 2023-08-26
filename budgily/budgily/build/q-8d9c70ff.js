@@ -1,0 +1,1 @@
+import{B as o}from"./q-6e2edd4b.js";import{h as s,v as t}from"./q-0f391e12.js";const h=({"aria-label":a,disabled:e,"aria-current":i,onClick$:c,key:n,value:r})=>s(o,{onClick$:c,"aria-label":a,disabled:e,variant:"ghost",active:i,circle:!0,children:r==="prev"?"‹":r==="next"?"›":r,[t]:{variant:t,circle:t}},0,n);export{h as s_pMkePUgrkB8};

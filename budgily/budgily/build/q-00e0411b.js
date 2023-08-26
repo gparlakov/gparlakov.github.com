@@ -1,0 +1,1 @@
+import{b as o,z as c,G as d,h as t,x as n,d as i,j as r,v as a}from"./q-0f391e12.js";import{W as m}from"./q-e4cb4a30.js";const p=s=>{o();const e=c(s,["step"]),l=d(m);return t(n,{children:l.state.current===s.step?t(n,{children:[i("h1",{...e,children:t(r,null,3,"XV_5")},null,0,null),t(r,{name:"sub-title",[a]:{name:a}},3,"XV_6")]},1,"XV_7"):""},1,"XV_8")};export{p as s_w5nljU4m0L0};

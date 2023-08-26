@@ -1,0 +1,1 @@
+import{I as a}from"./q-6e2edd4b.js";import{G as o,$ as r,w as m}from"./q-0f391e12.js";const c=()=>{const s=o(a);return r("div",null,{class:m(t=>`w-4 h-4 mask ${t.mask} `,[s],"`w-4 h-4 mask ${p0.mask} `")},null,3,"Fc_2")};export{c as s_OJO69wotT1E};

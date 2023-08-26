@@ -1,0 +1,1 @@
+import{G as n,d as o,h as r,j as a}from"./q-0f391e12.js";import{k as e}from"./q-1d1c70df.js";const l=t=>{const i=n(e),s=t.id||i.id;return o("div",{id:`message-${s}`,...t,children:r(a,null,3,"fW_6")},{"aria-live":"polite"},0,"fW_7")};export{l as s_cRA10a0JQ9k};

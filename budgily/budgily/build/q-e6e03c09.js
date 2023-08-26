@@ -1,0 +1,1 @@
+import{d as n,h as s,j as l}from"./q-0f391e12.js";const o=r=>n("div",{...r,children:s(l,null,3,"Cq_0")},{class:"card-body"},0,"Cq_1"),a=r=>n("div",{...r,children:s(l,null,3,"Xo_0")},null,0,"Xo_1");export{a as s_Gqb0aH11nwU,o as s_NYfgnsTfavU};

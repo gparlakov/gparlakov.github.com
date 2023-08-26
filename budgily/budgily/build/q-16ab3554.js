@@ -1,0 +1,1 @@
+import{A as s}from"./q-1d1c70df.js";import{I as n,G as a,d as c,w as l,h as p,j as d}from"./q-0f391e12.js";const m=e=>{const o=n(),t=a(s);return t.labelRef=o,c("label",{...e,children:p(d,null,3,"vq_0")},{for:l(r=>r.inputId,[t],"p0.inputId")},0,"vq_1")};export{m as s_Leh0ZNkltzc};

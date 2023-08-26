@@ -1,0 +1,1 @@
+import{l as a}from"./q-0f391e12.js";import{p as v}from"./q-0f391e12.js";const u=({track:l,cleanup:s})=>{const[o,e]=a();l(e),l(()=>o.selectedId),e.value&&(o.selectedId&&!e.value.open?(e.value.showModal(),e.value.focus()):e.value.close()),s(()=>{e.value&&e.value.close()})};export{v as _hW,u as s_psldKSgS70o};

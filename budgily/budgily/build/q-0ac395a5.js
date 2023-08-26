@@ -1,0 +1,1 @@
+import{l as n}from"./q-0f391e12.js";import{p as m}from"./q-0f391e12.js";const v=({track:e})=>{const[s,o,t]=n();e(t);const a=t.value??s;sessionStorage?.setItem(o,a)},i=()=>{const[e,s,o]=n();o.value=sessionStorage?.getItem(s)??e};export{m as _hW,v as s_BFjzzwqUxiQ,i as s_CUPd3vvOXnA};

@@ -1,0 +1,1 @@
+import{m as c}from"./q-6e2edd4b.js";import{h as r,j as a,v as n,d as l}from"./q-0f391e12.js";const d=s=>r(c,{...s,class:"card-actions justify-end",children:r(a,null,3,"7O_0"),[n]:{class:n}},0,"7O_1"),i=s=>l("div",{...s,children:r(a,null,3,"Sq_0")},null,0,"Sq_1");export{d as s_JzScrr0ywXg,i as s_uRwvuYGjzoI};

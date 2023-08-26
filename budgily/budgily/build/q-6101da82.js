@@ -1,0 +1,1 @@
+import{H as i,I as r,Y as o,d as e,h as a,j as c}from"./q-0f391e12.js";import{k as d}from"./q-1d1c70df.js";const l=n=>{const s=i(),t={ref:r(),id:n.id||s};return o(d,t),e("div",{...n,children:a(c,null,3,"fW_0")},null,0,"fW_1")};export{l as s_iuaLFshWoJw};

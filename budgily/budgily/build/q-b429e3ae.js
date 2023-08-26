@@ -1,0 +1,1 @@
+import{a as e,h as t,x as r,c as o,_ as s}from"./q-0f391e12.js";const _="",n=_,c=()=>(e(o(()=>s(()=>Promise.resolve().then(()=>a),void 0),"s_Y2hQYksrtAw")),t(r,{children:"Movement works!"},3,"ud_0")),a=Object.freeze(Object.defineProperty({__proto__:null,s_Y2hQYksrtAw:n,s_cJCBf4gh5K4:c},Symbol.toStringTag,{value:"Module"}));export{n as s_Y2hQYksrtAw,c as s_cJCBf4gh5K4};

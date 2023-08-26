@@ -1,0 +1,1 @@
+import{z as t,d as a,M as d,h as u,j as i}from"./q-0f391e12.js";import{Q as n,T as c}from"./q-1d1c70df.js";const p=s=>{const e=t(s,["use"]),o=n(),r=s.use||o;return c(r),a("div",{id:d(r,"id"),ref:r.ref,...e,children:u(i,null,3,"d4_0")},{role:"presentation"},0,"d4_1")};export{p as s_NRAWrRuxVfc};

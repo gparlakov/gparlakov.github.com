@@ -1,0 +1,1 @@
+import{b as a,H as r,G as e,Y as c,d as l,h as i,j as d}from"./q-0f391e12.js";import{f as u,i as m}from"./q-1d1c70df.js";const h=n=>{a();const s=r(),t={id:n.id||s},o=e(u);return c(m,t),l("nav",{...n,children:o.pages.ranges.value&&i(d,null,3,"d4_10")},null,0,"d4_11")};export{h as s_tsn2aW4QuKA};

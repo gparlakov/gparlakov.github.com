@@ -1,0 +1,1 @@
+import{I as r,k as s}from"./q-1d1c70df.js";import{G as e,h as i}from"./q-0f391e12.js";const d=n=>{const o=e(s),t=n.id||o.id;return i(r,{...n,"aria-describedby":`hint-${t} message-${t}`,id:t},0,"fW_8")};export{d as s_u4aRRXrWctM};

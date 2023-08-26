@@ -1,0 +1,1 @@
+import{c,A as o}from"./q-6e2edd4b.js";import{z as l,h as r,j as t}from"./q-0f391e12.js";const i=s=>{const a=l(s,["class"]);return r(o,{class:c("border collapse collapse-arrow",s.class),...a,children:r(t,null,3,"FW_0")},0,"FW_1")};export{i as s_6zBDKW0a0xw};

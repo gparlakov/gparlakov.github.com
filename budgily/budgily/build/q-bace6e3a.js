@@ -1,0 +1,1 @@
+import{z as c,G as n,d as r}from"./q-0f391e12.js";import{U as s}from"./q-1d1c70df.js";const p=e=>{const o=c(e,["placeholder"]),t=n(s).selectedOption.value;return r("span",{...o,children:t||e.placeholder},null,0,"xi_4")};export{p as s_OMhN0eItE7U};
