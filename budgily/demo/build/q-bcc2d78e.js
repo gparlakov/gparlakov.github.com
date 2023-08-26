@@ -1,1 +1,0 @@
-import{b as a}from"./q-29eba519.js";import{a as v}from"./q-29eba519.js";const d=({track:o,cleanup:s})=>{const[l,e]=a();o(e),o(()=>l.selectedId),e.value&&(l.selectedId&&!e.value.open?(e.value.showModal(),e.value.focus()):e.value.close()),s(()=>{e.value&&e.value.close()})};export{v as _hW,d as s_psldKSgS70o};

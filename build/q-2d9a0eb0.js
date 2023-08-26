@@ -1,1 +1,0 @@
-import{o as t}from"./q-4142b90a.js";import{U as r,x as o,P as l,H as a}from"./q-29eba519.js";const i=s=>r(t,{...s,class:"card-title",children:r(o,null,3,"u1_0"),[l]:{class:l}},0,"u1_1"),e=s=>a("h2",{...s,children:r(o,null,3,"Tz_0")},null,0,"Tz_1");export{i as s_Vxn19GJ2HAg,e as s_fWJvio7d2Xo};

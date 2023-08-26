@@ -1,1 +1,0 @@
-import{k as i}from"./q-4142b90a.js";import{U as l}from"./q-29eba519.js";const p=({"aria-label":r,disabled:a,onClick$:o,key:t,value:e})=>l(i,{onClick$:o,"aria-label":r,disabled:a,children:e},0,t);export{p as s_AQpxWOGv5Hk};

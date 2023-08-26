@@ -1,1 +1,0 @@
-import{k as n,S as r,g as e,H as o,U as a,x as c}from"./q-29eba519.js";import{k as u}from"./q-ffa2882e.js";const l=s=>{const t=n(),i={ref:r(),id:s.id||t};return e(u,i),o("div",{...s,children:a(c,null,3,"fW_0")},null,0,"fW_1")};export{l as s_iuaLFshWoJw};
